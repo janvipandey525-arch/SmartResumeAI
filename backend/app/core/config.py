@@ -36,7 +36,9 @@ class Settings(BaseSettings):
 
     # --- AI (Gemini) ---
     GEMINI_API_KEY: str = ""  # empty => AI features report "disabled"
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    # Alias that always tracks the current stable Flash model, so it won't 404
+    # when Google retires a dated version (as happened to gemini-2.5-flash).
+    GEMINI_MODEL: str = "gemini-flash-latest"
 
     # --- CORS ---
     # Same-origin deploy (FastAPI serves the frontend) needs no CORS, but we allow
