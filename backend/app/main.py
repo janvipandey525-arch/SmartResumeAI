@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.core.config import settings
 from app.db.base import init_db
-from app.routers import health
+from app.routers import auth, health, resumes
 
 # Resolve the frontend directory: repo_root/frontend by default, overridable in Docker.
 FRONTEND_DIR = Path(
@@ -52,9 +52,9 @@ app.add_middleware(
 
 # --- API routers (everything lives under /api) ---
 app.include_router(health.router, prefix="/api")
-# Milestone 2+: app.include_router(auth.router, prefix="/api/auth")
-#               app.include_router(resumes.router, prefix="/api/resumes")
-#               app.include_router(ats.router, prefix="/api/ats")
+app.include_router(auth.router, prefix="/api/auth")
+app.include_router(resumes.router, prefix="/api/resumes")
+# Phase 5+: app.include_router(ats.router, prefix="/api/ats")
 
 # --- Static frontend (mounted last so /api and /docs win first) ---
 if FRONTEND_DIR.is_dir():
