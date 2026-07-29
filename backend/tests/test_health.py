@@ -15,11 +15,14 @@ def test_health_ok():
 
 
 def test_status_reports_ai_flag():
+    from app.core.config import settings
+
     r = client.get("/api/status")
     assert r.status_code == 200
     body = r.json()
-    # No key configured in test env => AI disabled.
-    assert body["ai_enabled"] is False
+    # ai_enabled must mirror whether a key is actually configured, whatever env.
+    assert isinstance(body["ai_enabled"], bool)
+    assert body["ai_enabled"] == bool(settings.GEMINI_API_KEY)
 
 
 def test_frontend_index_served():

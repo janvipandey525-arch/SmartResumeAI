@@ -9,7 +9,8 @@ from functools import lru_cache
 from typing import List
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
+from typing_extensions import Annotated
 
 
 class Settings(BaseSettings):
@@ -43,7 +44,9 @@ class Settings(BaseSettings):
     # --- CORS ---
     # Same-origin deploy (FastAPI serves the frontend) needs no CORS, but we allow
     # local dev servers so Live Server / http.server work during development.
-    CORS_ORIGINS: List[str] = [
+    # NoDecode stops pydantic-settings from JSON-parsing this from .env/env;
+    # our validator below parses the Coolify-friendly comma-separated string.
+    CORS_ORIGINS: Annotated[List[str], NoDecode] = [
         "http://localhost:5500",
         "http://127.0.0.1:5500",
         "http://localhost:8000",
