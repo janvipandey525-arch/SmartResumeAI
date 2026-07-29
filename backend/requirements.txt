@@ -1,0 +1,32 @@
+# === Web framework ===
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# === Database (Postgres in prod, SQLite in local dev) ===
+sqlalchemy==2.0.36
+psycopg[binary]==3.2.3
+
+# === Config / validation ===
+pydantic==2.10.4
+pydantic-settings==2.7.0
+python-dotenv==1.0.1
+
+# === Auth (Milestone 2) ===
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+
+# === File uploads + parsing (Milestone 4) ===
+python-multipart==0.0.20
+pypdf==5.1.0
+python-docx==1.1.2
+
+# === AI (Milestone 5) ===
+google-genai==0.8.0
+
+# === Rate limiting on AI endpoint ===
+slowapi==0.1.9
+
+# === HTTP client + tests ===
+httpx==0.28.1
+pytest==8.3.4
