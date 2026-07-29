@@ -15,10 +15,13 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 from app.core.config import settings
+from app.core.ratelimit import limiter
 from app.db.base import init_db
-from app.routers import auth, health, resumes
+from app.routers import ats, auth, health, resumes
 
 # Resolve the frontend directory: repo_root/frontend by default, overridable in Docker.
 FRONTEND_DIR = Path(
@@ -41,6 +44,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# --- Rate limiting (protects the AI endpoints from quota abuse) ---
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 # --- CORS (local dev only; same-origin in prod needs none) ---
 app.add_middleware(
     CORSMiddleware,
@@ -54,7 +61,7 @@ app.add_middleware(
 app.include_router(health.router, prefix="/api")
 app.include_router(auth.router, prefix="/api/auth")
 app.include_router(resumes.router, prefix="/api/resumes")
-# Phase 5+: app.include_router(ats.router, prefix="/api/ats")
+app.include_router(ats.router, prefix="/api/ats")
 
 # --- Static frontend (mounted last so /api and /docs win first) ---
 if FRONTEND_DIR.is_dir():
