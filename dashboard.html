@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+
+    <nav class="sidebar-menu">
+      <a href="dashboard.html" class="active"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- Closes the sidebar when tapped on mobile -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>Dashboard</h1>
+          <p>Here's an overview of your resume activity</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="profile.html" class="topbar-avatar">
+          <img src="assets/images/avatar.svg" alt="Your profile picture">
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ---------- Welcome card ---------- -->
+      <section class="welcome-card">
+        <div class="welcome-text">
+          <!-- The name is filled in by js/script.js from the signup account -->
+          <h2>Welcome back, <span id="welcomeName">there</span> <i class="fa-solid fa-hand" style="font-size:.85em"></i></h2>
+          <p>Ready to land your next interview? Start a new resume or improve your existing one with the ATS Analyzer.</p>
+        </div>
+        <a href="buildresume.html" class="btn btn-lg">
+          <i class="fa-solid fa-plus"></i> Build Resume
+        </a>
+      </section>
+
+      <!-- ---------- Quick statistics ---------- -->
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="stat-info">
+            <!-- Becomes 1 after Generate Resume is used (see script.js) -->
+            <h3 id="statResumes">0</h3>
+            <p>Resumes Created</p>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="stat-info">
+            <h3>4</h3>
+            <p>Templates Available</p>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-chart-simple"></i></div>
+          <div class="stat-info">
+            <h3 id="statScore">--</h3>
+            <p>ATS Score</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ---------- AI tips + quick actions ---------- -->
+      <div class="dash-grid">
+
+        <section class="panel">
+          <h2 class="content-title"><i class="fa-solid fa-lightbulb"></i> AI Resume Tips</h2>
+
+          <div class="tips-list">
+            <article class="tip">
+              <i class="fa-solid fa-bullseye"></i>
+              <div>
+                <h4>Match the job description</h4>
+                <p>Mirror the exact keywords from the job posting — most ATS engines look for literal matches.</p>
+              </div>
+            </article>
+
+            <article class="tip">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <h4>Quantify your impact</h4>
+                <p>"Improved load time by 40%" reads far stronger than "Improved website performance".</p>
+              </div>
+            </article>
+
+            <article class="tip">
+              <i class="fa-solid fa-list-check"></i>
+              <div>
+                <h4>Start bullets with action verbs</h4>
+                <p>Built, Designed, Automated, Led — action verbs make your contribution unmistakable.</p>
+              </div>
+            </article>
+
+            <article class="tip">
+              <i class="fa-solid fa-file-shield"></i>
+              <div>
+                <h4>Keep the layout simple</h4>
+                <p>Avoid tables, columns of images and fancy graphics — many ATS parsers skip them entirely.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2 class="content-title"><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
+
+          <div class="action-list">
+            <a href="buildresume.html" class="action-item">
+              <i class="fa-solid fa-pen-to-square"></i> Create New Resume
+              <i class="fa-solid fa-chevron-right chev"></i>
+            </a>
+            <a href="templates.html" class="action-item">
+              <i class="fa-solid fa-layer-group"></i> Browse Templates
+              <i class="fa-solid fa-chevron-right chev"></i>
+            </a>
+            <a href="ats.html" class="action-item">
+              <i class="fa-solid fa-magnifying-glass-chart"></i> Analyze ATS Score
+              <i class="fa-solid fa-chevron-right chev"></i>
+            </a>
+            <a href="profile.html" class="action-item">
+              <i class="fa-solid fa-user-gear"></i> Update Profile
+              <i class="fa-solid fa-chevron-right chev"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

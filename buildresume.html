@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Resume — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/buildresume.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+
+    <nav class="sidebar-menu">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html" class="active"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>Resume Builder</h1>
+          <p>Fill in your details to generate your resume</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="profile.html" class="topbar-avatar">
+          <img src="assets/images/avatar.svg" alt="Your profile picture">
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="builder-wrap">
+
+        <!-- Intro strip -->
+        <div class="builder-intro">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
+            <h2>Build your resume in one place</h2>
+            <p>Complete the sections below, then click <strong>Generate Resume</strong> to pick a template.</p>
+          </div>
+        </div>
+
+        <!-- Front-end only: submit is handled by js/script.js -->
+        <form id="resumeForm" novalidate>
+
+          <!-- ---------- 1. Personal Information ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-user"></i></span>
+              <div>
+                <h2>Personal Information</h2>
+                <span class="sub">How recruiters will reach you</span>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label for="fullName">Full Name <span class="req">*</span></label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Johnson">
+              </div>
+
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="e.g. alex.johnson@email.com">
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. +91 98765 43210">
+              </div>
+
+              <div class="field">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="e.g. Pune, Maharashtra">
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------- 2. Education ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-graduation-cap"></i></span>
+              <div>
+                <h2>Education</h2>
+                <span class="sub">Your most recent qualification</span>
+              </div>
+            </div>
+
+            <div class="grid-3">
+              <div class="field">
+                <label for="college">College / University</label>
+                <input type="text" id="college" name="college" placeholder="e.g. Fergusson College">
+              </div>
+
+              <div class="field">
+                <label for="degree">Degree</label>
+                <input type="text" id="degree" name="degree" placeholder="e.g. B.Sc Computer Science">
+              </div>
+
+              <div class="field">
+                <label for="year">Year of Passing</label>
+                <input type="text" id="year" name="year" placeholder="e.g. 2026">
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------- 3. Skills ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-code"></i></span>
+              <div>
+                <h2>Skills</h2>
+                <span class="sub">Technical and soft skills</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="skills">Your Skills</label>
+              <textarea id="skills" name="skills"
+                placeholder="e.g. HTML, CSS, JavaScript, Python, MySQL, Git, Problem Solving"></textarea>
+              <small>Separate each skill with a comma.</small>
+            </div>
+          </section>
+
+          <!-- ---------- 4. Projects ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-diagram-project"></i></span>
+              <div>
+                <h2>Projects</h2>
+                <span class="sub">Work that shows what you can build</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="projects">Project Details</label>
+              <textarea id="projects" name="projects"
+                placeholder="e.g. ResumeAI — An AI resume builder and ATS analyzer built with HTML, CSS and JavaScript."></textarea>
+              <small>Add the project name, the tools you used and what it does.</small>
+            </div>
+          </section>
+
+          <!-- ---------- 5. Experience ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-briefcase"></i></span>
+              <div>
+                <h2>Experience</h2>
+                <span class="sub">Internships or jobs — freshers can leave this blank</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="experience">Work Experience</label>
+              <textarea id="experience" name="experience"
+                placeholder="e.g. Web Development Intern — TechNova (Jun 2025 – Aug 2025). Built responsive landing pages and reduced page load time by 35%."></textarea>
+              <small>Start each point with an action verb and add numbers wherever you can.</small>
+            </div>
+          </section>
+
+          <!-- ---------- 6. Certifications ---------- -->
+          <section class="form-section">
+            <div class="section-title">
+              <span class="num"><i class="fa-solid fa-certificate"></i></span>
+              <div>
+                <h2>Certifications</h2>
+                <span class="sub">Courses and credentials you've earned</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="certifications">Certifications</label>
+              <textarea id="certifications" name="certifications"
+                placeholder="e.g. Responsive Web Design — freeCodeCamp (2025)"></textarea>
+              <small>List one certification per line.</small>
+            </div>
+          </section>
+
+          <!-- ---------- Actions ---------- -->
+          <div class="form-actions">
+            <p class="note"><i class="fa-solid fa-lock"></i> Your details stay in your browser.</p>
+            <div class="buttons">
+              <button type="reset" class="btn btn-ghost" id="clearBtn">
+                <i class="fa-solid fa-eraser"></i> Clear
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Generate Resume <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeAI — AI Resume Builder &amp; ATS Analyzer</title>
+  <meta name="description"
+    content="ResumeAI helps you create ATS-friendly resumes with AI, choose professional templates and check your ATS score — free and easy to use.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Global stylesheet (also holds the Home page styles) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <header class="navbar">
+    <nav class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+        ResumeAI
+      </a>
+
+      <!-- Hamburger button (mobile only) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="tag"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Powered Resume Builder</span>
+          <h1>Create <span class="gradient-text">ATS-Friendly</span> Resumes with AI</h1>
+          <p class="lead">
+            Build a professional, recruiter-ready resume in minutes. Pick a template,
+            let ResumeAI structure your details, then check how well your resume scores
+            against Applicant Tracking Systems.
+          </p>
+
+          <div class="hero-actions">
+            <a href="signup.html" class="btn btn-primary btn-lg">
+              Get Started <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
+          </div>
+
+          <div class="hero-stats">
+            <div><strong>4</strong><span>Pro Templates</span></div>
+            <div><strong>100%</strong><span>Free to Use</span></div>
+            <div><strong>5 min</strong><span>Average Build Time</span></div>
+          </div>
+        </div>
+
+        <!-- Large resume builder illustration -->
+        <div class="hero-art">
+          <img src="assets/images/hero-illustration.svg"
+            alt="Illustration of a resume being analysed by an AI ATS scanner">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE RESUMEAI ============ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Features</span>
+          <h2>Why Choose ResumeAI?</h2>
+          <p>Everything a student or job seeker needs to go from a blank page to a shortlisted resume.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3>AI Resume Builder</h3>
+            <p>Guided sections for education, skills, projects and experience — neatly formatted for you.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <h3>ATS Score Analyzer</h3>
+            <p>Compare your resume with a job description and see where it needs improvement.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>Professional Templates</h3>
+            <p>Four clean, recruiter-approved layouts that stay readable for both humans and bots.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Easy to Use</h3>
+            <p>A simple, beginner-friendly interface. Fill the form, pick a design, and you're done.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="tag">About Us</span>
+          <h2>Built to help you get past the first filter</h2>
+          <p>
+            Most companies use an Applicant Tracking System to scan resumes before a
+            recruiter ever reads them. Strong candidates get rejected simply because
+            their resume isn't structured or worded the way these systems expect.
+          </p>
+          <p>
+            ResumeAI closes that gap. It gives students, freshers and working
+            professionals a clean way to build a resume, choose a professional layout,
+            and understand how ATS-friendly their resume really is — all from the browser.
+          </p>
+
+          <ul class="about-list">
+            <li><i class="fa-solid fa-check"></i> Clean, distraction-free resume editor</li>
+            <li><i class="fa-solid fa-check"></i> ATS-parseable template designs</li>
+            <li><i class="fa-solid fa-check"></i> Works on desktop, tablet and mobile</li>
+          </ul>
+        </div>
+
+        <div class="hero-art">
+          <img src="assets/images/template-modern.svg" alt="Preview of a modern ResumeAI resume template">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CALL TO ACTION ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>Ready to build your resume?</h2>
+          <p>Create your free account and design an ATS-optimised resume in just a few minutes.</p>
+          <a href="signup.html" class="btn btn-lg">Get Started Free <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+            ResumeAI
+          </a>
+          <p>A free AI resume builder and ATS analyzer that helps you create professional,
+            recruiter-ready resumes in minutes.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="buildresume.html">Resume Builder</a></li>
+            <li><a href="templates.html">Templates</a></li>
+            <li><a href="ats.html">ATS Analyzer</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Account</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ResumeAI. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

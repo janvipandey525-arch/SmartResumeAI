@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATS Analyzer — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ats.css">
+
+  <!-- Resume text extraction (PDF/DOCX/TXT) is handled by the backend now. -->
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+
+    <nav class="sidebar-menu">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html" class="active"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>ATS Analyzer</h1>
+          <p>Check how ATS-friendly your resume is</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="profile.html" class="topbar-avatar">
+          <img src="assets/images/avatar.svg" alt="Your profile picture">
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="ats-grid">
+
+        <!-- ================= LEFT: INPUTS ================= -->
+        <div>
+
+          <!-- ---------- Upload resume ---------- -->
+          <section class="ats-panel">
+            <h2 class="content-title"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Resume</h2>
+
+            <label class="upload-box" for="resumeFile">
+              <span class="up-icon"><i class="fa-solid fa-file-arrow-up"></i></span>
+              <h3>Drop your resume here</h3>
+              <p>or click to browse your files</p>
+              <span class="hint">Supported formats: PDF, DOCX, TXT</span>
+              <input type="file" id="resumeFile" accept=".pdf,.docx,.txt">
+            </label>
+            <p class="up-alt">
+              No file? <a href="buildresume.html">Build a resume</a> first, then Analyze —
+              it will score the resume you just created.
+            </p>
+
+            <!-- Filled in by js/script.js once a file is picked -->
+            <p class="file-chosen" id="fileChosen">
+              <i class="fa-solid fa-file-lines"></i>
+              <span id="fileName"></span>
+            </p>
+          </section>
+
+          <!-- ---------- Job description ---------- -->
+          <section class="ats-panel">
+            <h2 class="content-title"><i class="fa-solid fa-clipboard"></i> Paste Job Description</h2>
+
+            <div class="jd-field">
+              <label for="jobDescription">Job Description</label>
+              <textarea id="jobDescription"
+                placeholder="Paste the full job description here — including the required skills, tools and responsibilities."></textarea>
+              <small>The more complete the job description, the more useful the analysis.</small>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" id="analyzeBtn" style="margin-top:20px">
+              <i class="fa-solid fa-magnifying-glass-chart"></i> Analyze Resume
+            </button>
+          </section>
+
+        </div>
+
+        <!-- ================= RIGHT: RESULTS ================= -->
+        <div>
+
+          <!-- ---------- ATS Score ---------- -->
+          <section class="ats-panel">
+            <h2 class="content-title"><i class="fa-solid fa-gauge-high"></i> ATS Score</h2>
+
+            <div class="score-box">
+              <div class="score-ring" id="scoreRing">
+                <div>
+                  <div class="score-value" id="scoreValue">--</div>
+                  <div class="score-label">out of 100</div>
+                </div>
+              </div>
+              <p id="scoreVerdict">Your ATS score will appear here after the analysis is run.</p>
+
+              <div class="meter-list">
+                <div class="meter-row">
+                  <div class="meter-head"><span>Keyword Match</span><span id="mKeywordVal">--</span></div>
+                  <div class="meter-track"><span id="mKeywordBar"></span></div>
+                </div>
+                <div class="meter-row">
+                  <div class="meter-head"><span>Formatting</span><span id="mFormatVal">--</span></div>
+                  <div class="meter-track"><span id="mFormatBar"></span></div>
+                </div>
+                <div class="meter-row">
+                  <div class="meter-head"><span>Section Coverage</span><span id="mSectionVal">--</span></div>
+                  <div class="meter-track"><span id="mSectionBar"></span></div>
+                </div>
+                <div class="meter-row">
+                  <div class="meter-head"><span>Readability</span><span id="mReadVal">--</span></div>
+                  <div class="meter-track"><span id="mReadBar"></span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------- Keyword match (populated after analysis) ---------- -->
+          <section class="ats-panel" id="keywordPanel" hidden>
+            <h2 class="content-title"><i class="fa-solid fa-tags"></i> Keywords</h2>
+            <div class="kw-block">
+              <h4 class="kw-title matched"><i class="fa-solid fa-circle-check"></i> Matched</h4>
+              <div class="kw-chips" id="kwMatched"></div>
+            </div>
+            <div class="kw-block">
+              <h4 class="kw-title missing"><i class="fa-solid fa-circle-xmark"></i> Missing</h4>
+              <div class="kw-chips" id="kwMissing"></div>
+            </div>
+          </section>
+
+          <!-- ---------- Suggestions ---------- -->
+          <section class="ats-panel">
+            <h2 class="content-title"><i class="fa-solid fa-lightbulb"></i> Suggestions</h2>
+
+            <div class="suggestion-list" id="suggestionList">
+              <div class="suggestion-item">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div class="skeleton"><span></span><span></span></div>
+              </div>
+              <div class="suggestion-item">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div class="skeleton"><span></span><span></span></div>
+              </div>
+              <div class="suggestion-item">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div class="skeleton"><span></span><span></span></div>
+              </div>
+              <div class="suggestion-item">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div class="skeleton"><span></span><span></span></div>
+              </div>
+            </div>
+
+            <p class="empty-note" id="suggestEmpty">
+              <i class="fa-solid fa-circle-info"></i>
+              Improvement suggestions will be listed here once your resume is analyzed.
+            </p>
+          </section>
+
+          <!-- ---------- AI Feedback (Gemini) ---------- -->
+          <section class="ats-panel" id="aiPanel" hidden>
+            <h2 class="content-title"><i class="fa-solid fa-robot"></i> AI Feedback</h2>
+            <div id="aiFeedback"></div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

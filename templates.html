@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Templates — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/templates.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+
+    <nav class="sidebar-menu">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html" class="active"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>Resume Templates</h1>
+          <p>Pick a layout for your resume</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="buildresume.html" class="btn btn-outline">
+          <i class="fa-solid fa-arrow-left"></i> Back to Builder
+        </a>
+        <a href="profile.html" class="topbar-avatar">
+          <img src="assets/images/avatar.svg" alt="Your profile picture">
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="templates-head">
+        <h2>Choose Your Template</h2>
+        <p>All four layouts are clean, ATS-parseable and print-ready. Select one to continue to the ATS Analyzer.</p>
+      </div>
+
+      <!-- ---------- Template cards ---------- -->
+      <section class="template-grid">
+
+        <article class="template-card">
+          <div class="template-preview">
+            <span class="template-badge">Popular</span>
+            <img src="assets/images/template-professional.svg" alt="Preview of the Professional resume template">
+          </div>
+          <div class="template-body">
+            <h3>Professional</h3>
+            <p>A timeless single-column layout with a centered header. The safest choice for any industry.</p>
+            <div class="template-tags"><span>Single column</span><span>Classic</span></div>
+            <a href="ats.html" class="btn btn-primary btn-block">Use Template</a>
+          </div>
+        </article>
+
+        <article class="template-card">
+          <div class="template-preview">
+            <img src="assets/images/template-modern.svg" alt="Preview of the Modern resume template">
+          </div>
+          <div class="template-body">
+            <h3>Modern</h3>
+            <p>A gradient header with a skills sidebar — fresh and confident without being distracting.</p>
+            <div class="template-tags"><span>Sidebar</span><span>Colourful</span></div>
+            <a href="ats.html" class="btn btn-primary btn-block">Use Template</a>
+          </div>
+        </article>
+
+        <article class="template-card">
+          <div class="template-preview">
+            <img src="assets/images/template-corporate.svg" alt="Preview of the Corporate resume template">
+          </div>
+          <div class="template-body">
+            <h3>Corporate</h3>
+            <p>A bold dark rail with a structured content column. Built for finance, consulting and MNC roles.</p>
+            <div class="template-tags"><span>Two column</span><span>Formal</span></div>
+            <a href="ats.html" class="btn btn-primary btn-block">Use Template</a>
+          </div>
+        </article>
+
+        <article class="template-card">
+          <div class="template-preview">
+            <span class="template-badge">New</span>
+            <img src="assets/images/template-creative.svg" alt="Preview of the Creative resume template">
+          </div>
+          <div class="template-body">
+            <h3>Creative</h3>
+            <p>A timeline layout with accent shapes — ideal for design, marketing and product portfolios.</p>
+            <div class="template-tags"><span>Timeline</span><span>Expressive</span></div>
+            <a href="ats.html" class="btn btn-primary btn-block">Use Template</a>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ---------- Help note ---------- -->
+      <div class="template-note">
+        <i class="fa-solid fa-circle-question"></i>
+        <div>
+          <h4>Not sure which one to pick?</h4>
+          <p>Go with <strong>Professional</strong> or <strong>Corporate</strong> for campus placements and
+             corporate roles, and <strong>Modern</strong> or <strong>Creative</strong> for startups and design teams.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

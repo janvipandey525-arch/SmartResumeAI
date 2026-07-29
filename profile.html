@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+
+    <nav class="sidebar-menu">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html" class="active"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>My Profile</h1>
+          <p>Your personal details and skills</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="dashboard.html" class="btn btn-outline">
+          <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="profile-wrap">
+
+        <!-- ---------- Profile header ---------- -->
+        <section class="profile-card">
+          <div class="profile-cover"></div>
+
+          <!-- All values below are filled in by js/script.js
+               from the account created on the Signup page and
+               the details saved in the Resume Builder. -->
+          <div class="profile-head">
+            <div class="profile-avatar" id="profileAvatar">
+              <img src="assets/images/avatar.svg" alt="Profile picture">
+            </div>
+
+            <div class="profile-identity">
+              <h2 id="profileName">Guest User</h2>
+              <p id="profileEmail">Not added yet</p>
+              <span class="profile-role" id="profileRole">
+                <i class="fa-solid fa-user"></i> ResumeAI Member
+              </span>
+            </div>
+
+            <button class="btn btn-primary" id="editProfileBtn">
+              <i class="fa-solid fa-pen"></i> Edit Profile
+            </button>
+          </div>
+        </section>
+
+        <!-- ---------- Personal details ---------- -->
+        <section class="detail-panel">
+          <h2 class="content-title"><i class="fa-solid fa-address-card"></i> Personal Details</h2>
+
+          <div class="detail-grid">
+            <div class="detail-item">
+              <i class="fa-solid fa-user"></i>
+              <div class="detail-text">
+                <span class="label">Full Name</span>
+                <span class="value" id="detailName">Guest User</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div class="detail-text">
+                <span class="label">Email</span>
+                <span class="value" id="detailEmail">Not added yet</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fa-solid fa-phone"></i>
+              <div class="detail-text">
+                <span class="label">Phone</span>
+                <span class="value" id="detailPhone">Not added yet</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fa-solid fa-building-columns"></i>
+              <div class="detail-text">
+                <span class="label">College</span>
+                <span class="value" id="detailCollege">Not added yet</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ---------- Skills ---------- -->
+        <section class="detail-panel">
+          <h2 class="content-title"><i class="fa-solid fa-code"></i> Skills</h2>
+
+          <!-- Chips are generated from the skills saved in the builder -->
+          <div class="skill-chips" id="skillChips"></div>
+        </section>
+
+        <!-- ---------- Edit Profile (hidden until the button is clicked) ---------- -->
+        <section class="detail-panel" id="editPanel" hidden>
+          <h2 class="content-title"><i class="fa-solid fa-pen"></i> Edit Profile</h2>
+
+          <form id="editForm" novalidate>
+            <div class="edit-grid">
+              <div class="edit-field">
+                <label for="editName">Full Name</label>
+                <input type="text" id="editName" placeholder="Your full name">
+              </div>
+
+              <div class="edit-field">
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" placeholder="you@example.com">
+              </div>
+
+              <div class="edit-field">
+                <label for="editPhone">Phone</label>
+                <input type="tel" id="editPhone" placeholder="e.g. +91 98765 43210">
+              </div>
+
+              <div class="edit-field">
+                <label for="editCollege">College</label>
+                <input type="text" id="editCollege" placeholder="e.g. Fergusson College, Pune">
+              </div>
+
+              <div class="edit-field full">
+                <label for="editSkills">Skills <small>(separate with commas)</small></label>
+                <input type="text" id="editSkills" placeholder="e.g. HTML, CSS, JavaScript, Python">
+              </div>
+            </div>
+
+            <div class="edit-actions">
+              <button type="button" class="btn btn-ghost" id="cancelEditBtn">Cancel</button>
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-check"></i> Save Changes
+              </button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

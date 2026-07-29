@@ -1,0 +1,128 @@
+/* =========================================================
+   ResumeAI — templates.css
+   Styles for templates.html (the four template cards).
+   ========================================================= */
+
+/* Small heading strip above the grid */
+.templates-head { margin-bottom: 26px; }
+.templates-head h2 { font-size: 1.4rem; }
+.templates-head p  { color: var(--ink-500); font-size: .93rem; margin-top: 6px; }
+
+/* ---------------------------------------------------------
+   1. Card grid — 4 across on desktop, equal spacing
+   --------------------------------------------------------- */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.template-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+.template-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-100);
+}
+
+/* ---------------------------------------------------------
+   2. Preview thumbnail
+   --------------------------------------------------------- */
+.template-preview {
+  position: relative;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 22px 0;
+  overflow: hidden;
+}
+
+/* The SVG page peeks up from the bottom of the frame */
+.template-preview img {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 18px rgba(19, 26, 43, .1);
+  transition: transform var(--ease);
+}
+.template-card:hover .template-preview img { transform: translateY(-8px); }
+
+/* "Popular" / "New" ribbon */
+.template-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: var(--gradient);
+  color: var(--white);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------------------------------------------------
+   3. Card body
+   --------------------------------------------------------- */
+.template-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;               /* keeps every card's button on the same line */
+  gap: 10px;
+}
+.template-body h3 { font-size: 1.08rem; }
+.template-body p  { font-size: .88rem; color: var(--ink-500); flex: 1; }
+
+/* Tiny feature chips */
+.template-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.template-tags span {
+  font-size: .73rem;
+  font-weight: 500;
+  color: var(--blue-700);
+  background: var(--blue-50);
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+}
+
+.template-body .btn { margin-top: 6px; }
+
+/* ---------------------------------------------------------
+   4. Help note under the grid
+   --------------------------------------------------------- */
+.template-note {
+  margin-top: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue-600);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.template-note i { color: var(--blue-600); font-size: 1.25rem; }
+.template-note h4 { font-size: 1rem; }
+.template-note p  { font-size: .88rem; color: var(--ink-500); }
+
+/* ---------------------------------------------------------
+   5. Responsive
+   --------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .template-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .template-grid { grid-template-columns: 1fr; gap: 20px; }
+  .template-note { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

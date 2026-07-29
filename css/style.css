@@ -1,0 +1,678 @@
+/* =========================================================
+   ResumeAI — style.css
+   Global stylesheet: design tokens, reset, navbar, buttons,
+   cards, footer, plus all Home page (index.html) sections.
+   Every other page loads this file FIRST, then its own CSS.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. Design tokens (blue / purple / white theme)
+   --------------------------------------------------------- */
+:root {
+  /* Brand colours */
+  --blue-50:  #eef4ff;
+  --blue-100: #dbe7ff;
+  --blue-500: #3b6ef5;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+
+  --purple-50:  #f4f0ff;
+  --purple-100: #e9e2ff;
+  --purple-500: #8b5cf6;
+  --purple-600: #7c3aed;
+  --purple-700: #6d28d9;
+
+  /* Neutrals */
+  --white:  #ffffff;
+  --bg:     #f6f8fd;
+  --ink-900: #131a2b;
+  --ink-700: #3c4661;
+  --ink-500: #6b7590;
+  --ink-300: #aab2c8;
+  --line:    #e4e9f5;
+
+  /* Status colours */
+  --green: #16a34a;
+  --amber: #f59e0b;
+  --red:   #ef4444;
+
+  /* Signature gradient used across the whole app */
+  --gradient: linear-gradient(135deg, var(--blue-600) 0%, var(--purple-600) 100%);
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius:    16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows (soft, layered) */
+  --shadow-sm: 0 2px 6px rgba(19, 26, 43, .05);
+  --shadow:    0 8px 24px rgba(19, 26, 43, .07);
+  --shadow-lg: 0 18px 48px rgba(37, 99, 235, .14);
+
+  /* Motion */
+  --ease: .25s cubic-bezier(.4, .0, .2, 1);
+}
+
+/* ---------------------------------------------------------
+   2. Reset & base typography
+   --------------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: var(--ink-900); font-weight: 600; line-height: 1.25; }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.25rem); }
+h3 { font-size: 1.15rem; }
+
+a { color: var(--blue-600); text-decoration: none; transition: color var(--ease); }
+a:hover { color: var(--purple-600); }
+
+img, svg { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ---------------------------------------------------------
+   3. Layout helpers
+   --------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 88px 0; }
+
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+.section-head p { color: var(--ink-500); margin-top: 10px; }
+
+/* Small pill label above a heading */
+.tag {
+  display: inline-block;
+  background: var(--purple-50);
+  color: var(--purple-600);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+/* Text that fades from blue to purple */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------
+   4. Buttons
+   --------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  padding: 13px 28px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease), background var(--ease), color var(--ease);
+  white-space: nowrap;
+}
+
+/* Primary — filled gradient */
+.btn-primary {
+  background: var(--gradient);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, .28);
+}
+.btn-primary:hover {
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(124, 58, 237, .38);
+}
+
+/* Secondary — outlined */
+.btn-outline {
+  background: var(--white);
+  color: var(--blue-600);
+  border: 2px solid var(--blue-100);
+}
+.btn-outline:hover {
+  color: var(--purple-600);
+  border-color: var(--purple-500);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* Ghost — subtle, used for Clear / Cancel actions */
+.btn-ghost {
+  background: var(--blue-50);
+  color: var(--ink-700);
+}
+.btn-ghost:hover { background: var(--blue-100); color: var(--blue-700); }
+
+.btn-block { width: 100%; }
+.btn-lg { padding: 16px 34px; font-size: 1rem; }
+
+/* ---------------------------------------------------------
+   5. Cards
+   --------------------------------------------------------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 28px;
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-100);
+}
+
+/* Round gradient icon badge used inside cards */
+.card-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--gradient);
+  color: var(--white);
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+}
+
+/* ---------------------------------------------------------
+   6. Navigation bar
+   --------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+/* Logo: gradient square + wordmark. Reused in sidebar/footer. */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+.logo:hover { color: var(--ink-900); }
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--gradient);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.nav-links a {
+  position: relative;
+  color: var(--ink-700);
+  font-weight: 500;
+  font-size: .95rem;
+}
+/* Animated underline on hover */
+.nav-links a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient);
+  transition: width var(--ease);
+}
+.nav-links a:not(.btn):hover::after { width: 100%; }
+
+/* Hamburger — hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--ink-900);
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   7. Hero (index.html)
+   --------------------------------------------------------- */
+.hero {
+  padding: 80px 0 96px;
+  background:
+    radial-gradient(900px 420px at 88% -8%, var(--purple-100), transparent 62%),
+    radial-gradient(760px 380px at 4% 8%, var(--blue-100), transparent 58%),
+    var(--white);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero p.lead {
+  font-size: 1.06rem;
+  color: var(--ink-500);
+  max-width: 46ch;
+  margin: 18px 0 32px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* Trust numbers under the buttons */
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.hero-stats strong {
+  display: block;
+  font-size: 1.6rem;
+  color: var(--ink-900);
+  font-weight: 700;
+}
+.hero-stats span { font-size: .85rem; color: var(--ink-500); }
+
+.hero-art {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 18px;
+}
+
+/* ---------------------------------------------------------
+   8. Why choose ResumeAI (feature grid)
+   --------------------------------------------------------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.feature-grid .card p { color: var(--ink-500); font-size: .93rem; margin-top: 8px; }
+
+/* ---------------------------------------------------------
+   9. About section
+   --------------------------------------------------------- */
+.about {
+  background: var(--white);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-grid p { color: var(--ink-500); margin-top: 16px; }
+
+.about-list { margin-top: 26px; display: grid; gap: 14px; }
+.about-list li { display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--ink-700); }
+.about-list i {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+
+/* Call-to-action banner */
+.cta-banner {
+  background: var(--gradient);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  text-align: center;
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+.cta-banner h2 { color: var(--white); }
+.cta-banner p { opacity: .9; max-width: 52ch; margin: 12px auto 28px; }
+.cta-banner .btn {
+  background: var(--white);
+  color: var(--purple-600);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .16);
+}
+.cta-banner .btn:hover { color: var(--blue-700); transform: translateY(-3px); }
+
+/* ---------------------------------------------------------
+   10. Footer
+   --------------------------------------------------------- */
+.footer {
+  background: var(--ink-900);
+  color: var(--ink-300);
+  padding: 64px 0 26px;
+}
+.footer .logo, .footer h4 { color: var(--white); }
+.footer h4 { font-size: 1rem; margin-bottom: 16px; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-about p { font-size: .9rem; margin-top: 16px; max-width: 34ch; }
+
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: var(--ink-300); font-size: .92rem; }
+.footer-links a:hover { color: var(--white); padding-left: 5px; transition: padding-left var(--ease), color var(--ease); }
+
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  color: var(--white);
+  transition: background var(--ease), transform var(--ease);
+}
+.footer-social a:hover { background: var(--gradient); transform: translateY(-3px); }
+
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  text-align: center;
+  font-size: .86rem;
+}
+
+/* ---------------------------------------------------------
+   11. Toast — small confirmation popup created by script.js
+   --------------------------------------------------------- */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  max-width: 340px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--green);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 14px 18px;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--ink-900);
+  /* Starts off-screen; .show slides it in */
+  transform: translateY(24px);
+  opacity: 0;
+  transition: transform var(--ease), opacity var(--ease);
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+.toast-ok i    { color: var(--green); }
+.toast-error   { border-left-color: var(--red); }
+.toast-error i { color: var(--red); }
+
+@media (max-width: 600px) {
+  .toast { right: 14px; left: 14px; bottom: 14px; max-width: none; }
+}
+
+/* =========================================================
+   12. APP SHELL
+   Sidebar + topbar layout shared by dashboard.html,
+   buildresume.html, templates.html, ats.html, profile.html.
+   Page-specific styling lives in each page's own CSS file.
+   ========================================================= */
+.app {
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Left sidebar ---------- */
+.sidebar {
+  background: var(--white);
+  border-right: 1px solid var(--line);
+  padding: 26px 18px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar .logo { padding: 0 10px 26px; }
+
+.sidebar-menu { flex: 1; display: grid; gap: 6px; align-content: start; }
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--ink-700);
+  font-size: .94rem;
+  font-weight: 500;
+  transition: background var(--ease), color var(--ease), transform var(--ease);
+}
+.sidebar-menu a i { width: 20px; text-align: center; font-size: .98rem; color: var(--ink-300); transition: color var(--ease); }
+
+.sidebar-menu a:hover {
+  background: var(--blue-50);
+  color: var(--blue-700);
+  transform: translateX(4px);
+}
+.sidebar-menu a:hover i { color: var(--blue-600); }
+
+/* Current page */
+.sidebar-menu a.active {
+  background: var(--gradient);
+  color: var(--white);
+  box-shadow: 0 8px 18px rgba(124, 58, 237, .26);
+}
+.sidebar-menu a.active i { color: var(--white); }
+
+/* Logout pinned to the bottom */
+.sidebar-foot { border-top: 1px solid var(--line); padding-top: 14px; }
+.sidebar-foot a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: var(--radius-sm);
+                  color: var(--red); font-size: .94rem; font-weight: 500; transition: background var(--ease); }
+.sidebar-foot a i { width: 20px; text-align: center; }
+.sidebar-foot a:hover { background: #fef2f2; color: var(--red); }
+
+/* ---------- Main column ---------- */
+.main { display: flex; flex-direction: column; min-width: 0; }
+
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.topbar h1 { font-size: 1.3rem; }
+.topbar p { font-size: .86rem; color: var(--ink-500); }
+
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+
+/* Small circular avatar in the topbar */
+.topbar-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--blue-100);
+  flex-shrink: 0;
+}
+.topbar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Initials shown instead of the image once a user has signed up
+   (script.js swaps the <img> for this span) */
+.avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .02em;
+  user-select: none;
+}
+
+/* Sidebar open/close button (mobile only) */
+.sidebar-toggle {
+  display: none;
+  background: var(--blue-50);
+  border: none;
+  color: var(--blue-600);
+  font-size: 1.1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* Scrollable page body */
+.content { padding: 32px; flex: 1; }
+
+/* Section title used inside content areas */
+.content-title { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: 1.05rem; color: var(--ink-900); font-weight: 600; }
+.content-title i { color: var(--purple-600); }
+
+/* Dark overlay behind the mobile sidebar */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(19, 26, 43, .45);
+  z-index: 39;
+}
+.sidebar-backdrop.show { display: block; }
+
+/* ---------- App shell responsive ---------- */
+@media (max-width: 992px) {
+  .app { grid-template-columns: 1fr; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 264px;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform var(--ease);
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.open { transform: translateX(0); }   /* toggled by js/script.js */
+
+  .sidebar-toggle { display: grid; place-items: center; }
+  .topbar { padding: 14px 20px; }
+  .content { padding: 22px 20px; }
+}
+
+@media (max-width: 600px) {
+  .topbar h1 { font-size: 1.1rem; }
+  .topbar p { display: none; }
+  .content { padding: 18px 16px; }
+}
+
+/* ---------------------------------------------------------
+   13. Responsive — tablet
+   --------------------------------------------------------- */
+@media (max-width: 992px) {
+  .section { padding: 64px 0; }
+
+  .hero-grid,
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-art { order: -1; }
+
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Collapsible mobile menu */
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: absolute;
+    top: 74px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: 14px 24px 22px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }        /* toggled by js/script.js */
+  .nav-links a { padding: 10px 0; }
+  .nav-links a:not(.btn)::after { display: none; }
+  .nav-links .btn { margin-top: 8px; }
+}
+
+/* ---------------------------------------------------------
+   14. Responsive — mobile
+   --------------------------------------------------------- */
+@media (max-width: 600px) {
+  .container { padding: 0 18px; }
+  .section { padding: 52px 0; }
+
+  .feature-grid,
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .hero-stats { gap: 24px; }
+  .hero-actions .btn { width: 100%; }
+  .cta-banner { padding: 44px 22px; }
+}

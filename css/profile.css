@@ -1,0 +1,230 @@
+/* =========================================================
+   ResumeAI — profile.css
+   Styles for profile.html.
+   ========================================================= */
+
+.profile-wrap { max-width: 900px; }
+
+/* ---------------------------------------------------------
+   1. Profile header card
+   --------------------------------------------------------- */
+.profile-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Gradient strip behind the avatar */
+.profile-cover {
+  height: 130px;
+  background: var(--gradient);
+  position: relative;
+}
+.profile-cover::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -30px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+}
+
+.profile-head {
+  padding: 0 34px 30px;
+  display: flex;
+  align-items: flex-end;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+/* Circular profile image, pulled up over the cover.
+   position/z-index keep it above the cover's stacking context. */
+.profile-avatar {
+  position: relative;
+  z-index: 1;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--white);
+  box-shadow: var(--shadow);
+  margin-top: -66px;
+  flex-shrink: 0;
+  background: var(--white);
+  transition: transform var(--ease);
+}
+.profile-avatar:hover { transform: scale(1.04); }
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-identity { flex: 1; min-width: 200px; padding-bottom: 4px; }
+.profile-identity h2 { font-size: 1.55rem; }
+.profile-identity p  { color: var(--ink-500); font-size: .93rem; }
+
+/* Small role badge under the name */
+.profile-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--purple-50);
+  color: var(--purple-600);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
+  margin-top: 8px;
+}
+
+.profile-head .btn { align-self: center; }
+
+/* ---------------------------------------------------------
+   2. Details grid
+   --------------------------------------------------------- */
+.detail-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 26px;
+  margin-top: 24px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: background var(--ease), border-color var(--ease), transform var(--ease);
+}
+.detail-item:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-100);
+  transform: translateY(-3px);
+}
+
+.detail-item > i {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--purple-600);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.detail-text { min-width: 0; }
+.detail-text .label {
+  display: block;
+  font-size: .76rem;
+  color: var(--ink-500);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.detail-text .value {
+  display: block;
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--ink-900);
+  word-break: break-word;
+}
+
+/* ---------------------------------------------------------
+   3. Skills chips
+   --------------------------------------------------------- */
+.skill-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.skill-chips span {
+  font-size: .86rem;
+  font-weight: 500;
+  color: var(--blue-700);
+  background: var(--blue-50);
+  border: 1px solid var(--blue-100);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: background var(--ease), color var(--ease), transform var(--ease);
+}
+.skill-chips span:hover {
+  background: var(--gradient);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* Bigger initials inside the large profile avatar */
+.profile-avatar .avatar-initials { font-size: 2.4rem; }
+
+/* Shown when no skills are saved yet */
+.skills-empty { font-size: .9rem; color: var(--ink-500); }
+
+/* ---------------------------------------------------------
+   4. Edit Profile form (hidden until Edit Profile is clicked)
+   --------------------------------------------------------- */
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.edit-field { display: flex; flex-direction: column; }
+.edit-field.full { grid-column: 1 / -1; }
+
+.edit-field label {
+  font-size: .87rem;
+  font-weight: 500;
+  color: var(--ink-700);
+  margin-bottom: 8px;
+}
+.edit-field label small { color: var(--ink-500); font-weight: 400; }
+
+.edit-field input {
+  font-family: inherit;
+  font-size: .94rem;
+  color: var(--ink-900);
+  padding: 12px 15px;
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--ease), background var(--ease), box-shadow var(--ease);
+}
+.edit-field input::placeholder { color: var(--ink-300); }
+.edit-field input:focus {
+  background: var(--white);
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 4px var(--blue-50);
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+/* ---------------------------------------------------------
+   5. Responsive
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .detail-grid  { grid-template-columns: 1fr; }
+  .edit-grid    { grid-template-columns: 1fr; }
+  .edit-actions { flex-direction: column-reverse; }
+  .edit-actions .btn { width: 100%; }
+  .profile-head { padding: 0 20px 24px; gap: 18px; }
+  .profile-head .btn { width: 100%; }
+  .profile-avatar { width: 108px; height: 108px; margin-top: -54px; }
+  .profile-identity h2 { font-size: 1.3rem; }
+}

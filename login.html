@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="auth-page">
+
+  <main>
+    <!-- ============ LOGIN CARD ============ -->
+    <section class="auth-card">
+
+      <div class="auth-head">
+        <a href="index.html" class="logo">
+          <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+          ResumeAI
+        </a>
+        <h1>Welcome Back</h1>
+        <p>Login to continue building your resume</p>
+      </div>
+
+      <!-- Front-end only: the submit is handled by js/script.js -->
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+        </div>
+
+        <div class="auth-options">
+          <label><input type="checkbox" id="remember"> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Login <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+      </form>
+
+      <div class="auth-divider">OR</div>
+
+      <p class="auth-footer">
+        Don't have an account? <a href="signup.html">Create Account</a>
+      </p>
+    </section>
+
+    <a href="index.html" class="auth-back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+  </main>
+
+  <script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

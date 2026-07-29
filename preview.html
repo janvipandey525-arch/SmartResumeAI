@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Preview — ResumeAI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/preview.css">
+
+  <!-- Browser-side PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-file-lines"></i></span>
+      ResumeAI
+    </a>
+    <nav class="sidebar-menu">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="buildresume.html"><i class="fa-solid fa-pen-to-square"></i> Create Resume</a>
+      <a href="templates.html" class="active"><i class="fa-solid fa-layer-group"></i> Resume Templates</a>
+      <a href="ats.html"><i class="fa-solid fa-chart-simple"></i> ATS Analyzer</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h1>Resume Preview</h1>
+          <p>Template: <strong id="previewTemplateName">Professional</strong></p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a href="templates.html" class="btn btn-outline">
+          <i class="fa-solid fa-layer-group"></i> Change Template
+        </a>
+        <button class="btn btn-primary" id="downloadPdfBtn">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+        <a href="ats.html" class="topbar-avatar"></a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="preview-bar">
+        <a href="buildresume.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-pen"></i> Edit Details</a>
+        <a href="ats.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-magnifying-glass-chart"></i> Check ATS Score</a>
+        <!-- hidden name holder used by the PDF filename -->
+        <span id="resumePaperName" style="display:none"></span>
+      </div>
+
+      <!-- The resume is rendered into this element by js/script.js -->
+      <div class="paper-wrap">
+        <div id="resumePaper" class="resume-paper tpl-professional">
+          <p style="padding:40px;text-align:center;color:#64748b">Loading your resume…</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
