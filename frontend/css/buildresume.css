@@ -1,140 +1,102 @@
 /* =========================================================
-   ResumeAI — buildresume.css
-   Styles for buildresume.html (the resume form).
+   SmartResumeAI — buildresume.css
+   Resume builder form. App shell lives in style.css.
    ========================================================= */
 
-/* Keeps the long form comfortable to read on wide screens */
-.builder-wrap { max-width: 940px; }
+.builder-wrap{ max-width:900px; margin:0 auto; }
 
-/* ---------------------------------------------------------
-   1. Progress strip above the form
-   --------------------------------------------------------- */
-.builder-intro {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--purple-600);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 20px 24px;
-  margin-bottom: 26px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.builder-intro{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:var(--emerald-50);
+  border-left:5px solid var(--emerald);
+  border-radius:12px;
+  padding:18px 22px;
+  margin-bottom:24px;
 }
-.builder-intro i { color: var(--purple-600); font-size: 1.3rem; }
-.builder-intro h2 { font-size: 1.05rem; }
-.builder-intro p  { font-size: .89rem; color: var(--ink-500); }
+.builder-intro i{ color:var(--emerald); font-size:22px; }
+.builder-intro h2{ font-size:17px; color:var(--ink); margin-bottom:3px; }
+.builder-intro p{ font-size:13.5px; color:#555; }
 
-/* ---------------------------------------------------------
-   2. Form sections (Personal Info, Education, …)
-   --------------------------------------------------------- */
-.form-section {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 28px;
-  margin-bottom: 22px;
-  transition: box-shadow var(--ease), border-color var(--ease);
+.form-section{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:26px;
+  margin-bottom:22px;
+  box-shadow:0 5px 15px rgba(0,0,0,.04);
 }
-.form-section:hover { box-shadow: var(--shadow); border-color: var(--blue-100); }
-
-/* Section heading: numbered gradient badge + title */
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-bottom: 18px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--line);
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:20px;
 }
-.section-title .num {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-sm);
-  background: var(--gradient);
-  color: var(--white);
-  font-size: .95rem;
-  flex-shrink: 0;
+.section-title .num{
+  width:44px; height:44px;
+  border-radius:12px;
+  background:var(--emerald);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  flex-shrink:0;
 }
-.section-title h2   { font-size: 1.1rem; }
-.section-title span.sub { display: block; font-size: .83rem; color: var(--ink-500); font-weight: 400; }
+.section-title h2{ font-size:18px; color:var(--ink); }
+.section-title .sub{ font-size:13px; color:var(--muted); }
 
-/* ---------------------------------------------------------
-   3. Fields
-   --------------------------------------------------------- */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 
-.field { display: flex; flex-direction: column; }
-.field.full { grid-column: 1 / -1; }
-
-.field label {
-  font-size: .87rem;
-  font-weight: 500;
-  color: var(--ink-700);
-  margin-bottom: 8px;
+.field{ display:flex; flex-direction:column; }
+.field label{
+  font-size:13.5px;
+  font-weight:500;
+  color:var(--ink);
+  margin-bottom:7px;
 }
-.field label .req { color: var(--red); }
-
+.field .req{ color:var(--red); }
 .field input,
-.field select,
-.field textarea {
-  font-family: inherit;
-  font-size: .94rem;
-  color: var(--ink-900);
-  width: 100%;
-  padding: 12px 15px;
-  background: var(--bg);
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius-sm);
-  outline: none;
-  transition: border-color var(--ease), background var(--ease), box-shadow var(--ease);
+.field textarea{
+  width:100%;
+  padding:12px 14px;
+  border:2px solid var(--line);
+  border-radius:10px;
+  font-size:14.5px;
+  outline:none;
+  background:#F9FAFB;
+  transition:.25s;
 }
-.field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-.field input::placeholder,
-.field textarea::placeholder { color: var(--ink-300); }
-
 .field input:focus,
-.field select:focus,
-.field textarea:focus {
-  background: var(--white);
-  border-color: var(--blue-500);
-  box-shadow: 0 0 0 4px var(--blue-50);
+.field textarea:focus{
+  border-color:var(--emerald);
+  background:var(--emerald-50);
 }
+.field textarea{ resize:vertical; min-height:110px; }
+.field small{ font-size:12.5px; color:var(--muted); margin-top:6px; }
 
-/* Helper text under a field */
-.field small { font-size: .78rem; color: var(--ink-500); margin-top: 6px; }
-
-/* ---------------------------------------------------------
-   4. Action bar (Generate / Clear)
-   --------------------------------------------------------- */
-.form-actions {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 18px 24px;
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+.form-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:6px;
 }
-.form-actions .note { font-size: .85rem; color: var(--ink-500); }
-.form-actions .buttons { display: flex; gap: 12px; }
+.form-actions .note{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+.form-actions .note i{ color:var(--emerald); }
+.form-actions .buttons{ display:flex; gap:12px; }
 
-/* ---------------------------------------------------------
-   5. Responsive
-   --------------------------------------------------------- */
-@media (max-width: 768px) {
-  .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 16px; }
-  .form-section { padding: 22px 18px; }
-  .builder-intro { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .form-actions { flex-direction: column; align-items: stretch; }
-  .form-actions .buttons { flex-direction: column-reverse; }
-  .form-actions .btn { width: 100%; }
+@media(max-width:760px){
+  .grid-2,.grid-3{ grid-template-columns:1fr; }
+  .form-actions{ flex-direction:column; align-items:stretch; }
+  .form-actions .buttons{ flex-direction:column; }
 }

@@ -1,190 +1,97 @@
 /* =========================================================
-   ResumeAI — dashboard.css
-   Styles for dashboard.html only.
-   (The sidebar + topbar shell comes from style.css.)
+   SmartResumeAI — dashboard.css
+   Welcome card + stats + tips/actions. App shell lives in style.css.
    ========================================================= */
 
-/* ---------------------------------------------------------
-   1. Welcome card — gradient banner at the top
-   --------------------------------------------------------- */
-.welcome-card {
-  position: relative;
-  overflow: hidden;
-  background: var(--gradient);
-  color: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 38px 40px;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
+/* Welcome card */
+.welcome-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  background:linear-gradient(135deg,var(--navy),var(--navy-900));
+  color:#fff;
+  border-radius:18px;
+  padding:32px 34px;
+  margin-bottom:26px;
 }
+.welcome-text h2{ font-size:26px; margin-bottom:8px; }
+.welcome-text h2 span{ color:var(--emerald); }
+.welcome-text p{ color:#D1D5DB; font-size:15px; max-width:560px; }
 
-/* Decorative circles in the corner */
-.welcome-card::after {
-  content: '';
-  position: absolute;
-  top: -70px;
-  right: -50px;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .12);
+/* Stats grid */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-bottom:26px;
 }
-
-.welcome-text { position: relative; z-index: 1; max-width: 46ch; }
-.welcome-text h2 { color: var(--white); font-size: 1.75rem; }
-.welcome-text p { opacity: .92; margin-top: 8px; font-size: .96rem; }
-
-.welcome-card .btn {
-  position: relative;
-  z-index: 1;
-  background: var(--white);
-  color: var(--purple-600);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .18);
+.stat-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 5px 15px rgba(0,0,0,.05);
+  transition:.25s;
 }
-.welcome-card .btn:hover { color: var(--blue-700); transform: translateY(-3px); }
-
-/* ---------------------------------------------------------
-   2. Quick statistics cards
-   --------------------------------------------------------- */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 28px;
+.stat-card:hover{ transform:translateY(-4px); }
+.stat-icon{
+  width:56px; height:56px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:#fff;
 }
+.stat-icon.blue{ background:linear-gradient(135deg,#10B981,#059669); }
+.stat-icon.purple{ background:linear-gradient(135deg,#1F2937,#111827); }
+.stat-icon.green{ background:linear-gradient(135deg,#34D399,#10B981); }
+.stat-info h3{ font-size:28px; color:var(--ink); }
+.stat-info p{ font-size:14px; color:var(--muted); }
 
-.stat-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+/* Tips + quick actions */
+.dash-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:22px;
 }
-.stat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--blue-100);
+.tips-list{ display:flex; flex-direction:column; gap:16px; }
+.tip{
+  display:flex;
+  gap:14px;
+  padding:16px;
+  border-radius:12px;
+  background:var(--emerald-50);
+  border-left:4px solid var(--emerald);
 }
+.tip i{ color:var(--emerald); font-size:20px; margin-top:3px; }
+.tip h4{ color:var(--ink); margin-bottom:4px; font-size:15px; }
+.tip p{ color:#555; font-size:13.5px; line-height:1.6; }
 
-/* Square icon tile — colour varies per card */
-.stat-icon {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-sm);
-  font-size: 1.3rem;
-  flex-shrink: 0;
+.action-list{ display:flex; flex-direction:column; gap:10px; }
+.action-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:500;
+  font-size:14.5px;
+  transition:.25s;
 }
-.stat-icon.blue   { background: var(--blue-50);   color: var(--blue-600); }
-.stat-icon.purple { background: var(--purple-50); color: var(--purple-600); }
-.stat-icon.green  { background: #ecfdf5;          color: var(--green); }
+.action-item i:first-child{ color:var(--emerald); }
+.action-item .chev{ margin-left:auto; color:var(--muted); font-size:12px; }
+.action-item:hover{ background:var(--emerald-50); border-color:var(--emerald); transform:translateX(4px); }
 
-.stat-info h3 { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
-.stat-info p  { font-size: .88rem; color: var(--ink-500); }
-
-/* ---------------------------------------------------------
-   3. Lower grid: AI tips + quick actions
-   --------------------------------------------------------- */
-.dash-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 22px;
-  margin-top: 28px;
-  align-items: start;
-}
-
-.panel {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 26px;
-}
-
-/* --- AI Tips list --- */
-.tips-list { display: grid; gap: 14px; }
-
-.tip {
-  display: flex;
-  gap: 14px;
-  padding: 16px;
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  transition: background var(--ease), transform var(--ease), border-color var(--ease);
-}
-.tip:hover { background: var(--blue-50); border-color: var(--blue-100); transform: translateX(5px); }
-
-.tip i {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--gradient);
-  color: var(--white);
-  font-size: .85rem;
-  flex-shrink: 0;
-}
-.tip h4 { font-size: .95rem; }
-.tip p  { font-size: .86rem; color: var(--ink-500); margin-top: 3px; }
-
-/* --- Quick action buttons --- */
-.action-list { display: grid; gap: 12px; }
-
-.action-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 15px 16px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--line);
-  color: var(--ink-700);
-  font-weight: 500;
-  font-size: .93rem;
-  transition: background var(--ease), color var(--ease), transform var(--ease), border-color var(--ease);
-}
-.action-item i:first-child {
-  width: 38px; height: 38px;
-  display: grid; place-items: center;
-  border-radius: var(--radius-sm);
-  background: var(--purple-50);
-  color: var(--purple-600);
-  flex-shrink: 0;
-  transition: background var(--ease), color var(--ease);
-}
-.action-item .chev { margin-left: auto; color: var(--ink-300); font-size: .8rem; }
-
-.action-item:hover {
-  background: var(--blue-50);
-  border-color: var(--blue-100);
-  color: var(--blue-700);
-  transform: translateX(5px);
-}
-.action-item:hover i:first-child { background: var(--gradient); color: var(--white); }
-
-/* ---------------------------------------------------------
-   4. Responsive
-   --------------------------------------------------------- */
-@media (max-width: 992px) {
-  .dash-grid  { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .stat-card  { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 700px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .stat-card  { flex-direction: row; align-items: center; }
-  .welcome-card { padding: 28px 24px; }
-  .welcome-text h2 { font-size: 1.4rem; }
-  .welcome-card .btn { width: 100%; }
+@media(max-width:900px){
+  .stats-grid{ grid-template-columns:1fr; }
+  .dash-grid{ grid-template-columns:1fr; }
 }

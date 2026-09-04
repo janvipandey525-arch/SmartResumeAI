@@ -1,36 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Creative template preview">
   <defs>
     <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#3b6ef5"/>
+      <stop offset="0" stop-color="#059669"/><stop offset="1" stop-color="#34D399"/>
     </linearGradient>
   </defs>
   <rect width="300" height="380" fill="#ffffff"/>
   <!-- angled accent shapes -->
   <path d="M0 0 H300 V54 L0 96 Z" fill="url(#c1)"/>
-  <circle cx="264" cy="330" r="54" fill="#f4f0ff"/>
+  <circle cx="264" cy="330" r="54" fill="#ECFDF5"/>
 
-  <circle cx="52" cy="112" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
-  <circle cx="52" cy="112" r="20" fill="#e9e2ff"/>
+  <circle cx="52" cy="112" r="28" fill="#ffffff" stroke="#059669" stroke-width="3"/>
+  <circle cx="52" cy="112" r="20" fill="#D1FAE5"/>
 
   <rect x="96" y="100" width="120" height="12" rx="6" fill="#131a2b"/>
-  <rect x="96" y="122" width="82" height="7" rx="3.5" fill="#8b5cf6"/>
+  <rect x="96" y="122" width="82" height="7" rx="3.5" fill="#34D399"/>
 
   <!-- timeline column -->
-  <line x1="34" y1="168" x2="34" y2="330" stroke="#e9e2ff" stroke-width="3"/>
-  <circle cx="34" cy="176" r="7" fill="#7c3aed"/>
-  <circle cx="34" cy="238" r="7" fill="#3b6ef5"/>
-  <circle cx="34" cy="300" r="7" fill="#8b5cf6"/>
+  <line x1="34" y1="168" x2="34" y2="330" stroke="#D1FAE5" stroke-width="3"/>
+  <circle cx="34" cy="176" r="7" fill="#059669"/>
+  <circle cx="34" cy="238" r="7" fill="#34D399"/>
+  <circle cx="34" cy="300" r="7" fill="#34D399"/>
 
-  <rect x="56" y="168" width="76" height="8" rx="4" fill="#7c3aed"/>
+  <rect x="56" y="168" width="76" height="8" rx="4" fill="#059669"/>
   <rect x="56" y="186" width="196" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="56" y="200" width="168" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="56" y="230" width="66" height="8" rx="4" fill="#3b6ef5"/>
+  <rect x="56" y="230" width="66" height="8" rx="4" fill="#34D399"/>
   <rect x="56" y="248" width="188" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="56" y="262" width="160" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="56" y="292" width="58" height="8" rx="4" fill="#8b5cf6"/>
-  <rect x="56" y="310" width="54" height="16" rx="8" fill="#e9e2ff"/>
-  <rect x="118" y="310" width="66" height="16" rx="8" fill="#dbe7ff"/>
-  <rect x="192" y="310" width="46" height="16" rx="8" fill="#e9e2ff"/>
+  <rect x="56" y="292" width="58" height="8" rx="4" fill="#34D399"/>
+  <rect x="56" y="310" width="54" height="16" rx="8" fill="#D1FAE5"/>
+  <rect x="118" y="310" width="66" height="16" rx="8" fill="#D1FAE5"/>
+  <rect x="192" y="310" width="46" height="16" rx="8" fill="#D1FAE5"/>
 </svg>

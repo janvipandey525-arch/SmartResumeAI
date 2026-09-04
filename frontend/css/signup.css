@@ -1,65 +1,10 @@
 /* =========================================================
-   ResumeAI — signup.css
-   Styles for signup.html.
-   The base auth layout comes from login.css (loaded first);
-   this file only adds what the signup page needs extra.
+   SmartResumeAI — signup.css
+   Loaded AFTER login.css; only the signup-specific tweaks
+   live here (the shared glass-card layout is in login.css).
    ========================================================= */
 
-/* The signup form has 5 fields, so the card is a little wider */
-.auth-card.signup-card { max-width: 500px; }
+.signup-card .auth-head{ margin-bottom:22px; }
 
-/* Full Name + Email sit side by side on wider screens */
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-/* Tighter spacing so the taller form still fits on one screen */
-.signup-card .form-group { margin-bottom: 16px; }
-.signup-card .auth-head { margin-bottom: 26px; }
-
-/* Password strength / rule hint under the password field */
-.field-hint {
-  display: block;
-  font-size: .78rem;
-  color: var(--ink-500);
-  margin-top: 7px;
-}
-
-/* Terms & conditions checkbox row */
-.terms-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: .85rem;
-  color: var(--ink-500);
-  margin: 18px 0 24px;
-}
-.terms-row input[type="checkbox"] {
-  accent-color: var(--purple-600);
-  width: 15px;
-  height: 15px;
-  margin-top: 4px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.terms-row a { font-weight: 500; }
-
-/* Inline validation message shown by js/script.js */
-.form-message {
-  display: none;                 /* revealed when a message is set */
-  font-size: .85rem;
-  font-weight: 500;
-  padding: 11px 14px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 18px;
-}
-.form-message.show  { display: block; }
-.form-message.error { background: #fef2f2; color: var(--red);   border: 1px solid #fecaca; }
-.form-message.ok    { background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
-
-/* ---------- Responsive ---------- */
-@media (max-width: 560px) {
-  .form-row { grid-template-columns: 1fr; gap: 0; }
-}
+/* Slightly tighter spacing so the taller signup form fits nicely */
+.signup-card .form-group{ margin-bottom:14px; }

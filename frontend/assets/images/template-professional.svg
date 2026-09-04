@@ -3,24 +3,24 @@
   <!-- centered classic header -->
   <rect x="90" y="26" width="120" height="13" rx="6" fill="#131a2b"/>
   <rect x="112" y="48" width="76" height="7" rx="3.5" fill="#6b7590"/>
-  <line x1="34" y1="72" x2="266" y2="72" stroke="#2563eb" stroke-width="2"/>
+  <line x1="34" y1="72" x2="266" y2="72" stroke="#10B981" stroke-width="2"/>
   <!-- single column body -->
-  <rect x="34" y="90" width="70" height="8" rx="4" fill="#2563eb"/>
+  <rect x="34" y="90" width="70" height="8" rx="4" fill="#10B981"/>
   <rect x="34" y="108" width="232" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="34" y="122" width="210" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="34" y="136" width="224" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="34" y="166" width="58" height="8" rx="4" fill="#2563eb"/>
+  <rect x="34" y="166" width="58" height="8" rx="4" fill="#10B981"/>
   <rect x="34" y="184" width="200" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="34" y="198" width="232" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="34" y="212" width="176" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="34" y="242" width="46" height="8" rx="4" fill="#2563eb"/>
+  <rect x="34" y="242" width="46" height="8" rx="4" fill="#10B981"/>
   <rect x="34" y="260" width="218" height="6" rx="3" fill="#e4e9f5"/>
   <rect x="34" y="274" width="190" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="34" y="304" width="64" height="8" rx="4" fill="#2563eb"/>
-  <rect x="34" y="322" width="52" height="16" rx="8" fill="#dbe7ff"/>
-  <rect x="94" y="322" width="66" height="16" rx="8" fill="#dbe7ff"/>
-  <rect x="168" y="322" width="44" height="16" rx="8" fill="#dbe7ff"/>
+  <rect x="34" y="304" width="64" height="8" rx="4" fill="#10B981"/>
+  <rect x="34" y="322" width="52" height="16" rx="8" fill="#D1FAE5"/>
+  <rect x="94" y="322" width="66" height="16" rx="8" fill="#D1FAE5"/>
+  <rect x="168" y="322" width="44" height="16" rx="8" fill="#D1FAE5"/>
 </svg>
