@@ -52,7 +52,7 @@
   font-size:11.5px;
   padding:4px 10px;
   border-radius:99px;
-  background:var(--bg);
+  background:var(--inkwell);
   color:var(--muted);
 }
 
