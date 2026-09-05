@@ -13,6 +13,17 @@
    Two-column skins lay them out as real columns.
    ========================================================= */
 
+/* The app chrome is themed "Lazy" (dark/achromatic) via style.css, which
+   remaps the global emerald/navy tokens. The rendered resume is a print
+   artifact and MUST keep its own palette + white ground — restore the
+   original token values, scoped to the paper only. */
+.resume-paper{
+  --emerald:#10B981; --emerald-600:#059669; --emerald-700:#047857;
+  --emerald-50:#ECFDF5; --emerald-100:#D1FAE5;
+  --navy:#111827; --navy-800:#1F2937; --navy-900:#0F172A;
+  --line:#E5E7EB;
+}
+
 .preview-bar{
   display:flex; gap:10px; flex-wrap:wrap;
   margin-bottom:20px;

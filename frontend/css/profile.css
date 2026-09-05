@@ -7,7 +7,7 @@
 
 /* Header card */
 .profile-card{
-  background:#fff;
+  background:var(--graphite);
   border:1px solid var(--line);
   border-radius:16px;
   overflow:hidden;
@@ -34,8 +34,8 @@
   top:-38px;
   border-radius:50%;
   overflow:hidden;
-  border:4px solid #fff;
-  background:#fff;
+  border:3px solid var(--pewter);
+  background:var(--graphite);
 }
 .profile-avatar img{ width:100%; height:100%; object-fit:cover; }
 .profile-identity{ flex:1; padding-bottom:4px; }
@@ -55,7 +55,7 @@
 
 /* Detail panels */
 .detail-panel{
-  background:#fff;
+  background:var(--graphite);
   border:1px solid var(--line);
   border-radius:16px;
   padding:26px;
@@ -118,7 +118,7 @@
   border-radius:10px;
   font-size:14.5px;
   outline:none;
-  background:#F9FAFB;
+  background:var(--inkwell);
   transition:.25s;
 }
 .edit-field input:focus{ border-color:var(--emerald); background:var(--emerald-50); }

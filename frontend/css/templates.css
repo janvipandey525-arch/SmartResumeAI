@@ -14,7 +14,7 @@
   margin-bottom:30px;
 }
 .template-card{
-  background:#fff;
+  background:var(--graphite);
   border:1px solid var(--line);
   border-radius:16px;
   overflow:hidden;
@@ -37,8 +37,8 @@
 .template-badge{
   position:absolute;
   top:12px; left:12px;
-  background:var(--emerald);
-  color:#fff;
+  background:var(--paper);
+  color:var(--carbon);
   font-size:11px;
   font-weight:600;
   padding:4px 12px;
@@ -46,7 +46,7 @@
 }
 .template-body{ padding:20px; display:flex; flex-direction:column; flex:1; }
 .template-body h3{ color:var(--ink); font-size:18px; margin-bottom:8px; }
-.template-body p{ color:#555; font-size:13.5px; line-height:1.6; margin-bottom:14px; flex:1; }
+.template-body p{ color:var(--pewter); font-size:13.5px; line-height:1.6; margin-bottom:14px; flex:1; }
 .template-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 .template-tags span{
   font-size:11.5px;
@@ -67,4 +67,4 @@
 }
 .template-note i{ color:var(--emerald); font-size:22px; margin-top:2px; }
 .template-note h4{ color:var(--ink); margin-bottom:4px; font-size:15px; }
-.template-note p{ color:#555; font-size:13.5px; line-height:1.6; }
+.template-note p{ color:var(--pewter); font-size:13.5px; line-height:1.6; }

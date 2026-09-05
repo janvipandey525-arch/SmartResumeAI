@@ -9,7 +9,7 @@ body.auth-page{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#111827,#1F2937,#0F172A);
+  background:var(--carbon);
   overflow-x:hidden;
   position:relative;
   padding:40px 16px;
@@ -26,15 +26,15 @@ body.auth-page::after{
 }
 body.auth-page::before{
   width:320px; height:320px;
-  background:#10B981;
+  background:#ffffff;
   top:-100px; left:-100px;
-  opacity:.35;
+  opacity:.04;
 }
 body.auth-page::after{
   width:300px; height:300px;
-  background:#34D399;
+  background:#ffffff;
   bottom:-100px; right:-100px;
-  opacity:.25;
+  opacity:.03;
 }
 
 body.auth-page main{
@@ -51,11 +51,10 @@ body.auth-page main{
 .auth-card{
   width:100%;
   padding:40px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 15px 35px rgba(0,0,0,0.35);
+  border-radius:12px;
+  background:var(--graphite);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-float);
 }
 .signup-card{ max-width:460px; }
 
@@ -67,13 +66,16 @@ body.auth-page main{
   font-size:28px;
 }
 .auth-head .logo-mark i,
-.auth-head .logo i{ color:#10B981; font-size:34px; }
+.auth-head .logo i{ color:var(--paper); font-size:34px; }
 .auth-head h1{
-  color:#fff;
+  font-family:var(--font-serif);
+  color:var(--paper);
   font-size:28px;
+  font-weight:500;
+  letter-spacing:.01em;
   margin-bottom:8px;
 }
-.auth-head p{ color:#D1D5DB; font-size:15px; }
+.auth-head p{ color:var(--pewter); font-size:15px; }
 
 /* Validation message (js/script.js fills #signupMessage) */
 .form-message{
@@ -84,7 +86,7 @@ body.auth-page main{
   margin-bottom:16px;
   padding:10px 14px;
   border-radius:10px;
-  background:rgba(255,255,255,.06);
+  background:var(--inkwell);
 }
 
 /* Fields */
@@ -92,7 +94,7 @@ body.auth-page main{
 .form-group{ margin-bottom:16px; }
 .form-group label{
   display:block;
-  color:#E5E7EB;
+  color:var(--pewter);
   font-size:13.5px;
   font-weight:500;
   margin-bottom:7px;
@@ -101,27 +103,27 @@ body.auth-page main{
   display:flex;
   align-items:center;
   gap:10px;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.10);
+  background:var(--inkwell);
+  border:1px solid var(--line);
   border-radius:10px;
   padding:12px 14px;
   transition:.25s;
 }
 .input-wrap:focus-within{
-  border-color:#10B981;
-  background:rgba(16,185,129,.10);
+  border-color:var(--pewter);
+  background:var(--inkwell);
 }
-.input-wrap i{ color:#10B981; font-size:16px; }
+.input-wrap i{ color:var(--pewter); font-size:16px; }
 .input-wrap input{
   width:100%;
   border:none;
   outline:none;
   background:transparent;
-  color:#fff;
+  color:var(--paper);
   font-size:15px;
 }
-.input-wrap input::placeholder{ color:#9CA3AF; }
-.field-hint{ display:block; color:#9CA3AF; font-size:12.5px; margin-top:6px; }
+.input-wrap input::placeholder{ color:var(--slate); }
+.field-hint{ display:block; color:var(--slate); font-size:12.5px; margin-top:6px; }
 
 /* Options row (remember / forgot) */
 .auth-options{
@@ -129,11 +131,11 @@ body.auth-page main{
   justify-content:space-between;
   align-items:center;
   font-size:14px;
-  color:#D1D5DB;
+  color:var(--pewter);
   margin-bottom:22px;
 }
 .auth-options label{ display:flex; align-items:center; gap:7px; }
-.auth-options a{ color:#10B981; text-decoration:none; }
+.auth-options a{ color:var(--paper); text-decoration:none; }
 .auth-options a:hover{ text-decoration:underline; }
 
 /* Terms row (signup) */
@@ -141,13 +143,13 @@ body.auth-page main{
   display:flex;
   align-items:flex-start;
   gap:10px;
-  color:#D1D5DB;
+  color:var(--pewter);
   font-size:13.5px;
   line-height:1.5;
   margin:6px 0 22px;
 }
-.terms-row input{ margin-top:3px; accent-color:#10B981; }
-.terms-row a{ color:#10B981; text-decoration:none; }
+.terms-row input{ margin-top:3px; accent-color:var(--pewter); }
+.terms-row a{ color:var(--paper); text-decoration:none; }
 .terms-row a:hover{ text-decoration:underline; }
 
 /* Submit already styled by .btn .btn-primary (emerald) */
@@ -158,7 +160,7 @@ body.auth-page main{
   display:flex;
   align-items:center;
   text-align:center;
-  color:#9CA3AF;
+  color:var(--slate);
   font-size:13px;
   margin:22px 0;
 }
@@ -167,22 +169,22 @@ body.auth-page main{
   content:"";
   flex:1;
   height:1px;
-  background:rgba(255,255,255,.15);
+  background:var(--line);
 }
 .auth-divider::before{ margin-right:14px; }
 .auth-divider::after{ margin-left:14px; }
 
 .auth-footer{
   text-align:center;
-  color:#D1D5DB;
+  color:var(--pewter);
   font-size:15px;
 }
-.auth-footer a{ color:#10B981; text-decoration:none; font-weight:600; }
+.auth-footer a{ color:var(--paper); text-decoration:none; font-weight:600; }
 .auth-footer a:hover{ text-decoration:underline; }
 
 .auth-back{
   margin-top:22px;
-  color:#9CA3AF;
+  color:var(--slate);
   font-size:14px;
   text-decoration:none;
   display:inline-flex;
@@ -190,7 +192,7 @@ body.auth-page main{
   gap:8px;
   transition:.25s;
 }
-.auth-back:hover{ color:#10B981; }
+.auth-back:hover{ color:var(--paper); }
 
 /* Responsive */
 @media(max-width:480px){

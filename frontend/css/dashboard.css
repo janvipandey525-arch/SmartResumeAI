@@ -11,14 +11,14 @@
   gap:20px;
   flex-wrap:wrap;
   background:linear-gradient(135deg,var(--navy),var(--navy-900));
-  color:#fff;
+  color:var(--paper);
   border-radius:18px;
   padding:32px 34px;
   margin-bottom:26px;
 }
 .welcome-text h2{ font-size:26px; margin-bottom:8px; }
 .welcome-text h2 span{ color:var(--emerald); }
-.welcome-text p{ color:#D1D5DB; font-size:15px; max-width:560px; }
+.welcome-text p{ color:var(--pewter); font-size:15px; max-width:560px; }
 
 /* Stats grid */
 .stats-grid{
@@ -31,7 +31,7 @@
   display:flex;
   align-items:center;
   gap:18px;
-  background:#fff;
+  background:var(--graphite);
   border:1px solid var(--line);
   border-radius:16px;
   padding:24px;
@@ -46,11 +46,11 @@
   align-items:center;
   justify-content:center;
   font-size:24px;
-  color:#fff;
+  color:var(--paper);
 }
-.stat-icon.blue{ background:linear-gradient(135deg,#10B981,#059669); }
-.stat-icon.purple{ background:linear-gradient(135deg,#1F2937,#111827); }
-.stat-icon.green{ background:linear-gradient(135deg,#34D399,#10B981); }
+.stat-icon.blue{ background:var(--inkwell); border:1px solid var(--line); }
+.stat-icon.purple{ background:var(--inkwell); border:1px solid var(--line); }
+.stat-icon.green{ background:var(--inkwell); border:1px solid var(--line); }
 .stat-info h3{ font-size:28px; color:var(--ink); }
 .stat-info p{ font-size:14px; color:var(--muted); }
 
@@ -71,7 +71,7 @@
 }
 .tip i{ color:var(--emerald); font-size:20px; margin-top:3px; }
 .tip h4{ color:var(--ink); margin-bottom:4px; font-size:15px; }
-.tip p{ color:#555; font-size:13.5px; line-height:1.6; }
+.tip p{ color:var(--pewter); font-size:13.5px; line-height:1.6; }
 
 .action-list{ display:flex; flex-direction:column; gap:10px; }
 .action-item{

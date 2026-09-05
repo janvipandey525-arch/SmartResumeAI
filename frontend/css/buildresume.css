@@ -17,10 +17,10 @@
 }
 .builder-intro i{ color:var(--emerald); font-size:22px; }
 .builder-intro h2{ font-size:17px; color:var(--ink); margin-bottom:3px; }
-.builder-intro p{ font-size:13.5px; color:#555; }
+.builder-intro p{ font-size:13.5px; color:var(--pewter); }
 
 .form-section{
-  background:#fff;
+  background:var(--graphite);
   border:1px solid var(--line);
   border-radius:16px;
   padding:26px;
@@ -36,8 +36,8 @@
 .section-title .num{
   width:44px; height:44px;
   border-radius:12px;
-  background:var(--emerald);
-  color:#fff;
+  background:var(--paper);
+  color:var(--carbon);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -66,7 +66,7 @@
   border-radius:10px;
   font-size:14.5px;
   outline:none;
-  background:#F9FAFB;
+  background:var(--inkwell);
   transition:.25s;
 }
 .field input:focus,
