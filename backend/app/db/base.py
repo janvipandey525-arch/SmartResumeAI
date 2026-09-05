@@ -1,30 +1,42 @@
 """
-Database engine + session setup (SQLAlchemy 2.0).
+Database engine + session setup (SQLAlchemy 2.0) for Supabase Postgres.
 
-- Local dev: SQLite file (zero setup).
-- Production: PostgreSQL via DATABASE_URL (Coolify Postgres resource).
+Connection notes (production):
+  * We connect over Supabase's *transaction pooler* (pgbouncer, port 6543).
+    In transaction pooling mode server-side prepared statements are not safe,
+    so we disable them on psycopg (`prepare_threshold=None`).
+  * TLS is required by Supabase; psycopg negotiates it automatically, and the
+    pooler host presents a valid cert (`sslmode=require` via the URL is fine too).
+  * `pool_pre_ping` drops dead connections instead of erroring — important
+    behind a pooler that may recycle server links.
 
-`Base` is the declarative base every model inherits from. `get_db` is the
-FastAPI dependency that hands a request a session and always closes it.
+The schema itself (tables, RLS, the auto-profile trigger) is owned by
+`supabase/schema.sql`, applied once in the Supabase SQL Editor. The app does NOT
+mutate schema at runtime — `init_db()` only verifies connectivity.
 """
 from collections.abc import Generator
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from app.core.config import settings
 
-# SQLite needs a special flag for use across FastAPI's threadpool; Postgres does not.
-_connect_args = (
-    {"check_same_thread": False}
-    if settings.DATABASE_URL.startswith("sqlite")
-    else {}
-)
+_is_sqlite = settings.DATABASE_URL.startswith("sqlite")
+
+if _is_sqlite:
+    # Retained only for offline unit tests; production is always Postgres.
+    _connect_args = {"check_same_thread": False}
+else:
+    # psycopg3 in a pgbouncer *transaction* pool: no prepared statements.
+    _connect_args = {"prepare_threshold": None}
 
 engine = create_engine(
     settings.DATABASE_URL,
     connect_args=_connect_args,
-    pool_pre_ping=True,  # drops dead connections instead of erroring (matters on Coolify)
+    pool_pre_ping=True,
+    pool_size=5,
+    max_overflow=5,
+    pool_recycle=1800,  # recycle links every 30 min to stay ahead of pooler timeouts
 )
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
@@ -45,15 +57,25 @@ def get_db() -> Generator[Session, None, None]:
 
 def init_db() -> None:
     """
-    Create tables that don't exist yet.
+    Verify the database is reachable at startup.
 
-    For a student project this is simpler and more reliable than Alembic on a
-    fresh deploy. Models are imported here so their tables register on Base
-    before create_all() runs. (Swap to Alembic migrations later if schema
-    versioning is needed for the viva.)
+    Schema management lives in supabase/schema.sql (run once via the Supabase SQL
+    Editor or the Management API). For local SQLite test runs we still create the
+    app-owned tables so tests need zero setup.
     """
-    # Models are imported for their side effect of registering on Base.metadata.
-    # (Populated from Milestone 1 onward — safe no-op while empty.)
-    from app.db import models  # noqa: F401
+    if _is_sqlite:
+        # A production deploy on SQLite is almost always a misconfiguration —
+        # refuse to start rather than silently persist to an ephemeral file.
+        if settings.is_production:
+            raise RuntimeError(
+                "DATABASE_URL points at SQLite but ENV=production. Set it to the "
+                "Supabase Postgres (transaction pooler) connection string."
+            )
+        from app.db import models  # noqa: F401  (register tables on Base.metadata)
+        Base.metadata.create_all(bind=engine)
+        return
 
-    Base.metadata.create_all(bind=engine)
+    # Production: just prove we can talk to Supabase. Never swallow the error —
+    # a container that can't reach its DB should fail its healthcheck loudly.
+    with engine.connect() as conn:
+        conn.execute(text("SELECT 1"))

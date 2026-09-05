@@ -1,4 +1,5 @@
 """Pydantic schemas for the ATS analyze + AI endpoints."""
+import uuid
 from datetime import datetime
 from typing import List, Optional
 
@@ -32,7 +33,7 @@ class AtsReportOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
-    user_id: int
+    user_id: uuid.UUID
     resume_id: Optional[int]
     job_description: Optional[str]
     score: int
@@ -40,5 +41,6 @@ class AtsReportOut(BaseModel):
     breakdown: dict
     matched_keywords: List[str]
     missing_keywords: List[str]
+    storage_path: Optional[str] = None
     ai_feedback: Optional[str]
     created_at: datetime

@@ -7,15 +7,17 @@ Every analyze call:
   3. optionally layers Gemini feedback (if use_ai and a key is configured),
   4. persists an AtsReport tied to the user, and returns it.
 """
+import uuid
 from typing import List, Optional, Tuple
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile, status
 from sqlalchemy import desc, select
 from sqlalchemy.orm import Session
 
+from app.core import storage
 from app.core.ratelimit import limiter
 from app.db.base import get_db
-from app.db.models import AtsReport, Resume, User
+from app.db.models import AtsReport, Profile, Resume
 from app.deps import get_current_user
 from app.schemas.ats import AiResult, AnalyzeRequest, AtsReportOut, BulletRewriteRequest
 from app.services import ai_service, ats_engine
@@ -24,7 +26,7 @@ from app.services.file_parse import extract_text
 router = APIRouter(tags=["ats"])
 
 
-def _resolve_resume_text(db: Session, user: User, resume_id, resume_text) -> Tuple[str, Optional[int]]:
+def _resolve_resume_text(db: Session, user: Profile, resume_id, resume_text) -> Tuple[str, Optional[int]]:
     """Return (text, resume_id) from either a saved resume or provided raw text."""
     if resume_id:
         resume = db.get(Resume, resume_id)
@@ -36,11 +38,12 @@ def _resolve_resume_text(db: Session, user: User, resume_id, resume_text) -> Tup
 
 def _run_and_store(
     db: Session,
-    user: User,
+    user: Profile,
     text: str,
     job_description,
     resume_id,
     use_ai: bool,
+    storage_path: Optional[str] = None,
 ) -> AtsReport:
     result = ats_engine.analyze(text, job_description)
 
@@ -62,6 +65,7 @@ def _run_and_store(
         breakdown=result["breakdown"],
         matched_keywords=result["matched_keywords"],
         missing_keywords=result["missing_keywords"],
+        storage_path=storage_path,
         ai_feedback=ai_feedback,
     )
     db.add(report)
@@ -76,7 +80,7 @@ def analyze(
     request: Request,
     payload: AnalyzeRequest,
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> AtsReport:
     text, resume_id = _resolve_resume_text(db, user, payload.resume_id, payload.resume_text)
     return _run_and_store(
@@ -92,7 +96,7 @@ def analyze_file(
     job_description: str = Form(default=""),
     use_ai: bool = Form(default=True),
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> AtsReport:
     raw = file.file.read()
     try:
@@ -101,7 +105,17 @@ def analyze_file(
         raise HTTPException(status_code=400, detail=str(e))
     if not text.strip():
         raise HTTPException(status_code=400, detail="No readable text found in the file.")
-    return _run_and_store(db, user, text, job_description, None, use_ai)
+
+    # Persist the original upload to Supabase Storage (best-effort; no-op if
+    # Storage isn't configured). Path is namespaced per user so RLS/policies and
+    # cleanup stay simple: <user_id>/<uuid>_<filename>.
+    safe_name = (file.filename or "resume").replace("/", "_").replace("\\", "_")[:120]
+    object_path = f"{user.id}/{uuid.uuid4().hex}_{safe_name}"
+    stored = storage.upload(
+        object_path, raw, content_type=file.content_type or "application/octet-stream"
+    )
+
+    return _run_and_store(db, user, text, job_description, None, use_ai, storage_path=stored)
 
 
 @router.post("/rewrite-bullet", response_model=AiResult)
@@ -109,14 +123,14 @@ def analyze_file(
 def rewrite_bullet(
     request: Request,
     payload: BulletRewriteRequest,
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> AiResult:
     return AiResult(**ai_service.rewrite_bullet(payload.bullet))
 
 
 @router.get("/reports", response_model=list[AtsReportOut])
 def list_reports(
-    db: Session = Depends(get_db), user: User = Depends(get_current_user)
+    db: Session = Depends(get_db), user: Profile = Depends(get_current_user)
 ) -> List[AtsReport]:
     return list(
         db.scalars(

@@ -1,13 +1,16 @@
 """
-Phase 2 verification: the ORM models create, relate, persist JSON, and cascade.
+ORM model tests: create, relate, persist JSON, cascade, unique constraints.
 
-Uses an isolated in-memory SQLite DB so it never touches the dev database.
+Identity is a UUID (mirrors auth.users.id) — set explicitly, not generated here.
+Uses an isolated in-memory SQLite DB so it never touches a real database.
 """
+import uuid
+
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
 from app.db.base import Base
-from app.db.models import AtsReport, Resume, User
+from app.db.models import AtsReport, Profile, Resume
 
 
 def _session():
@@ -16,17 +19,16 @@ def _session():
     return sessionmaker(bind=engine)()
 
 
+def _profile(username="aditya", email="aditya@example.com", full_name="Aditya Ajay Singh"):
+    return Profile(id=uuid.uuid4(), email=email, full_name=full_name, username=username)
+
+
 def test_tables_created_and_relationships():
     db = _session()
 
-    user = User(
-        full_name="Aditya Ajay Singh",
-        email="aditya@example.com",
-        username="aditya",
-        password_hash="not-a-real-hash",
-    )
+    user = _profile()
     db.add(user)
-    db.flush()  # assigns user.id
+    db.flush()
 
     resume = Resume(
         user_id=user.id,
@@ -54,12 +56,10 @@ def test_tables_created_and_relationships():
     db.add(report)
     db.commit()
 
-    # JSON columns round-trip as native Python types.
     got = db.scalar(select(Resume).where(Resume.id == resume.id))
     assert got.skills == ["python", "fastapi", "sql"]
     assert got.personal_info["name"] == "Aditya"
 
-    # Relationships navigate both directions.
     assert user.resumes[0].title == "SDE Resume"
     assert report.user.username == "aditya"
     assert report.resume.id == resume.id
@@ -68,30 +68,30 @@ def test_tables_created_and_relationships():
 
 def test_cascade_delete_cleans_children():
     db = _session()
-    user = User(full_name="X", email="x@x.com", username="x", password_hash="h")
+    user = _profile(username="x", email="x@x.com", full_name="X")
     db.add(user)
     db.flush()
     db.add(Resume(user_id=user.id, title="r"))
     db.add(AtsReport(user_id=user.id, score=50, grade="C"))
     db.commit()
 
-    db.delete(user)  # ORM cascade removes owned resumes + reports
+    db.delete(user)
     db.commit()
 
     assert db.scalar(select(Resume)) is None
     assert db.scalar(select(AtsReport)) is None
-    assert db.scalar(select(User)) is None
+    assert db.scalar(select(Profile)) is None
 
 
-def test_unique_constraints():
+def test_unique_username_constraint():
     from sqlalchemy.exc import IntegrityError
 
     db = _session()
-    db.add(User(full_name="A", email="dup@x.com", username="a", password_hash="h"))
+    db.add(_profile(username="dup", email="a@x.com"))
     db.commit()
-    db.add(User(full_name="B", email="dup@x.com", username="b", password_hash="h"))
+    db.add(_profile(username="dup", email="b@x.com"))
     try:
         db.commit()
-        assert False, "expected unique-email violation"
+        assert False, "expected unique-username violation"
     except IntegrityError:
         db.rollback()

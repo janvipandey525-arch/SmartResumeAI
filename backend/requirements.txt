@@ -12,9 +12,11 @@ pydantic-settings==2.7.0
 python-dotenv==1.0.1
 email-validator==2.2.0
 
-# === Auth (JWT + bcrypt directly; passlib dropped — unmaintained) ===
+# === Auth ===
+# Supabase (GoTrue) issues + owns passwords; the backend only *verifies* the
+# access token it receives. python-jose[cryptography] handles both the legacy
+# HS256 shared secret and the newer asymmetric (ES256/RS256) JWKS signing keys.
 python-jose[cryptography]==3.3.0
-bcrypt==4.2.1
 
 # === File uploads + parsing (Milestone 4) ===
 python-multipart==0.0.20

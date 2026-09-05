@@ -21,7 +21,7 @@ from slowapi.errors import RateLimitExceeded
 from app.core.config import settings
 from app.core.ratelimit import limiter
 from app.db.base import init_db
-from app.routers import ats, auth, health, resumes
+from app.routers import ats, auth, config, health, resumes
 
 # Resolve the frontend directory: repo_root/frontend by default, overridable in Docker.
 FRONTEND_DIR = Path(
@@ -59,6 +59,7 @@ app.add_middleware(
 
 # --- API routers (everything lives under /api) ---
 app.include_router(health.router, prefix="/api")
+app.include_router(config.router, prefix="/api")
 app.include_router(auth.router, prefix="/api/auth")
 app.include_router(resumes.router, prefix="/api/resumes")
 app.include_router(ats.router, prefix="/api/ats")

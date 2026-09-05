@@ -7,7 +7,7 @@ from sqlalchemy import desc, func, select
 from sqlalchemy.orm import Session
 
 from app.db.base import get_db
-from app.db.models import AtsReport, Resume, User
+from app.db.models import AtsReport, Profile, Resume
 from app.deps import get_current_user
 from app.schemas.resume import (
     DashboardStats,
@@ -19,7 +19,7 @@ from app.schemas.resume import (
 router = APIRouter(tags=["resumes"])
 
 
-def _owned_or_404(db: Session, resume_id: int, user: User) -> Resume:
+def _owned_or_404(db: Session, resume_id: int, user: Profile) -> Resume:
     resume = db.get(Resume, resume_id)
     # Treat "not yours" the same as "not found" — don't reveal other users' ids.
     if resume is None or resume.user_id != user.id:
@@ -29,7 +29,7 @@ def _owned_or_404(db: Session, resume_id: int, user: User) -> Resume:
 
 @router.get("/stats", response_model=DashboardStats)
 def stats(
-    db: Session = Depends(get_db), user: User = Depends(get_current_user)
+    db: Session = Depends(get_db), user: Profile = Depends(get_current_user)
 ) -> DashboardStats:
     resumes_created = db.scalar(
         select(func.count()).select_from(Resume).where(Resume.user_id == user.id)
@@ -53,7 +53,7 @@ def stats(
 
 @router.get("", response_model=list[ResumeOut])
 def list_resumes(
-    db: Session = Depends(get_db), user: User = Depends(get_current_user)
+    db: Session = Depends(get_db), user: Profile = Depends(get_current_user)
 ) -> list[Resume]:
     return list(
         db.scalars(
@@ -68,7 +68,7 @@ def list_resumes(
 def create_resume(
     payload: ResumeCreate,
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> Resume:
     resume = Resume(user_id=user.id, **payload.model_dump())
     db.add(resume)
@@ -81,7 +81,7 @@ def create_resume(
 def get_resume(
     resume_id: int,
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> Resume:
     return _owned_or_404(db, resume_id, user)
 
@@ -91,7 +91,7 @@ def update_resume(
     resume_id: int,
     payload: ResumeUpdate,
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> Resume:
     resume = _owned_or_404(db, resume_id, user)
     # exclude_unset => only overwrite fields the client actually sent.
@@ -106,7 +106,7 @@ def update_resume(
 def delete_resume(
     resume_id: int,
     db: Session = Depends(get_db),
-    user: User = Depends(get_current_user),
+    user: Profile = Depends(get_current_user),
 ) -> None:
     resume = _owned_or_404(db, resume_id, user)
     db.delete(resume)

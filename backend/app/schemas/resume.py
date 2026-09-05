@@ -1,4 +1,5 @@
 """Pydantic schemas for resume CRUD + dashboard stats."""
+import uuid
 from datetime import datetime
 from typing import List, Optional
 
@@ -38,7 +39,7 @@ class ResumeOut(ResumeBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
-    user_id: int
+    user_id: uuid.UUID
     created_at: datetime
     updated_at: datetime
 

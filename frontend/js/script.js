@@ -3,9 +3,9 @@
    The single shared frontend runtime for every page.
 
    Responsibilities:
-     - session (JWT in localStorage) + authenticated fetch wrapper
+     - session via Supabase Auth (window.sb) + authenticated fetch wrapper
      - auth guards + logout
-     - signup / login              -> /api/auth/*
+     - signup / login              -> Supabase GoTrue (client-side)
      - dashboard stats + greeting  -> /api/auth/me, /api/resumes/stats
      - resume builder save         -> POST/PUT /api/resumes
      - template pick + preview/PDF  (renders the saved resume)
@@ -20,20 +20,30 @@
   "use strict";
 
   /* ------------------------------------------------------------------ */
-  /* Storage keys + session helpers                                     */
+  /* Session + local cache helpers                                      */
+  /*                                                                    */
+  /* The auth session (JWT, refresh) is owned entirely by supabase-js   */
+  /* (window.sb). We only cache the user's profile + last resume for a  */
+  /* snappier UI. `__session` is the cached Supabase session, refreshed */
+  /* at boot and via onAuthStateChange so the sync guards can use it.   */
   /* ------------------------------------------------------------------ */
   const K = {
-    token: "sra_token",
     user: "sra_user",
     rid: "sra_last_resume_id",
     cache: "sra_resume_cache",
     tpl: "sra_template",
   };
 
+  let __session = null; // set at boot from sb.auth.getSession()
+
+  async function getToken() {
+    if (!window.sb) return null;
+    const { data } = await window.sb.auth.getSession();
+    return data && data.session ? data.session.access_token : null;
+  }
+
   const store = {
-    token: () => localStorage.getItem(K.token),
-    setSession(tok, user) {
-      if (tok) localStorage.setItem(K.token, tok);
+    setUser(user) {
       if (user) localStorage.setItem(K.user, JSON.stringify(user));
     },
     user() {
@@ -59,6 +69,12 @@
     setTemplate(t) { if (t) localStorage.setItem(K.tpl, t); },
   };
 
+  async function logout() {
+    try { if (window.sb) await window.sb.auth.signOut(); } catch (_) {}
+    store.clear();
+    location.href = "login.html";
+  }
+
   /* ------------------------------------------------------------------ */
   /* Tiny DOM + utility helpers                                         */
   /* ------------------------------------------------------------------ */
@@ -82,7 +98,10 @@
     const { method = "GET", body = null, auth = true, form = false } = opts;
     const headers = {};
     const init = { method, headers };
-    if (auth && store.token()) headers.Authorization = "Bearer " + store.token();
+    if (auth) {
+      const tok = await getToken();
+      if (tok) headers.Authorization = "Bearer " + tok;
+    }
     if (body != null) {
       if (form) {
         init.body = body; // FormData -> browser sets multipart boundary
@@ -108,11 +127,10 @@
     return data;
   }
 
-  // On a 401 the token is stale/invalid -> bounce to login.
+  // On a 401 the token is stale/invalid -> sign out + bounce to login.
   function handleAuthError(err) {
     if (err && err.status === 401) {
-      store.clear();
-      location.href = "login.html";
+      logout();
       return true;
     }
     return false;
@@ -157,12 +175,14 @@
   /* ------------------------------------------------------------------ */
   /* Auth guards                                                        */
   /* ------------------------------------------------------------------ */
+  // Guards read the cached __session set at boot (see the boot block), so they
+  // stay synchronous for the per-page init functions.
   function requireAuth() {
-    if (!store.token()) { location.href = "login.html"; return false; }
+    if (!__session) { location.href = "login.html"; return false; }
     return true;
   }
   function redirectIfAuthed() {
-    if (store.token()) location.href = "dashboard.html";
+    if (__session) location.href = "dashboard.html";
   }
 
   /* ------------------------------------------------------------------ */
@@ -187,13 +207,12 @@
       if (backdrop) backdrop.addEventListener("click", toggle);
     }
 
-    // Logout: any sidebar-foot link that points at login.html clears session.
+    // Logout: any sidebar-foot link that points at login.html clears the session.
     $$(".sidebar-foot a").forEach((a) => {
       if ((a.getAttribute("href") || "").includes("login")) {
         a.addEventListener("click", (e) => {
           e.preventDefault();
-          store.clear();
-          location.href = "login.html";
+          logout();
         });
       }
     });
@@ -231,14 +250,27 @@
       if (password !== confirm) return setMsg("Passwords do not match.", "error");
       if (!terms) return setMsg("Please accept the Terms to continue.", "error");
 
+      if (!window.sb) return setMsg("Service unavailable. Try again shortly.", "error");
+
       const done = btnBusy(form.querySelector("button[type=submit]"), "Creating…");
       try {
-        const data = await api("/api/auth/register", {
-          auth: false, method: "POST",
-          body: { full_name, email, username, password },
+        // full_name + username ride along as user_metadata; the DB trigger turns
+        // them into the profile row on the server side.
+        const { data, error } = await window.sb.auth.signUp({
+          email,
+          password,
+          options: { data: { full_name, username } },
         });
-        store.setSession(data.access_token, data.user);
-        location.href = "dashboard.html";
+        if (error) throw new Error(error.message);
+
+        if (data.session) {
+          // Email confirmation is disabled -> user is logged in immediately.
+          location.href = "dashboard.html";
+        } else {
+          // Confirmation required -> tell them to check their inbox.
+          setMsg("Account created. Check your email to confirm, then log in.", "success");
+          done();
+        }
       } catch (err) {
         setMsg(err.message, "error");
         done();
@@ -256,17 +288,18 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const identifier = val("username"); // field accepts username OR email
+      // Supabase authenticates by email. The field id stays "username" for
+      // markup compatibility, but it holds the email address.
+      const email = val("username");
       const password = ($("#password") || {}).value || "";
-      if (!identifier || !password) return toast("Enter your username and password.", "error");
+      if (!email || !password) return toast("Enter your email and password.", "error");
+      if (!email.includes("@")) return toast("Please log in with your email address.", "error");
+      if (!window.sb) return toast("Service unavailable. Try again shortly.", "error");
 
       const done = btnBusy(form.querySelector("button[type=submit]"), "Logging in…");
       try {
-        const data = await api("/api/auth/login", {
-          auth: false, method: "POST",
-          body: { identifier, password },
-        });
-        store.setSession(data.access_token, data.user);
+        const { error } = await window.sb.auth.signInWithPassword({ email, password });
+        if (error) throw new Error(error.message);
         location.href = "dashboard.html";
       } catch (err) {
         toast(err.message || "Login failed.", "error");
@@ -287,7 +320,7 @@
 
     try {
       const me = await api("/api/auth/me");
-      store.setSession(null, me);
+      store.setUser(me);
       setText("#welcomeName", (me.full_name || "there").split(" ")[0]);
 
       const s = await api("/api/resumes/stats");
@@ -513,7 +546,7 @@
     let resume = null;
     try {
       me = await api("/api/auth/me");
-      store.setSession(null, me);
+      store.setUser(me);
       const list = await api("/api/resumes");
       resume = (list && list[0]) || null;
       if (resume) store.setLastResume(resume);
@@ -744,7 +777,22 @@
   /* ------------------------------------------------------------------ */
   /* Boot                                                               */
   /* ------------------------------------------------------------------ */
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Wait for the Supabase client, then hydrate the cached session so the sync
+    // auth guards work. If Supabase failed to load, only public pages function.
+    await window.SB_READY;
+    if (window.sb) {
+      try {
+        const { data } = await window.sb.auth.getSession();
+        __session = data ? data.session : null;
+      } catch (_) { __session = null; }
+
+      // Keep the cached session current (token refresh, logout in another tab).
+      window.sb.auth.onAuthStateChange((_event, session) => {
+        __session = session;
+      });
+    }
+
     wireChrome();
     // Each init is a no-op unless its page markers are present.
     initSignup();

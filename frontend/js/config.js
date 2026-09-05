@@ -1,24 +1,75 @@
 /*
- * SmartResumeAI — frontend runtime config.
+ * SmartResumeAI — frontend runtime config + Supabase client bootstrap.
  *
- * API_BASE is where the frontend sends requests.
- *  - In production the FastAPI app serves this page itself (same origin), so the
- *    base is just "" and requests go to /api/... on the same domain.
- *  - In local dev you often serve the frontend on :5500 (Live Server) while the
- *    API runs on :8000 — in that case point API_BASE at the dev API URL.
+ * Responsibilities:
+ *   1. Decide API_BASE (same-origin in prod, :8000 in split local dev).
+ *   2. Fetch public config from /api/config (Supabase URL + anon key — NOT secret).
+ *   3. Load the supabase-js SDK and create window.sb (the GoTrue/session client).
  *
- * No secrets ever live here. The Gemini key stays on the server.
+ * Pages must `await window.SB_READY` before using window.sb. No secrets live here;
+ * the anon key is public by design and gated by Row Level Security. The service
+ * role key and Gemini key never leave the server.
  */
 (function () {
-  const isLocalDevSplit =
-    ["5500", "5501"].includes(location.port); // Live Server ports
+  const isLocalDevSplit = ["5500", "5501"].includes(location.port); // Live Server
 
   window.APP_CONFIG = {
-    // Same-origin in prod => "". Split local dev => talk to the API on :8000.
     API_BASE: isLocalDevSplit ? "http://localhost:8000" : "",
   };
 
-  // Convenience helper used across pages (Milestone 5 fills in the callers).
   window.apiUrl = (path) =>
     window.APP_CONFIG.API_BASE + (path.startsWith("/") ? path : "/" + path);
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = () => reject(new Error("Failed to load " + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  // Resolves to the Supabase client (window.sb), or null if the server has no
+  // Supabase config yet. Every page awaits this before touching auth.
+  window.SB_READY = (async function initSupabase() {
+    let cfg;
+    try {
+      const res = await fetch(window.apiUrl("/api/config"));
+      cfg = await res.json();
+    } catch (e) {
+      console.error("Could not load /api/config:", e);
+      return null;
+    }
+
+    window.APP_CONFIG.SUPABASE_URL = cfg.supabaseUrl || "";
+    window.APP_CONFIG.AI_ENABLED = !!cfg.aiEnabled;
+
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey) {
+      console.error(
+        "Supabase is not configured on the server. Set SUPABASE_URL and " +
+          "SUPABASE_ANON_KEY in the environment."
+      );
+      return null;
+    }
+
+    await loadScript(
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
+    );
+
+    window.sb = window.supabase.createClient(
+      cfg.supabaseUrl,
+      cfg.supabaseAnonKey,
+      {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true, // handles the email-confirmation redirect
+          storageKey: "sra_supabase_auth",
+        },
+      }
+    );
+    return window.sb;
+  })();
 })();
