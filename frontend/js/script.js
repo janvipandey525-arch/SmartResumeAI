@@ -172,6 +172,19 @@
     return () => { btn.disabled = false; btn.innerHTML = original; };
   }
 
+  /* Render a clean typographic monogram (user initials) into every avatar
+     slot, replacing the static SVG placeholder. Professional, achromatic,
+     scales to any name. Falls back silently to the SVG if no name yet. */
+  function setMonogram(name) {
+    const initials = String(name || "").trim().split(/\s+/).filter(Boolean)
+      .slice(0, 2).map((w) => w[0].toUpperCase()).join("");
+    if (!initials) return;
+    document.querySelectorAll(".topbar-avatar, .profile-avatar").forEach((el) => {
+      el.innerHTML = `<span class="avatar-initials">${initials}</span>`;
+      el.classList.add("has-monogram");
+    });
+  }
+
   /* ------------------------------------------------------------------ */
   /* Auth guards                                                        */
   /* ------------------------------------------------------------------ */
@@ -322,6 +335,7 @@
       const me = await api("/api/auth/me");
       store.setUser(me);
       setText("#welcomeName", (me.full_name || "there").split(" ")[0]);
+      setMonogram(me.full_name);
 
       const s = await api("/api/resumes/stats");
       setText("#statResumes", s.resumes_created);
@@ -534,6 +548,7 @@
     const skills = (resume && resume.skills) || [];
 
     setText("#profileName", (me && me.full_name) || "Guest User");
+    setMonogram((me && me.full_name) || pi.name);
     setText("#profileEmail", (me && me.email) || pi.email || "Not added yet");
     setText("#detailName", (me && me.full_name) || pi.name || "Guest User");
     setText("#detailEmail", (me && me.email) || pi.email || "Not added yet");

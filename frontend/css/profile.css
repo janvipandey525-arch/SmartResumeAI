@@ -9,14 +9,16 @@
 .profile-card{
   background:var(--graphite);
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:12px;
   overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,.05);
+  box-shadow:var(--shadow);
   margin-bottom:24px;
 }
+/* Flat recessed band — no chromatic gradient. Reads as a clean masthead. */
 .profile-cover{
-  height:110px;
-  background:linear-gradient(135deg,var(--navy),var(--emerald-700));
+  height:96px;
+  background:var(--inkwell);
+  border-bottom:1px solid var(--line);
 }
 .profile-head{
   display:flex;
@@ -25,42 +27,48 @@
   padding:0 28px 24px;
   flex-wrap:wrap;
 }
-/* Only the avatar overlaps the cover. Pulling the whole .profile-head up
-   instead dragged the name/email onto the gradient, where the dark --ink
-   text was unreadable. */
+/* Only the avatar overlaps the cover so the identity block stays on the
+   card surface where the text is readable. */
 .profile-avatar{
-  width:90px; height:90px;
+  width:96px; height:96px;
   position:relative;
-  top:-38px;
+  top:-40px;
   border-radius:50%;
   overflow:hidden;
-  border:3px solid var(--pewter);
-  background:var(--graphite);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--pewter);
+  background:var(--inkwell);
+  box-shadow:0 0 0 4px var(--graphite);
 }
 .profile-avatar img{ width:100%; height:100%; object-fit:cover; }
+.profile-avatar .avatar-initials{ font-size:34px; }
 .profile-identity{ flex:1; padding-bottom:4px; }
-.profile-identity h2{ font-size:22px; color:var(--ink); }
-.profile-identity p{ color:var(--muted); font-size:14px; }
+.profile-identity h2{ font-family:var(--font-serif); font-weight:500; font-size:24px; color:var(--ink); letter-spacing:.01em; }
+.profile-identity p{ color:var(--muted); font-size:14px; margin-top:2px; }
 .profile-role{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  margin-top:8px;
-  font-size:12.5px;
-  color:var(--emerald-700);
-  background:var(--emerald-50);
+  margin-top:10px;
+  font-size:12px;
+  color:var(--chalk);
+  background:var(--inkwell);
+  border:1px solid var(--line);
   padding:4px 12px;
   border-radius:99px;
 }
+.profile-role i{ color:var(--pewter); }
 
 /* Detail panels */
 .detail-panel{
   background:var(--graphite);
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:12px;
   padding:26px;
   margin-bottom:22px;
-  box-shadow:0 5px 15px rgba(0,0,0,.04);
+  box-shadow:var(--shadow);
 }
 .detail-grid{
   display:grid;
@@ -78,8 +86,9 @@
 .detail-item > i{
   width:42px; height:42px;
   border-radius:10px;
-  background:var(--emerald-50);
-  color:var(--emerald);
+  background:var(--inkwell);
+  border:1px solid var(--line);
+  color:var(--pewter);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -95,8 +104,9 @@
   font-size:13px;
   padding:6px 14px;
   border-radius:99px;
-  background:var(--emerald-50);
-  color:var(--emerald-700);
+  background:var(--inkwell);
+  border:1px solid var(--line);
+  color:var(--chalk);
   font-weight:500;
 }
 .kw-empty{ color:var(--muted); font-size:13.5px; }
@@ -121,7 +131,7 @@
   background:var(--inkwell);
   transition:.25s;
 }
-.edit-field input:focus{ border-color:var(--emerald); background:var(--emerald-50); }
+.edit-field input:focus{ border-color:var(--pewter); background:var(--inkwell); }
 .edit-actions{ display:flex; justify-content:flex-end; gap:12px; }
 
 @media(max-width:700px){
