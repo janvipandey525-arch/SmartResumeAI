@@ -23,11 +23,15 @@
   align-items:flex-end;
   gap:20px;
   padding:0 28px 24px;
-  margin-top:-45px;
   flex-wrap:wrap;
 }
+/* Only the avatar overlaps the cover. Pulling the whole .profile-head up
+   instead dragged the name/email onto the gradient, where the dark --ink
+   text was unreadable. */
 .profile-avatar{
   width:90px; height:90px;
+  position:relative;
+  top:-38px;
   border-radius:50%;
   overflow:hidden;
   border:4px solid #fff;
