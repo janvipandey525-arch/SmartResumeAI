@@ -1,6 +1,7 @@
 # SmartResumeAI — single container: FastAPI serves both the API and the frontend.
 # Build context is the repo root so we can copy both backend/ and frontend/.
-FROM python:3.12-slim
+# AWS's public mirror of the official image — identical content, no Docker Hub pull limits.
+FROM public.ecr.aws/docker/library/python:3.12-slim
 
 # Keep Python lean and unbuffered (logs show up immediately in Coolify).
 ENV PYTHONUNBUFFERED=1 \
