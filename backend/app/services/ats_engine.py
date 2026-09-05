@@ -40,6 +40,15 @@ STOPWORDS = {
     "has", "had", "am", "who", "what", "when", "where", "which", "how", "all",
     "any", "each", "more", "most", "other", "some", "such", "only", "own",
     "same", "too", "very", "just", "also", "into", "about", "using", "used",
+    # Job-description filler — common in postings but meaningless as keywords.
+    "looking", "seeking", "seek", "role", "roles", "team", "teams", "candidate",
+    "candidates", "ideal", "responsibilities", "responsibility", "requirements",
+    "requirement", "years", "year", "strong", "good", "great", "excellent",
+    "ability", "abilities", "including", "include", "includes", "etc", "must",
+    "plus", "nice", "familiar", "familiarity", "knowledge", "understanding",
+    "proficiency", "join", "preferred", "prefer", "required", "require",
+    "requires", "help", "ensure", "across", "within", "experience", "experienced",
+    "work", "working", "worked", "well", "able", "looking", "someone", "person",
 }
 
 # Strong resume action verbs (past tense + common bases).
@@ -73,12 +82,36 @@ def _tokens(text: str) -> List[str]:
 
 
 def _keywords(text: str) -> List[str]:
-    """Meaningful, de-duplicated keywords (stopwords + 1-char tokens removed)."""
+    """
+    Meaningful, de-duplicated keywords in first-seen order.
+
+    Strips surrounding punctuation that the tokenizer leaves on (so "experience."
+    becomes "experience"), drops 1-char tokens and stopwords. These are the
+    *display* forms; matching is done on their stems (see _stem).
+    """
     seen: Dict[str, None] = {}
     for w in _tokens(text):
+        w = w.strip(".-")  # e.g. "python," never occurs, but "node.js." -> "node.js"
         if len(w) > 1 and w not in STOPWORDS:
             seen.setdefault(w, None)
     return list(seen.keys())
+
+
+def _stem(w: str) -> str:
+    """
+    Very light suffix stripping so "engineer"/"engineering" and
+    "deploy"/"deployed" match. Conservative on purpose — used only for
+    keyword-overlap set membership, never for display.
+    """
+    if len(w) > 5 and w.endswith("ing"):
+        return w[:-3]
+    if len(w) > 4 and w.endswith("ed"):
+        return w[:-2]
+    if len(w) > 4 and w.endswith("es"):
+        return w[:-2]
+    if len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
+        return w[:-1]
+    return w
 
 
 def _clamp(x: float) -> float:
@@ -93,20 +126,24 @@ def _score_keywords(
     Without a JD: reward keyword richness (a proxy for a detailed resume).
     Returns (subscore, matched, missing).
     """
-    resume_kw = set(_keywords(resume_text))
+    resume_stems = {_stem(k) for k in _keywords(resume_text)}
 
     if job_description and job_description.strip():
-        jd_kw = _keywords(job_description)
-        if not jd_kw:
+        # Map stem -> first-seen display word, which also dedupes JD keywords
+        # that share a stem (e.g. "engineer"/"engineering" count once).
+        jd_map: Dict[str, str] = {}
+        for k in _keywords(job_description):
+            jd_map.setdefault(_stem(k), k)
+        if not jd_map:
             return 60.0, [], []
-        matched = [k for k in jd_kw if k in resume_kw]
-        missing = [k for k in jd_kw if k not in resume_kw]
-        subscore = _clamp(100.0 * len(matched) / len(jd_kw))
-        # Cap the "missing" list so the UI stays readable.
+        matched = [orig for stem, orig in jd_map.items() if stem in resume_stems]
+        missing = [orig for stem, orig in jd_map.items() if stem not in resume_stems]
+        subscore = _clamp(100.0 * len(matched) / len(jd_map))
+        # Cap the lists so the UI stays readable.
         return subscore, matched[:40], missing[:40]
 
     # No JD: richness — 25 distinct meaningful keywords ~= a full resume.
-    richness = _clamp(100.0 * len(resume_kw) / 25.0)
+    richness = _clamp(100.0 * len(resume_stems) / 25.0)
     return richness, [], []
 
 
