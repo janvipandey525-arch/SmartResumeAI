@@ -439,13 +439,17 @@
     if (pi.phone) contactBits.push(`<span><i class="fa-solid fa-phone"></i>${esc(pi.phone)}</span>`);
     if (pi.address) contactBits.push(`<span><i class="fa-solid fa-location-dot"></i>${esc(pi.address)}</span>`);
 
-    const section = (title, inner) =>
-      inner ? `<div class="rz-section"><h3>${title}</h3>${inner}</div>` : "";
+    // Each section carries a semantic class so template CSS can relocate it
+    // into a sidebar (two-column skins) without changing this markup.
+    const section = (key, title, inner) =>
+      inner
+        ? `<section class="rz-section rz-sec--${key}"><h3>${title}</h3>${inner}</section>`
+        : "";
 
     const eduHtml = edu.length
       ? edu.map((e) => {
           const line = [e.degree, e.college, e.year].filter(Boolean).map(esc);
-          return `<p class="rz-edu-line"><strong>${line[0] || ""}</strong>${line[1] ? " — " + line[1] : ""}${line[2] ? " (" + line[2] + ")" : ""}</p>`;
+          return `<p class="rz-edu-line"><strong>${line[0] || ""}</strong>${line[1] ? "<span class='rz-edu-org'>" + line[1] + "</span>" : ""}${line[2] ? "<span class='rz-edu-year'>" + line[2] + "</span>" : ""}</p>`;
         }).join("")
       : "";
 
@@ -453,17 +457,25 @@
       ? `<div class="rz-skills">${skills.map((s) => `<span class="rz-skill">${esc(s)}</span>`).join("")}</div>`
       : "";
 
+    // The paper splits into a "main" column (narrative) and a "side" column
+    // (skills / education / certs). Single-column skins collapse the wrappers
+    // with `display:contents`; two-column skins lay them out as real columns.
     el.innerHTML = `
-      <div class="rz-header">
+      <header class="rz-header">
         <div class="rz-name">${esc(pi.name || "Your Name")}</div>
+        ${pi.role ? `<div class="rz-role">${esc(pi.role)}</div>` : ""}
         <div class="rz-contact">${contactBits.join("")}</div>
+      </header>
+      <div class="rz-main">
+        ${section("summary", "Summary", r.summary ? `<p>${esc(r.summary)}</p>` : "")}
+        ${section("experience", "Experience", r.experience ? `<p>${esc(r.experience)}</p>` : "")}
+        ${section("projects", "Projects", r.projects ? `<p>${esc(r.projects)}</p>` : "")}
       </div>
-      ${section("Summary", r.summary ? `<p>${esc(r.summary)}</p>` : "")}
-      ${section("Skills", skillsHtml)}
-      ${section("Experience", r.experience ? `<p>${esc(r.experience)}</p>` : "")}
-      ${section("Projects", r.projects ? `<p>${esc(r.projects)}</p>` : "")}
-      ${section("Education", eduHtml)}
-      ${section("Certifications", r.certifications ? `<p>${esc(r.certifications)}</p>` : "")}
+      <div class="rz-side">
+        ${section("skills", "Skills", skillsHtml)}
+        ${section("education", "Education", eduHtml)}
+        ${section("certifications", "Certifications", r.certifications ? `<p>${esc(r.certifications)}</p>` : "")}
+      </div>
     `;
   }
 
@@ -499,18 +511,16 @@
     const dl = $("#downloadPdfBtn");
     if (dl) {
       dl.addEventListener("click", () => {
-        const fname = ((resume.personal_info || {}).name || "resume").replace(/\s+/g, "_");
-        if (window.html2pdf) {
-          window.html2pdf().set({
-            margin: 10,
-            filename: `${fname}_Resume.pdf`,
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-          }).from(paper).save();
-        } else {
-          window.print();
-        }
+        // Native print → "Save as PDF" produces a REAL vector/text PDF whose
+        // text is selectable and ATS-parseable. The old html2pdf path
+        // rasterized the resume to a JPEG (zero extractable text) — the whole
+        // reason ATS tools scored these exports as empty. Print honors the
+        // @media print rules in preview.css (see .resume-paper block).
+        const name = ((resume.personal_info || {}).name || "resume").replace(/\s+/g, "_");
+        const prevTitle = document.title;
+        document.title = `${name}_Resume`; // becomes the default PDF filename
+        window.addEventListener("afterprint", () => { document.title = prevTitle; }, { once: true });
+        window.print();
       });
     }
   }
