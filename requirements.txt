@@ -1,0 +1,3 @@
+# Vercel installs the serverless function's deps from this root file.
+# Single source of truth stays in backend/requirements.txt — no drift.
+-r backend/requirements.txt
