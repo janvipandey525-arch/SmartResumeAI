@@ -10,14 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <!-- Icons are decorative: load non-blocking so they never delay first paint. -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+  <!-- Self-hosted 5.8KB icon subset (was 72KB CDN css + 158KB webfont). -->
+  <link rel="preload" href="assets/fonts/fa-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/icons.css?v=18">
 
-  <link rel="stylesheet" href="css/style.css?v=17">
-  <link rel="stylesheet" href="css/ats.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/ats.css?v=18">
 
   <!-- Resume text extraction (PDF/DOCX/TXT) is handled by the backend now. -->
 </head>
@@ -206,7 +204,7 @@
   </div>
 </div>
 
-<script src="js/config.js?v=17"></script>
-<script src="js/script.js?v=17"></script>
+<script src="js/config.js?v=18"></script>
+<script src="js/script.js?v=18"></script>
 </body>
 </html>

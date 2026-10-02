@@ -1,0 +1,85 @@
+/* =========================================================
+   SmartResumeAI — icons.css  (self-hosted Font Awesome subset)
+   Replaces the 72KB Font Awesome CSS + 158KB solid webfont with a
+   5.8KB subset containing only the 56 glyphs this app actually uses.
+   Regenerate: pyftsubset fa-solid-900.woff2 --unicodes-file=... --flavor=woff2
+   ========================================================= */
+@font-face{
+  font-family:"fa-subset";
+  src:url("../assets/fonts/fa-subset.woff2") format("woff2");
+  font-weight:900;
+  font-style:normal;
+  font-display:swap;
+}
+
+.fa-solid,.fa-brands{
+  font-family:"fa-subset";
+  font-weight:900;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
+  display:inline-block;
+  font-style:normal;
+  font-variant:normal;
+  line-height:1;
+  text-rendering:auto;
+}
+.fa-solid::before{ content:var(--fa); }
+.fa-spin{ animation:fa-spin 2s linear infinite; }
+@keyframes fa-spin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+.fa-address-card{--fa:"\f2bb"}
+.fa-arrow-left{--fa:"\f060"}
+.fa-arrow-right{--fa:"\f061"}
+.fa-bars{--fa:"\f0c9"}
+.fa-bolt{--fa:"\f0e7"}
+.fa-briefcase{--fa:"\f0b1"}
+.fa-building-columns{--fa:"\f19c"}
+.fa-bullseye{--fa:"\f140"}
+.fa-certificate{--fa:"\f0a3"}
+.fa-chart-column{--fa:"\e0e3"}
+.fa-chart-line{--fa:"\f201"}
+.fa-chart-simple{--fa:"\e473"}
+.fa-check{--fa:"\f00c"}
+.fa-chevron-right{--fa:"\f054"}
+.fa-circle-check{--fa:"\f058"}
+.fa-circle-info{--fa:"\f05a"}
+.fa-circle-question{--fa:"\f059"}
+.fa-circle-xmark{--fa:"\f057"}
+.fa-clipboard{--fa:"\f328"}
+.fa-cloud-arrow-up{--fa:"\f0ee"}
+.fa-code{--fa:"\f121"}
+.fa-diagram-project{--fa:"\f542"}
+.fa-download{--fa:"\f019"}
+.fa-envelope{--fa:"\f0e0"}
+.fa-eraser{--fa:"\f12d"}
+.fa-file-arrow-up{--fa:"\f574"}
+.fa-file-circle-check{--fa:"\e5a0"}
+.fa-file-lines{--fa:"\f15c"}
+.fa-file-shield{--fa:"\e4f0"}
+.fa-gauge-high{--fa:"\f625"}
+.fa-graduation-cap{--fa:"\f19d"}
+.fa-grip{--fa:"\f58d"}
+.fa-hourglass-half{--fa:"\f252"}
+.fa-id-card{--fa:"\f2c2"}
+.fa-layer-group{--fa:"\f5fd"}
+.fa-lightbulb{--fa:"\f0eb"}
+.fa-list-check{--fa:"\f0ae"}
+.fa-location-dot{--fa:"\f3c5"}
+.fa-lock{--fa:"\f023"}
+.fa-lock-open{--fa:"\f3c1"}
+.fa-magnifying-glass-chart{--fa:"\e522"}
+.fa-pen{--fa:"\f304"}
+.fa-pen-to-square{--fa:"\f044"}
+.fa-phone{--fa:"\f095"}
+.fa-plus{--fa:"\2b"}
+.fa-right-from-bracket{--fa:"\f2f5"}
+.fa-right-to-bracket{--fa:"\f2f6"}
+.fa-robot{--fa:"\f544"}
+.fa-spinner{--fa:"\f110"}
+.fa-tags{--fa:"\f02c"}
+.fa-triangle-exclamation{--fa:"\f071"}
+.fa-user{--fa:"\f007"}
+.fa-user-check{--fa:"\f4fc"}
+.fa-user-gear{--fa:"\f4fe"}
+.fa-user-plus{--fa:"\f234"}
+.fa-wand-magic-sparkles{--fa:"\e2ca"}
