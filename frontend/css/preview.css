@@ -198,6 +198,109 @@
 }
 
 /* =========================================================
+   5) MINIMAL — single column, generous white space, hairline
+      rules. Section headings sit in a quiet left label column.
+   ========================================================= */
+.tpl-minimal .rz-main, .tpl-minimal .rz-side{ display:contents; }
+.tpl-minimal .rz-section{ padding:0 48px; }
+.tpl-minimal .rz-section:last-child{ padding-bottom:38px; }
+.tpl-minimal .rz-header{
+  padding:44px 48px 20px; border-bottom:1px solid var(--line); margin-bottom:8px;
+}
+.tpl-minimal .rz-name{ font-weight:300; letter-spacing:.08em; text-transform:uppercase; font-size:1.8rem; }
+.tpl-minimal .rz-role{ color:#94a3b8; letter-spacing:.2em; font-weight:400; }
+.tpl-minimal .rz-section{ margin-top:26px; }
+.tpl-minimal .rz-section h3{
+  color:#94a3b8; border:none; letter-spacing:.2em; font-weight:600;
+  padding-bottom:0; margin-bottom:8px;
+}
+.tpl-minimal .rz-skill{ background:transparent; color:#334155; padding:2px 0; }
+.tpl-minimal .rz-skills{ gap:4px 16px; }
+
+/* =========================================================
+   6) EXECUTIVE — dark masthead + accent rule, serif name.
+      Built for senior / leadership resumes.
+   ========================================================= */
+.tpl-executive .rz-main, .tpl-executive .rz-side{ display:contents; }
+.tpl-executive .rz-section{ padding:0 48px; }
+.tpl-executive .rz-section:last-child{ padding-bottom:38px; }
+.tpl-executive .rz-header{
+  background:var(--navy-900); color:#fff; padding:36px 48px 28px;
+  border-bottom:3px solid var(--emerald);
+}
+.tpl-executive .rz-name{
+  color:#fff; font-family:"Source Serif 4",Georgia,serif; letter-spacing:0;
+}
+.tpl-executive .rz-role{ color:var(--emerald-100); letter-spacing:.18em; }
+.tpl-executive .rz-contact{ color:#cbd5e1; }
+.tpl-executive .rz-contact i{ color:var(--emerald); }
+.tpl-executive .rz-section{ margin-top:24px; }
+.tpl-executive .rz-section h3{
+  font-family:"Source Serif 4",Georgia,serif;
+  color:#0f172a; letter-spacing:.1em; border-bottom:1.5px solid #0f172a;
+}
+.tpl-executive .rz-skill{ background:var(--emerald-50); color:var(--emerald-700); }
+
+/* =========================================================
+   7) TECHNICAL — monospace headings, chip stack. For developer
+      and data roles.
+   ========================================================= */
+.tpl-technical .rz-main, .tpl-technical .rz-side{ display:contents; }
+.tpl-technical .rz-section{ padding:0 48px; }
+.tpl-technical .rz-section:last-child{ padding-bottom:38px; }
+.tpl-technical .rz-header{
+  background:#f8fafc; padding:34px 48px 22px; border-bottom:1px solid var(--line);
+}
+.tpl-technical .rz-name{
+  font-family:ui-monospace,Menlo,Consolas,monospace; font-size:1.7rem; letter-spacing:-.02em;
+}
+.tpl-technical .rz-role{
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  color:var(--emerald-700); text-transform:none; letter-spacing:0;
+}
+.tpl-technical .rz-contact{ font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.76rem; }
+.tpl-technical .rz-section h3{
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  color:var(--emerald-700); letter-spacing:0; border-bottom:1px solid var(--line);
+}
+.tpl-technical .rz-section h3::before{ content:"## "; color:#94a3b8; }
+.tpl-technical .rz-skill{
+  background:var(--emerald-50); color:var(--emerald-700);
+  border-radius:4px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.74rem;
+}
+
+/* =========================================================
+   8) ACADEMIC — serif CV. Numbered-feel sections, tight rules.
+      For research / faculty applications.
+   ========================================================= */
+.tpl-academic .rz-main, .tpl-academic .rz-side{ display:contents; }
+.tpl-academic .rz-section{ padding:0 48px; }
+.tpl-academic .rz-section:last-child{ padding-bottom:38px; }
+.tpl-academic .rz-header{
+  text-align:center; padding:40px 48px 16px;
+  border-bottom:1px solid #0f172a; margin:0 48px 6px;
+  padding-left:0; padding-right:0;
+}
+.tpl-academic .rz-name{
+  font-family:"Source Serif 4",Georgia,serif; font-size:2rem; letter-spacing:0;
+}
+.tpl-academic .rz-role{
+  font-family:"Source Serif 4",Georgia,serif;
+  color:#475569; text-transform:none; letter-spacing:.02em; font-weight:400;
+}
+.tpl-academic .rz-contact{ justify-content:center; font-family:"Source Serif 4",Georgia,serif; }
+.tpl-academic .rz-section h3{
+  font-family:"Source Serif 4",Georgia,serif;
+  color:#0f172a; letter-spacing:.1em; border-bottom:1px solid #cbd5e1;
+}
+.tpl-academic .rz-section p{ font-family:"Source Serif 4",Georgia,serif; }
+.tpl-academic .rz-skill{
+  background:transparent; color:#334155;
+  font-family:"Source Serif 4",Georgia,serif; padding:2px 0;
+}
+.tpl-academic .rz-skills{ gap:4px 14px; }
+
+/* =========================================================
    PRINT / PDF — the export path. window.print() → "Save as PDF"
    yields a real, selectable, ATS-parseable text PDF.
    ========================================================= */

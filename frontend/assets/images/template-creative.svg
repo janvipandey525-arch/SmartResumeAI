@@ -13,8 +13,8 @@
 
   <!-- accent corner shape -->
   <path d="M0 0 H300 V58 L0 86 Z" fill="#4f46e5"/>
-  <circle cx="252" cy="104" r="30" fill="#eef2ff"/>
-  <circle cx="30" cy="330" r="22" fill="#eef2ff"/>
+  <rect x="236" y="92" width="42" height="4" rx="2" fill="#e0e3fc"/>
+  <rect x="248" y="102" width="30" height="4" rx="2" fill="#eef2ff"/>
 
   <text class="nm" x="24" y="36" fill="#ffffff">Alex Johnson</text>
   <text class="rl" x="24" y="49" fill="#c7cbf8">PRODUCT DESIGNER</text>

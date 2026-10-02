@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Academic template preview">
+  <style>
+    .nm{font:700 15px Georgia,'Times New Roman',serif;fill:#101828}
+    .rl{font:400 6px Georgia,serif;fill:#5b6471;letter-spacing:.8px}
+    .ct{font:400 5.2px Georgia,serif;fill:#8a93a3}
+    .sh{font:700 6px Georgia,serif;fill:#101828;letter-spacing:1.2px}
+    .bd{font:400 5.3px Georgia,serif;fill:#344054}
+    .mt{font:italic 5px Georgia,serif;fill:#8a93a3}
+    .jb{font:600 5.8px Georgia,serif;fill:#101828}
+    .pb{font:400 5.2px Georgia,serif;fill:#344054}
+  </style>
+  <rect width="300" height="380" fill="#ffffff"/>
+
+  <text class="nm" x="150" y="38" text-anchor="middle">Alex Johnson, M.Sc.</text>
+  <text class="rl" x="150" y="51" text-anchor="middle">Doctoral Researcher — Computer Science</text>
+  <text class="ct" x="150" y="63" text-anchor="middle">Dept. of CS, Fergusson College · alex.johnson@email.com</text>
+  <line x1="28" y1="72" x2="272" y2="72" stroke="#101828" stroke-width=".9"/>
+
+  <text class="sh" x="28" y="88">RESEARCH INTERESTS</text>
+  <text class="bd" x="28" y="100">Machine learning for information retrieval, applied NLP,</text>
+  <text class="bd" x="28" y="110">and human-centred evaluation of ranking systems.</text>
+
+  <text class="sh" x="28" y="130">EDUCATION</text>
+  <line x1="28" y1="134" x2="272" y2="134" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="jb" x="28" y="146">Ph.D. Computer Science</text>
+  <text class="mt" x="272" y="146" text-anchor="end">2026 — present</text>
+  <text class="bd" x="28" y="156">Fergusson College, Pune — Advisor: Prof. R. Mehta</text>
+
+  <text class="jb" x="28" y="172">M.Sc. Computer Science</text>
+  <text class="mt" x="272" y="172" text-anchor="end">2024 — 2026</text>
+  <text class="bd" x="28" y="182">Thesis: Neural Re-ranking for Low-Resource Corpora</text>
+
+  <text class="sh" x="28" y="202">PUBLICATIONS</text>
+  <line x1="28" y1="206" x2="272" y2="206" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="pb" x="28" y="218">[1]  Johnson, A., Mehta, R. (2026). Neural re-ranking for</text>
+  <text class="pb" x="38" y="228">low-resource retrieval. <tspan font-style="italic">Proc. SIGIR</tspan>, 112—124.</text>
+  <text class="pb" x="28" y="242">[2]  Johnson, A. (2025). Evaluating ATS parsers at scale.</text>
+  <text class="pb" x="38" y="252"><tspan font-style="italic">Journal of Applied NLP</tspan>, 8(2), 44—61.</text>
+  <text class="pb" x="28" y="266">[3]  Johnson, A., Rao, S. (2025). Bias in resume ranking.</text>
+  <text class="pb" x="38" y="276"><tspan font-style="italic">Workshop on Fairness in IR</tspan>, 1—9.</text>
+
+  <text class="sh" x="28" y="296">TEACHING</text>
+  <line x1="28" y1="300" x2="272" y2="300" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="jb" x="28" y="312">Teaching Assistant — Data Structures</text>
+  <text class="mt" x="272" y="312" text-anchor="end">2025 — 2026</text>
+  <text class="bd" x="28" y="322">Led weekly labs for 120 undergraduate students.</text>
+
+  <text class="sh" x="28" y="342">AWARDS &amp; GRANTS</text>
+  <line x1="28" y1="346" x2="272" y2="346" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="bd" x="28" y="358">Best Paper, Workshop on Fairness in IR (2025)</text>
+  <text class="bd" x="28" y="368">Departmental Research Fellowship (2024 — 2026)</text>
+</svg>

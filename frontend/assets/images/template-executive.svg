@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Executive template preview">
+  <style>
+    .nm{font:700 16px Georgia,'Times New Roman',serif;fill:#ffffff;letter-spacing:.4px}
+    .rl{font:400 6px Inter,Arial,sans-serif;fill:#c7cbf8;letter-spacing:2.2px}
+    .ct{font:400 5.2px Inter,Arial,sans-serif;fill:#e0e3fc}
+    .sh{font:700 6px Georgia,serif;fill:#101828;letter-spacing:1.4px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+    .kv{font:700 9px Inter,Arial,sans-serif;fill:#4f46e5}
+    .kl{font:400 4.6px Inter,Arial,sans-serif;fill:#8a93a3}
+  </style>
+  <rect width="300" height="380" fill="#ffffff"/>
+
+  <!-- dark executive header -->
+  <rect x="0" y="0" width="300" height="80" fill="#101828"/>
+  <rect x="0" y="80" width="300" height="3" fill="#4f46e5"/>
+  <text class="nm" x="26" y="36">Alex Johnson</text>
+  <text class="rl" x="26" y="50">ENGINEERING MANAGER</text>
+  <text class="ct" x="26" y="66">alex.johnson@email.com  ·  +91 98765 43210  ·  Pune, India</text>
+
+  <!-- metrics strip -->
+  <rect x="26" y="96" width="248" height="34" rx="4" fill="#eef2ff"/>
+  <text class="kv" x="60" y="112" text-anchor="middle">8 yrs</text>
+  <text class="kl" x="60" y="122" text-anchor="middle">EXPERIENCE</text>
+  <line x1="109" y1="102" x2="109" y2="124" stroke="#c7cbf8" stroke-width=".8"/>
+  <text class="kv" x="150" y="112" text-anchor="middle">24</text>
+  <text class="kl" x="150" y="122" text-anchor="middle">TEAM LED</text>
+  <line x1="191" y1="102" x2="191" y2="124" stroke="#c7cbf8" stroke-width=".8"/>
+  <text class="kv" x="238" y="112" text-anchor="middle">$4.2M</text>
+  <text class="kl" x="238" y="122" text-anchor="middle">BUDGET OWNED</text>
+
+  <text class="sh" x="26" y="152">EXECUTIVE SUMMARY</text>
+  <line x1="26" y1="156" x2="274" y2="156" stroke="#101828" stroke-width=".8"/>
+  <text class="bd" x="26" y="168">Engineering leader with 8 years scaling platform teams and</text>
+  <text class="bd" x="26" y="178">delivering revenue-critical systems across fintech and SaaS.</text>
+
+  <text class="sh" x="26" y="200">PROFESSIONAL EXPERIENCE</text>
+  <line x1="26" y1="204" x2="274" y2="204" stroke="#101828" stroke-width=".8"/>
+
+  <text class="jb" x="26" y="217">Engineering Manager — TechNova</text>
+  <text class="mt" x="274" y="217" text-anchor="end">2023 — Present</text>
+  <rect x="26" y="224" width="2.4" height="2.4" fill="#4f46e5"/>
+  <text class="bd" x="34" y="227">Grew the platform org from 6 to 24 engineers.</text>
+  <rect x="26" y="234" width="2.4" height="2.4" fill="#4f46e5"/>
+  <text class="bd" x="34" y="237">Cut infrastructure spend 28% while doubling traffic.</text>
+
+  <text class="jb" x="26" y="256">Senior Engineer — Softlane</text>
+  <text class="mt" x="274" y="256" text-anchor="end">2019 — 2023</text>
+  <rect x="26" y="263" width="2.4" height="2.4" fill="#4f46e5"/>
+  <text class="bd" x="34" y="266">Led the payments rewrite handling $4.2M monthly.</text>
+  <rect x="26" y="273" width="2.4" height="2.4" fill="#4f46e5"/>
+  <text class="bd" x="34" y="276">Introduced SLOs, reducing incidents by 40%.</text>
+
+  <text class="sh" x="26" y="298">CORE COMPETENCIES</text>
+  <line x1="26" y1="302" x2="274" y2="302" stroke="#101828" stroke-width=".8"/>
+  <text class="bd" x="26" y="314">Team Leadership  ·  Platform Strategy  ·  Hiring  ·  Roadmapping</text>
+  <text class="bd" x="26" y="324">Distributed Systems  ·  Cloud Architecture  ·  Stakeholder Mgmt</text>
+
+  <text class="sh" x="26" y="346">EDUCATION</text>
+  <line x1="26" y1="350" x2="274" y2="350" stroke="#101828" stroke-width=".8"/>
+  <text class="jb" x="26" y="362">B.Sc Computer Science</text>
+  <text class="mt" x="274" y="362" text-anchor="end">2018</text>
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Technical template preview">
+  <style>
+    .nm{font:700 14px ui-monospace,Menlo,Consolas,monospace;fill:#101828;letter-spacing:-.2px}
+    .rl{font:400 5.6px ui-monospace,Menlo,monospace;fill:#4f46e5;letter-spacing:.6px}
+    .ct{font:400 5px ui-monospace,Menlo,monospace;fill:#8a93a3}
+    .sh{font:700 5.8px ui-monospace,Menlo,monospace;fill:#4f46e5}
+    .bd{font:400 5.3px Inter,Arial,sans-serif;fill:#344054}
+    .mn{font:400 5px ui-monospace,Menlo,monospace;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+    .tg{font:500 4.8px ui-monospace,Menlo,monospace;fill:#3730a3}
+  </style>
+  <rect width="300" height="380" fill="#ffffff"/>
+
+  <!-- header -->
+  <rect x="0" y="0" width="300" height="72" fill="#f8f9fb"/>
+  <line x1="0" y1="72" x2="300" y2="72" stroke="#e4e7ec" stroke-width="1"/>
+  <rect x="24" y="22" width="3" height="30" fill="#4f46e5"/>
+  <text class="nm" x="34" y="36">alex_johnson</text>
+  <text class="rl" x="34" y="47">// backend engineer</text>
+  <text class="ct" x="34" y="60">alex.johnson@email.com · github.com/alexj · Pune, IN</text>
+
+  <!-- tech stack chips -->
+  <text class="sh" x="24" y="92">## STACK</text>
+  <rect x="24" y="98" width="40" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="44" y="105.6" text-anchor="middle">Python</text>
+  <rect x="68" y="98" width="40" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="88" y="105.6" text-anchor="middle">FastAPI</text>
+  <rect x="112" y="98" width="40" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="132" y="105.6" text-anchor="middle">Postgres</text>
+  <rect x="156" y="98" width="38" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="175" y="105.6" text-anchor="middle">Docker</text>
+  <rect x="198" y="98" width="34" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="215" y="105.6" text-anchor="middle">Redis</text>
+  <rect x="236" y="98" width="38" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="255" y="105.6" text-anchor="middle">AWS</text>
+
+  <rect x="24" y="113" width="44" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="46" y="120.6" text-anchor="middle">Kubernetes</text>
+  <rect x="72" y="113" width="38" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="91" y="120.6" text-anchor="middle">Kafka</text>
+  <rect x="114" y="113" width="36" height="11" rx="2" fill="#eef2ff"/>
+  <text class="tg" x="132" y="120.6" text-anchor="middle">gRPC</text>
+
+  <!-- experience -->
+  <text class="sh" x="24" y="144">## EXPERIENCE</text>
+  <line x1="24" y1="148" x2="276" y2="148" stroke="#e4e7ec" stroke-width=".8"/>
+
+  <text class="jb" x="24" y="160">Backend Engineer · TechNova</text>
+  <text class="mn" x="276" y="160" text-anchor="end">2023—now</text>
+  <text class="mn" x="24" y="170">›</text>
+  <text class="bd" x="32" y="170">Scaled ingestion pipeline to 40k events/sec.</text>
+  <text class="mn" x="24" y="180">›</text>
+  <text class="bd" x="32" y="180">Cut p99 latency from 820ms to 190ms.</text>
+  <text class="mn" x="24" y="190">›</text>
+  <text class="bd" x="32" y="190">Migrated 12 services to a typed gRPC layer.</text>
+
+  <text class="jb" x="24" y="208">Software Engineer · Softlane</text>
+  <text class="mn" x="276" y="208" text-anchor="end">2021—2023</text>
+  <text class="mn" x="24" y="218">›</text>
+  <text class="bd" x="32" y="218">Built a job runner processing 2M tasks daily.</text>
+  <text class="mn" x="24" y="228">›</text>
+  <text class="bd" x="32" y="228">Raised test coverage from 38% to 86%.</text>
+
+  <!-- projects -->
+  <text class="sh" x="24" y="250">## PROJECTS</text>
+  <line x1="24" y1="254" x2="276" y2="254" stroke="#e4e7ec" stroke-width=".8"/>
+  <text class="jb" x="24" y="266">resume-ai</text>
+  <text class="mn" x="276" y="266" text-anchor="end">★ 412</text>
+  <text class="bd" x="24" y="276">ATS scoring engine with a FastAPI backend and</text>
+  <text class="bd" x="24" y="286">Supabase auth. Deployed on Vercel.</text>
+
+  <text class="jb" x="24" y="302">ledger-cli</text>
+  <text class="mn" x="276" y="302" text-anchor="end">★ 128</text>
+  <text class="bd" x="24" y="312">Terminal finance tracker written in Rust.</text>
+
+  <!-- education -->
+  <text class="sh" x="24" y="334">## EDUCATION</text>
+  <line x1="24" y1="338" x2="276" y2="338" stroke="#e4e7ec" stroke-width=".8"/>
+  <text class="jb" x="24" y="350">B.Sc Computer Science</text>
+  <text class="mn" x="276" y="350" text-anchor="end">2026</text>
+  <text class="bd" x="24" y="360">Fergusson College, Pune</text>
+</svg>

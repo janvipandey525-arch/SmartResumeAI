@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Minimal template preview">
+  <style>
+    .nm{font:300 17px Inter,Arial,sans-serif;fill:#101828;letter-spacing:2px}
+    .rl{font:400 5.6px Inter,Arial,sans-serif;fill:#8a93a3;letter-spacing:2.6px}
+    .ct{font:400 5.2px Inter,Arial,sans-serif;fill:#8a93a3}
+    .sh{font:600 5.6px Inter,Arial,sans-serif;fill:#8a93a3;letter-spacing:2.2px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+  </style>
+  <rect width="300" height="380" fill="#ffffff"/>
+
+  <text class="nm" x="34" y="48">ALEX JOHNSON</text>
+  <text class="rl" x="34" y="62">SOFTWARE ENGINEER</text>
+  <text class="ct" x="34" y="76">alex.johnson@email.com   ·   +91 98765 43210   ·   Pune</text>
+  <line x1="34" y1="88" x2="266" y2="88" stroke="#e4e7ec" stroke-width="1"/>
+
+  <text class="sh" x="34" y="106">PROFILE</text>
+  <text class="bd" x="104" y="106">Full-stack engineer with 3 years building</text>
+  <text class="bd" x="104" y="116">scalable products and clean API design.</text>
+
+  <line x1="34" y1="132" x2="266" y2="132" stroke="#e4e7ec" stroke-width="1"/>
+
+  <text class="sh" x="34" y="150">EXPERIENCE</text>
+  <text class="jb" x="104" y="150">Software Engineer</text>
+  <text class="mt" x="104" y="160">TechNova  ·  2023 — Present</text>
+  <text class="bd" x="104" y="172">Reduced page load time by 35% and led a</text>
+  <text class="bd" x="104" y="182">migration of 12 services to typed APIs.</text>
+
+  <text class="jb" x="104" y="201">Web Developer Intern</text>
+  <text class="mt" x="104" y="211">Softlane  ·  2022 — 2023</text>
+  <text class="bd" x="104" y="223">Built 8 responsive campaign pages and</text>
+  <text class="bd" x="104" y="233">automated QA, halving review time.</text>
+
+  <line x1="34" y1="249" x2="266" y2="249" stroke="#e4e7ec" stroke-width="1"/>
+
+  <text class="sh" x="34" y="267">PROJECTS</text>
+  <text class="jb" x="104" y="267">ResumeAI</text>
+  <text class="bd" x="104" y="279">ATS resume builder and analyzer built with</text>
+  <text class="bd" x="104" y="289">FastAPI, Supabase and vanilla JavaScript.</text>
+
+  <line x1="34" y1="305" x2="266" y2="305" stroke="#e4e7ec" stroke-width="1"/>
+
+  <text class="sh" x="34" y="323">EDUCATION</text>
+  <text class="jb" x="104" y="323">B.Sc Computer Science</text>
+  <text class="mt" x="104" y="333">Fergusson College, Pune  ·  2026</text>
+
+  <line x1="34" y1="347" x2="266" y2="347" stroke="#e4e7ec" stroke-width="1"/>
+
+  <text class="sh" x="34" y="365">SKILLS</text>
+  <text class="bd" x="104" y="365">JavaScript · Python · React · FastAPI · SQL · Git</text>
+</svg>
