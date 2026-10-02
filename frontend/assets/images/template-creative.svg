@@ -1,36 +1,72 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Creative template preview">
-  <defs>
-    <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4338ca"/><stop offset="1" stop-color="#7c74f0"/>
-    </linearGradient>
-  </defs>
+  <style>
+    .nm{font:700 15px Inter,Arial,sans-serif;fill:#101828;letter-spacing:-.3px}
+    .rl{font:500 6.2px Inter,Arial,sans-serif;fill:#4f46e5;letter-spacing:1.6px}
+    .ct{font:400 5.2px Inter,Arial,sans-serif;fill:#8a93a3}
+    .sh{font:700 6.2px Inter,Arial,sans-serif;fill:#101828;letter-spacing:1.2px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+    .ch{font:500 5px Inter,Arial,sans-serif;fill:#3730a3}
+  </style>
   <rect width="300" height="380" fill="#ffffff"/>
-  <!-- angled accent shapes -->
-  <path d="M0 0 H300 V54 L0 96 Z" fill="url(#c1)"/>
-  <circle cx="264" cy="330" r="54" fill="#eef2ff"/>
 
-  <circle cx="52" cy="112" r="28" fill="#ffffff" stroke="#4338ca" stroke-width="3"/>
-  <circle cx="52" cy="112" r="20" fill="#e0e3fc"/>
+  <!-- accent corner shape -->
+  <path d="M0 0 H300 V58 L0 86 Z" fill="#4f46e5"/>
+  <circle cx="252" cy="104" r="30" fill="#eef2ff"/>
+  <circle cx="30" cy="330" r="22" fill="#eef2ff"/>
 
-  <rect x="96" y="100" width="120" height="12" rx="6" fill="#131a2b"/>
-  <rect x="96" y="122" width="82" height="7" rx="3.5" fill="#7c74f0"/>
+  <text class="nm" x="24" y="36" fill="#ffffff">Alex Johnson</text>
+  <text class="rl" x="24" y="49" fill="#c7cbf8">PRODUCT DESIGNER</text>
 
-  <!-- timeline column -->
-  <line x1="34" y1="168" x2="34" y2="330" stroke="#e0e3fc" stroke-width="3"/>
-  <circle cx="34" cy="176" r="7" fill="#4338ca"/>
-  <circle cx="34" cy="238" r="7" fill="#7c74f0"/>
-  <circle cx="34" cy="300" r="7" fill="#7c74f0"/>
+  <text class="ct" x="24" y="76">alex.johnson@email.com  ·  +91 98765 43210  ·  Pune</text>
 
-  <rect x="56" y="168" width="76" height="8" rx="4" fill="#4338ca"/>
-  <rect x="56" y="186" width="196" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="56" y="200" width="168" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- timeline rail -->
+  <line x1="33" y1="108" x2="33" y2="292" stroke="#e0e3fc" stroke-width="1.4"/>
 
-  <rect x="56" y="230" width="66" height="8" rx="4" fill="#7c74f0"/>
-  <rect x="56" y="248" width="188" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="56" y="262" width="160" height="6" rx="3" fill="#e4e9f5"/>
+  <text class="sh" x="24" y="102">EXPERIENCE</text>
 
-  <rect x="56" y="292" width="58" height="8" rx="4" fill="#7c74f0"/>
-  <rect x="56" y="310" width="54" height="16" rx="8" fill="#e0e3fc"/>
-  <rect x="118" y="310" width="66" height="16" rx="8" fill="#e0e3fc"/>
-  <rect x="192" y="310" width="46" height="16" rx="8" fill="#e0e3fc"/>
+  <circle cx="33" cy="124" r="4" fill="#4f46e5"/>
+  <circle cx="33" cy="124" r="1.6" fill="#ffffff"/>
+  <text class="jb" x="46" y="121">Product Designer</text>
+  <text class="mt" x="46" y="130">TechNova · 2023 — Present</text>
+  <text class="bd" x="46" y="141">Led design system adoption across 6 squads,</text>
+  <text class="bd" x="46" y="150">cutting handoff time by 40%.</text>
+
+  <circle cx="33" cy="172" r="4" fill="#4f46e5"/>
+  <circle cx="33" cy="172" r="1.6" fill="#ffffff"/>
+  <text class="jb" x="46" y="169">UI Designer</text>
+  <text class="mt" x="46" y="178">Softlane · 2022 — 2023</text>
+  <text class="bd" x="46" y="189">Shipped 8 campaign microsites and a shared</text>
+  <text class="bd" x="46" y="198">component library.</text>
+
+  <circle cx="33" cy="220" r="4" fill="#4f46e5"/>
+  <circle cx="33" cy="220" r="1.6" fill="#ffffff"/>
+  <text class="jb" x="46" y="217">Design Intern</text>
+  <text class="mt" x="46" y="226">Pixelworks · 2021 — 2022</text>
+  <text class="bd" x="46" y="237">Produced marketing assets and prototypes.</text>
+
+  <circle cx="33" cy="259" r="4" fill="#4f46e5"/>
+  <circle cx="33" cy="259" r="1.6" fill="#ffffff"/>
+  <text class="jb" x="46" y="256">B.Des Visual Communication</text>
+  <text class="mt" x="46" y="265">Fergusson College · 2026</text>
+  <text class="bd" x="46" y="276">Graduated with distinction.</text>
+
+  <!-- skills chips -->
+  <text class="sh" x="24" y="312">SKILLS</text>
+  <rect x="24" y="320" width="46" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="47" y="328.5" text-anchor="middle">Figma</text>
+  <rect x="74" y="320" width="54" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="101" y="328.5" text-anchor="middle">Prototyping</text>
+  <rect x="132" y="320" width="56" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="160" y="328.5" text-anchor="middle">UX Research</text>
+  <rect x="192" y="320" width="46" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="215" y="328.5" text-anchor="middle">Webflow</text>
+
+  <rect x="24" y="338" width="52" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="50" y="346.5" text-anchor="middle">Branding</text>
+  <rect x="80" y="338" width="60" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="110" y="346.5" text-anchor="middle">Illustration</text>
+  <rect x="144" y="338" width="50" height="13" rx="6.5" fill="#eef2ff"/>
+  <text class="ch" x="169" y="346.5" text-anchor="middle">Motion</text>
 </svg>

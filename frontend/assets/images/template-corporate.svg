@@ -1,40 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Corporate template preview">
+  <style>
+    .nm{font:700 13px Inter,Arial,sans-serif;fill:#ffffff;letter-spacing:-.2px}
+    .rl{font:500 5.6px Inter,Arial,sans-serif;fill:#a9b0ff;letter-spacing:1.2px}
+    .sw{font:700 5.8px Inter,Arial,sans-serif;fill:#ffffff;letter-spacing:1.1px}
+    .bw{font:400 5px Inter,Arial,sans-serif;fill:#c7cbf8}
+    .sh{font:700 6.2px Inter,Arial,sans-serif;fill:#101828;letter-spacing:1.2px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+  </style>
   <rect width="300" height="380" fill="#ffffff"/>
+
   <!-- dark left rail -->
-  <rect x="0" y="0" width="96" height="380" fill="#131a2b"/>
-  <circle cx="48" cy="52" r="24" fill="#4f46e5"/>
-  <rect x="18" y="92" width="60" height="8" rx="4" fill="#ffffff"/>
-  <rect x="24" y="108" width="48" height="6" rx="3" fill="#6b7590"/>
+  <rect x="0" y="0" width="104" height="380" fill="#101828"/>
 
-  <rect x="18" y="146" width="40" height="6" rx="3" fill="#7c74f0"/>
-  <rect x="18" y="162" width="60" height="5" rx="2.5" fill="#3c4661"/>
-  <rect x="18" y="174" width="52" height="5" rx="2.5" fill="#3c4661"/>
-  <rect x="18" y="186" width="58" height="5" rx="2.5" fill="#3c4661"/>
+  <circle cx="52" cy="46" r="20" fill="#4f46e5"/>
+  <text x="52" y="51" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff" font-family="Inter,Arial,sans-serif">AJ</text>
+  <text class="nm" x="52" y="84" text-anchor="middle">Alex Johnson</text>
+  <text class="rl" x="52" y="95" text-anchor="middle">ENGINEER</text>
+  <line x1="20" y1="106" x2="84" y2="106" stroke="#344054" stroke-width=".8"/>
 
-  <rect x="18" y="220" width="44" height="6" rx="3" fill="#7c74f0"/>
-  <rect x="18" y="236" width="56" height="12" rx="6" fill="#4338ca"/>
-  <rect x="18" y="254" width="48" height="12" rx="6" fill="#4338ca"/>
-  <rect x="18" y="272" width="60" height="12" rx="6" fill="#4338ca"/>
+  <text class="sw" x="20" y="122">CONTACT</text>
+  <text class="bw" x="20" y="134">alex.johnson</text>
+  <text class="bw" x="20" y="144">@email.com</text>
+  <text class="bw" x="20" y="156">+91 98765 43210</text>
+  <text class="bw" x="20" y="168">Pune, India</text>
 
-  <!-- right content -->
-  <rect x="120" y="34" width="112" height="11" rx="5.5" fill="#131a2b"/>
-  <rect x="120" y="54" width="74" height="6" rx="3" fill="#6b7590"/>
+  <text class="sw" x="20" y="192">SKILLS</text>
+  <text class="bw" x="20" y="204">JavaScript</text>
+  <text class="bw" x="20" y="215">Python</text>
+  <text class="bw" x="20" y="226">React</text>
+  <text class="bw" x="20" y="237">FastAPI</text>
+  <text class="bw" x="20" y="248">SQL · Git</text>
 
-  <rect x="120" y="88" width="64" height="8" rx="4" fill="#4338ca"/>
-  <rect x="120" y="106" width="156" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="120" width="140" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="134" width="150" height="6" rx="3" fill="#e4e9f5"/>
+  <text class="sw" x="20" y="272">EDUCATION</text>
+  <text class="bw" x="20" y="284">B.Sc Computer</text>
+  <text class="bw" x="20" y="294">Science</text>
+  <text class="bw" x="20" y="306">Fergusson College</text>
+  <text class="bw" x="20" y="317">2026</text>
 
-  <rect x="120" y="166" width="52" height="8" rx="4" fill="#4338ca"/>
-  <rect x="120" y="184" width="148" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="198" width="132" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="212" width="156" height="6" rx="3" fill="#e4e9f5"/>
+  <text class="sw" x="20" y="341">LANGUAGES</text>
+  <text class="bw" x="20" y="353">English · Hindi</text>
 
-  <rect x="120" y="244" width="58" height="8" rx="4" fill="#4338ca"/>
-  <rect x="120" y="262" width="142" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="276" width="124" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="120" y="290" width="152" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- main column -->
+  <text class="sh" x="122" y="42">PROFILE</text>
+  <line x1="122" y1="46" x2="278" y2="46" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="bd" x="122" y="57">Full-stack engineer with 3 years building</text>
+  <text class="bd" x="122" y="66">scalable, well-tested web applications for</text>
+  <text class="bd" x="122" y="75">product and platform teams.</text>
 
-  <rect x="120" y="322" width="48" height="8" rx="4" fill="#4338ca"/>
-  <rect x="120" y="340" width="136" height="6" rx="3" fill="#e4e9f5"/>
+  <text class="sh" x="122" y="97">EXPERIENCE</text>
+  <line x1="122" y1="101" x2="278" y2="101" stroke="#d0d5dd" stroke-width=".6"/>
+
+  <text class="jb" x="122" y="113">Software Engineer</text>
+  <text class="mt" x="122" y="122">TechNova · 2023 — Present</text>
+  <rect x="122" y="128" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="131">Reduced page load time by 35%.</text>
+  <rect x="122" y="138" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="141">Migrated 12 services to typed APIs.</text>
+  <rect x="122" y="148" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="151">Mentored 3 junior developers.</text>
+
+  <text class="jb" x="122" y="170">Web Developer Intern</text>
+  <text class="mt" x="122" y="179">Softlane · 2022 — 2023</text>
+  <rect x="122" y="185" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="188">Built 8 responsive campaign pages.</text>
+  <rect x="122" y="195" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="198">Automated QA, halving review time.</text>
+
+  <text class="sh" x="122" y="220">PROJECTS</text>
+  <line x1="122" y1="224" x2="278" y2="224" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="jb" x="122" y="236">ResumeAI — Resume Builder</text>
+  <rect x="122" y="242" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="245">ATS scoring engine with AI feedback.</text>
+  <rect x="122" y="252" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="255">FastAPI, Supabase, vanilla JS.</text>
+
+  <text class="jb" x="122" y="274">Ledger — Finance Tracker</text>
+  <rect x="122" y="280" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="283">Expense analytics dashboard.</text>
+
+  <text class="sh" x="122" y="305">CERTIFICATIONS</text>
+  <line x1="122" y1="309" x2="278" y2="309" stroke="#d0d5dd" stroke-width=".6"/>
+  <rect x="122" y="317" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="320">Responsive Web Design — freeCodeCamp</text>
+  <rect x="122" y="327" width="2" height="2" fill="#4f46e5"/>
+  <text class="bd" x="129" y="330">AWS Cloud Practitioner — 2025</text>
 </svg>

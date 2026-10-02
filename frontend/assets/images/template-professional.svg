@@ -1,26 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Professional template preview">
+  <style>
+    .nm{font:700 15px Georgia,'Times New Roman',serif;fill:#101828}
+    .rl{font:400 7px Georgia,serif;fill:#5b6471;letter-spacing:1.1px}
+    .ct{font:400 5.2px Inter,Arial,sans-serif;fill:#8a93a3}
+    .sh{font:700 6.2px Georgia,serif;fill:#101828;letter-spacing:1.3px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+  </style>
   <rect width="300" height="380" fill="#ffffff"/>
+
   <!-- centered classic header -->
-  <rect x="90" y="26" width="120" height="13" rx="6" fill="#131a2b"/>
-  <rect x="112" y="48" width="76" height="7" rx="3.5" fill="#6b7590"/>
-  <line x1="34" y1="72" x2="266" y2="72" stroke="#4f46e5" stroke-width="2"/>
-  <!-- single column body -->
-  <rect x="34" y="90" width="70" height="8" rx="4" fill="#4f46e5"/>
-  <rect x="34" y="108" width="232" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="34" y="122" width="210" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="34" y="136" width="224" height="6" rx="3" fill="#e4e9f5"/>
+  <text class="nm" x="150" y="40" text-anchor="middle">ALEX JOHNSON</text>
+  <text class="rl" x="150" y="53" text-anchor="middle">SOFTWARE ENGINEER</text>
+  <text class="ct" x="150" y="65" text-anchor="middle">alex.johnson@email.com  ·  +91 98765 43210  ·  Pune, IN</text>
+  <line x1="32" y1="74" x2="268" y2="74" stroke="#101828" stroke-width="1.2"/>
 
-  <rect x="34" y="166" width="58" height="8" rx="4" fill="#4f46e5"/>
-  <rect x="34" y="184" width="200" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="34" y="198" width="232" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="34" y="212" width="176" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- SUMMARY -->
+  <text class="sh" x="32" y="90">SUMMARY</text>
+  <line x1="32" y1="94" x2="268" y2="94" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="bd" x="32" y="104">Full-stack engineer with 3 years building scalable web</text>
+  <text class="bd" x="32" y="113">applications. Focused on clean architecture and measurable</text>
+  <text class="bd" x="32" y="122">performance gains across product teams.</text>
 
-  <rect x="34" y="242" width="46" height="8" rx="4" fill="#4f46e5"/>
-  <rect x="34" y="260" width="218" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="34" y="274" width="190" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- EXPERIENCE -->
+  <text class="sh" x="32" y="142">EXPERIENCE</text>
+  <line x1="32" y1="146" x2="268" y2="146" stroke="#d0d5dd" stroke-width=".6"/>
 
-  <rect x="34" y="304" width="64" height="8" rx="4" fill="#4f46e5"/>
-  <rect x="34" y="322" width="52" height="16" rx="8" fill="#e0e3fc"/>
-  <rect x="94" y="322" width="66" height="16" rx="8" fill="#e0e3fc"/>
-  <rect x="168" y="322" width="44" height="16" rx="8" fill="#e0e3fc"/>
+  <text class="jb" x="32" y="157">Software Engineer — TechNova</text>
+  <text class="mt" x="268" y="157" text-anchor="end">2023 — Present</text>
+  <circle cx="35" cy="165.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="167.5">Reduced page load time by 35% via code splitting.</text>
+  <circle cx="35" cy="175.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="177.5">Led migration of 12 services to a typed API layer.</text>
+
+  <text class="jb" x="32" y="194">Web Developer Intern — Softlane</text>
+  <text class="mt" x="268" y="194" text-anchor="end">2022 — 2023</text>
+  <circle cx="35" cy="202.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="204.5">Built responsive landing pages for 8 campaigns.</text>
+  <circle cx="35" cy="212.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="214.5">Automated QA checks, cutting review time in half.</text>
+
+  <!-- PROJECTS -->
+  <text class="sh" x="32" y="234">PROJECTS</text>
+  <line x1="32" y1="238" x2="268" y2="238" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="jb" x="32" y="249">ResumeAI — ATS Resume Builder</text>
+  <circle cx="35" cy="257.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="259.5">Resume builder with an ATS scoring engine.</text>
+  <circle cx="35" cy="267.5" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="41" y="269.5">Python, FastAPI, Supabase, vanilla JS.</text>
+
+  <!-- EDUCATION -->
+  <text class="sh" x="32" y="289">EDUCATION</text>
+  <line x1="32" y1="293" x2="268" y2="293" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="jb" x="32" y="304">B.Sc Computer Science</text>
+  <text class="mt" x="268" y="304" text-anchor="end">2026</text>
+  <text class="bd" x="32" y="313">Fergusson College, Pune</text>
+
+  <!-- SKILLS -->
+  <text class="sh" x="32" y="333">SKILLS</text>
+  <line x1="32" y1="337" x2="268" y2="337" stroke="#d0d5dd" stroke-width=".6"/>
+  <text class="bd" x="32" y="348">JavaScript  ·  Python  ·  React  ·  FastAPI  ·  SQL  ·  Git</text>
+  <text class="bd" x="32" y="357">Docker  ·  REST APIs  ·  Testing  ·  Problem Solving</text>
 </svg>

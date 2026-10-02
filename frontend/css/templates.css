@@ -34,22 +34,25 @@
 
 .template-preview{
   position:relative;
-  background:var(--surface-3);
+  background:var(--bg-sunken);
   border-bottom:1px solid var(--line);
-  padding:14px;
+  padding:16px 14px 0;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:center;
-  min-height:188px;
+  height:210px;              /* fixed so every card matches exactly */
+  overflow:hidden;
 }
+/* Portrait sheet sized by HEIGHT so the border hugs the page, no side gaps */
 .template-preview img{
-  width:100%;
-  max-height:170px;
-  object-fit:contain;
+  width:auto;
+  height:100%;
+  max-width:100%;
+  display:block;
   background:#fff;
   border:1px solid var(--line);
-  border-radius:var(--radius-sm);
-  box-shadow:var(--shadow-sm);
+  border-radius:4px 4px 0 0;
+  box-shadow:var(--shadow-md);
 }
 .template-badge{
   position:absolute;
@@ -67,7 +70,7 @@
 .template-body{ padding:14px; display:flex; flex-direction:column; gap:8px; flex:1; }
 .template-body h3{ font-family:var(--font-display); color:var(--ink); font-size:15px; font-weight:650; letter-spacing:-.015em; }
 .template-body p{ color:var(--muted); font-size:13px; line-height:1.55; flex:1; letter-spacing:-.005em; }
-.template-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.template-tags{ display:flex; flex-wrap:wrap; gap:6px; min-height:22px; align-items:center; }
 .template-tags span{
   font-size:11.5px;
   padding:3px 8px;

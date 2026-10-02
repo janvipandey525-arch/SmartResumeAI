@@ -253,16 +253,22 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   padding:8px 10px 10px;
 }
 .hero-shot-bar i{ width:9px; height:9px; border-radius:50%; background:var(--line-strong); display:block; }
+/* Resume sheets are portrait — show them whole on a workspace backdrop */
 .hero-shot-view{
   border-radius:var(--radius-lg);
   border:1px solid var(--line);
-  background:var(--surface-2);
+  background:var(--bg-sunken);
   overflow:hidden;
-  height:clamp(260px,34vw,420px);
+  height:clamp(300px,36vw,430px);
+  display:flex; align-items:flex-start; justify-content:center;
+  gap:18px; padding:22px 18px 0;
 }
 .hero-shot img{
-  display:block; width:100%; height:100%;
-  object-fit:cover; object-position:top center;
+  display:block; width:auto; height:auto;
+  max-height:100%; max-width:46%;
+  border-radius:4px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
   background:#fff;
 }
 
@@ -354,14 +360,20 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   position:relative;
   border-radius:var(--radius-lg);
   border:1px solid var(--line);
-  box-shadow:var(--shadow-lg);
-  background:#fff;
+  box-shadow:var(--shadow-md);
+  background:var(--bg-sunken);
   overflow:hidden;
-  height:clamp(300px,30vw,400px);
+  height:clamp(320px,32vw,420px);
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
 }
 .hero-art img{
-  display:block; width:100%; height:100%;
-  object-fit:cover; object-position:top center;
+  display:block; width:auto; height:100%;
+  max-width:100%;
+  border-radius:4px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
+  background:#fff;
 }
 
 /* CTA — dense dark panel with texture */

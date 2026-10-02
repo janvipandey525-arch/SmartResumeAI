@@ -1,39 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="300" height="380" role="img" aria-label="Modern template preview">
-  <defs>
-    <linearGradient id="m1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#4338ca"/>
-    </linearGradient>
-  </defs>
+  <style>
+    .nm{font:700 15px Inter,Arial,sans-serif;fill:#ffffff;letter-spacing:-.3px}
+    .rl{font:500 6.4px Inter,Arial,sans-serif;fill:#c7cbf8;letter-spacing:1.4px}
+    .ct{font:400 5.2px Inter,Arial,sans-serif;fill:#e0e3fc}
+    .sh{font:700 6.2px Inter,Arial,sans-serif;fill:#4338ca;letter-spacing:1.2px}
+    .shw{font:700 6.2px Inter,Arial,sans-serif;fill:#101828;letter-spacing:1.2px}
+    .bd{font:400 5.4px Inter,Arial,sans-serif;fill:#344054}
+    .mt{font:400 5px Inter,Arial,sans-serif;fill:#8a93a3}
+    .jb{font:600 5.8px Inter,Arial,sans-serif;fill:#101828}
+    .ch{font:500 5px Inter,Arial,sans-serif;fill:#3730a3}
+  </style>
   <rect width="300" height="380" fill="#ffffff"/>
-  <!-- gradient banner header -->
-  <rect x="0" y="0" width="300" height="96" fill="url(#m1)"/>
-  <circle cx="46" cy="48" r="22" fill="#ffffff" opacity=".9"/>
-  <rect x="82" y="34" width="118" height="12" rx="6" fill="#ffffff"/>
-  <rect x="82" y="56" width="80" height="7" rx="3.5" fill="#ffffff" opacity=".7"/>
-  <!-- two column body -->
-  <rect x="24" y="120" width="60" height="8" rx="4" fill="#4338ca"/>
-  <rect x="24" y="138" width="150" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="152" width="134" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="166" width="146" height="6" rx="3" fill="#e4e9f5"/>
 
-  <rect x="24" y="196" width="50" height="8" rx="4" fill="#4338ca"/>
-  <rect x="24" y="214" width="140" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="228" width="120" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="242" width="152" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="256" width="112" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- header band -->
+  <rect x="0" y="0" width="300" height="86" fill="#4f46e5"/>
+  <circle cx="44" cy="43" r="21" fill="#ffffff" opacity=".16"/>
+  <circle cx="44" cy="43" r="21" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="1"/>
+  <text x="44" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff" font-family="Inter,Arial,sans-serif">AJ</text>
+  <text class="nm" x="78" y="38">Alex Johnson</text>
+  <text class="rl" x="78" y="50">SOFTWARE ENGINEER</text>
+  <text class="ct" x="78" y="64">alex.johnson@email.com  ·  +91 98765 43210</text>
 
-  <rect x="24" y="286" width="58" height="8" rx="4" fill="#4338ca"/>
-  <rect x="24" y="304" width="132" height="6" rx="3" fill="#e4e9f5"/>
-  <rect x="24" y="318" width="148" height="6" rx="3" fill="#e4e9f5"/>
+  <!-- MAIN COLUMN -->
+  <text class="sh" x="22" y="108">PROFILE</text>
+  <rect x="22" y="112" width="18" height="1.6" fill="#4f46e5"/>
+  <text class="bd" x="22" y="124">Full-stack engineer with 3 years building</text>
+  <text class="bd" x="22" y="133">scalable products and clean API design.</text>
 
-  <!-- sidebar -->
-  <rect x="196" y="112" width="80" height="240" rx="12" fill="#eef2ff"/>
-  <rect x="210" y="130" width="42" height="7" rx="3.5" fill="#4338ca"/>
-  <rect x="210" y="148" width="52" height="14" rx="7" fill="#e0e3fc"/>
-  <rect x="210" y="168" width="44" height="14" rx="7" fill="#e0e3fc"/>
-  <rect x="210" y="188" width="56" height="14" rx="7" fill="#e0e3fc"/>
-  <rect x="210" y="222" width="42" height="7" rx="3.5" fill="#4338ca"/>
-  <rect x="210" y="240" width="52" height="6" rx="3" fill="#e0e3fc"/>
-  <rect x="210" y="254" width="46" height="6" rx="3" fill="#e0e3fc"/>
-  <rect x="210" y="268" width="54" height="6" rx="3" fill="#e0e3fc"/>
+  <text class="sh" x="22" y="153">EXPERIENCE</text>
+  <rect x="22" y="157" width="18" height="1.6" fill="#4f46e5"/>
+
+  <text class="jb" x="22" y="169">Software Engineer</text>
+  <text class="mt" x="22" y="178">TechNova · 2023 — Present</text>
+  <circle cx="25" cy="187" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="189">Cut page load time by 35%.</text>
+  <circle cx="25" cy="197" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="199">Migrated 12 services to typed APIs.</text>
+
+  <text class="jb" x="22" y="216">Web Developer Intern</text>
+  <text class="mt" x="22" y="225">Softlane · 2022 — 2023</text>
+  <circle cx="25" cy="234" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="236">Built 8 responsive campaign pages.</text>
+  <circle cx="25" cy="244" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="246">Automated QA, halving review time.</text>
+
+  <text class="sh" x="22" y="266">PROJECTS</text>
+  <rect x="22" y="270" width="18" height="1.6" fill="#4f46e5"/>
+  <text class="jb" x="22" y="282">ResumeAI</text>
+  <circle cx="25" cy="291" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="293">ATS resume builder and analyzer.</text>
+  <circle cx="25" cy="301" r="1.1" fill="#4f46e5"/>
+  <text class="bd" x="31" y="303">FastAPI, Supabase, vanilla JS.</text>
+
+  <text class="sh" x="22" y="323">EDUCATION</text>
+  <rect x="22" y="327" width="18" height="1.6" fill="#4f46e5"/>
+  <text class="jb" x="22" y="339">B.Sc Computer Science</text>
+  <text class="mt" x="22" y="348">Fergusson College · 2026</text>
+
+  <!-- SIDEBAR -->
+  <rect x="196" y="98" width="82" height="258" rx="5" fill="#eef2ff"/>
+
+  <text class="shw" x="206" y="116">SKILLS</text>
+  <rect x="206" y="123" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="131">JavaScript</text>
+  <rect x="206" y="139" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="147">Python</text>
+  <rect x="206" y="155" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="163">React</text>
+  <rect x="206" y="171" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="179">FastAPI</text>
+  <rect x="206" y="187" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="195">SQL</text>
+  <rect x="206" y="203" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="211">Git</text>
+
+  <text class="shw" x="206" y="236">TOOLS</text>
+  <rect x="206" y="243" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="251">Docker</text>
+  <rect x="206" y="259" width="62" height="12" rx="6" fill="#ffffff"/>
+  <text class="ch" x="212" y="267">Figma</text>
+
+  <text class="shw" x="206" y="292">LANGUAGES</text>
+  <text class="bd" x="206" y="304">English — Fluent</text>
+  <text class="bd" x="206" y="315">Hindi — Native</text>
+
+  <text class="shw" x="206" y="334">CERTIFICATES</text>
+  <text class="bd" x="206" y="346">freeCodeCamp 2025</text>
 </svg>
