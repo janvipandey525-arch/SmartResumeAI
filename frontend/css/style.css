@@ -569,7 +569,14 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
 
 /* ---- Tablet / small laptop ---- */
 @media(max-width:900px){
-  .hero-shot-view{ height:clamp(240px,42vw,340px); padding:16px 14px 0; }
+  /* Two portrait sheets side by side get too narrow to read below this —
+     stack them one below the other and size the frame to the content. */
+  .hero-shot-view{
+    height:auto; aspect-ratio:auto;
+    flex-direction:column; align-items:center;
+    gap:16px; padding:18px 16px;
+  }
+  .hero-shot img{ max-width:100%; max-height:none; width:min(100%,340px); }
   .hero-stats{ margin-top:36px; }
 }
 
@@ -645,8 +652,14 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   .hero-actions .btn{ width:100%; }
   .hero-note{ gap:10px 16px; margin-bottom:34px; font-size:12px; }
   .hero-shot{ padding:6px; border-radius:var(--radius-lg); }
-  .hero-shot-view{ height:auto; aspect-ratio:3/4; gap:10px; padding:14px 10px 0; }
-  .hero-shot img{ max-width:48%; }
+  /* Side-by-side shrinks each sheet to an unreadable thumbnail here —
+     stack them and let the frame grow to fit instead of fixing a ratio. */
+  .hero-shot-view{
+    height:auto; aspect-ratio:auto;
+    flex-direction:column; align-items:center;
+    gap:14px; padding:14px 14px;
+  }
+  .hero-shot img{ max-width:100%; max-height:none; width:min(100%,300px); }
   .hero-stats{ margin-top:32px; }
   .hero-stats div{ padding:16px 14px; }
   .hero-stats strong{ font-size:24px; }
