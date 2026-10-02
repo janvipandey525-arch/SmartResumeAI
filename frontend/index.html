@@ -11,10 +11,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Icons are decorative: load non-blocking so they never delay first paint. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
 
-  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/style.css?v=16">
 </head>
 
 <body>
@@ -69,8 +74,8 @@
         <div class="hero-shot">
           <div class="hero-shot-bar"><i></i><i></i><i></i></div>
           <div class="hero-shot-view">
-            <img src="assets/images/template-modern.svg" alt="Modern resume template preview">
-            <img src="assets/images/template-corporate.svg" alt="Corporate resume template preview">
+            <img src="assets/images/template-modern.svg" width="300" height="380" loading="eager" fetchpriority="high" decoding="async" alt="Modern resume template preview">
+            <img src="assets/images/template-corporate.svg" width="300" height="380" loading="eager" fetchpriority="high" decoding="async" alt="Corporate resume template preview">
           </div>
         </div>
 
@@ -144,7 +149,7 @@
         </div>
 
         <div class="hero-art">
-          <img src="assets/images/template-modern.svg" alt="Preview of a modern ResumeAI resume template">
+          <img src="assets/images/template-modern.svg" width="300" height="380" loading="lazy" decoding="async" alt="Preview of a modern ResumeAI resume template">
         </div>
       </div>
     </section>
@@ -217,8 +222,8 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=15"></script>
-  <script src="js/script.js?v=15"></script>
+  <script src="js/config.js?v=16"></script>
+  <script src="js/script.js?v=16"></script>
 </body>
 
 </html>

@@ -31,6 +31,17 @@
     });
   }
 
+  // Pages that never touch auth. Loading the 200KB+ supabase-js bundle (plus a
+  // blocking /api/config round-trip) on these just delays first paint, so skip
+  // the whole bootstrap and resolve SB_READY to null. script.js already treats
+  // a null client as "public page" and its auth guards never run here.
+  const PUBLIC_PAGES = ["", "index.html", "index"];
+  const page = location.pathname.split("/").pop();
+  if (PUBLIC_PAGES.includes(page)) {
+    window.SB_READY = Promise.resolve(null);
+    return;
+  }
+
   // Resolves to the Supabase client (window.sb), or null if the server has no
   // Supabase config yet. Every page awaits this before touching auth.
   window.SB_READY = (async function initSupabase() {

@@ -13,7 +13,8 @@
    js/script.js and preview.css keep resolving. preview.css
    re-scopes its own palette onto .resume-paper.
    ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap');
+/* Inter is loaded via a <link> in each page's <head>, not @import — an @import
+   here forces a serial waterfall (html → css → import → font css → woff2). */
 
 /* ---------- Design tokens ---------- */
 :root{

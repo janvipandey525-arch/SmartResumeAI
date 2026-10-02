@@ -8,11 +8,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Icons are decorative: load non-blocking so they never delay first paint. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
 
-  <link rel="stylesheet" href="css/style.css?v=15">
-  <link rel="stylesheet" href="css/buildresume.css?v=15">
+  <link rel="stylesheet" href="css/style.css?v=16">
+  <link rel="stylesheet" href="css/buildresume.css?v=16">
 </head>
 <body>
 
@@ -56,7 +61,7 @@
 
       <div class="topbar-right">
         <a href="profile.html" class="topbar-avatar">
-          <img src="assets/images/avatar.svg" alt="Your profile picture">
+          <img src="assets/images/avatar.svg" width="40" height="40" loading="lazy" decoding="async" alt="Your profile picture">
         </a>
       </div>
     </header>
@@ -228,7 +233,7 @@
   </div>
 </div>
 
-<script src="js/config.js?v=15"></script>
-<script src="js/script.js?v=15"></script>
+<script src="js/config.js?v=16"></script>
+<script src="js/script.js?v=16"></script>
 </body>
 </html>
