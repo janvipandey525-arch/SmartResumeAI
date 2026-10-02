@@ -38,7 +38,7 @@
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
-  padding:18px 18px 20px;
+  padding:20px 22px 22px;
   box-shadow:var(--shadow-sm), var(--inner-hl);
 }
 
