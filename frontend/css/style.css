@@ -419,6 +419,7 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   transition:border-color .15s ease,color .15s ease,background .15s ease; text-decoration:none;
 }
 .footer-social a:hover{ border-color:var(--accent-200); color:var(--accent); background:var(--accent-50); }
+.footer-social svg{ display:block; }
 .footer h4{ margin-bottom:13px; font-size:12px; font-weight:700; color:var(--ink); letter-spacing:.06em; text-transform:uppercase; }
 .footer-links{ list-style:none; }
 .footer-links li{ margin-bottom:9px; }
