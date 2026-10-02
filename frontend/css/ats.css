@@ -21,6 +21,7 @@
   padding:18px;
   margin-bottom:16px;
 }
+.ats-grid > div > .ats-panel:last-child{ margin-bottom:0; }
 .ats-panel .content-title{
   margin:-18px -18px 16px;
   padding:14px 18px 13px;

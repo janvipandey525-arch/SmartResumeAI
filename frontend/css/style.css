@@ -303,7 +303,7 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
 #features{ background:var(--bg-raise); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* Dense feature grid — bento-ish, richer cards */
-.feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; align-items:stretch; }
 .card{
   position:relative;
   background:var(--surface);
@@ -329,7 +329,8 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
 
 /* About — richer, with a checklist + framed art */
 .about{ background:var(--bg); }
-.about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,60px); align-items:center; }
+.about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,60px); align-items:start; }
+.about-grid > div:first-child{ padding-top:4px; }
 .about-grid h2{
   font-family:var(--font-display);
   font-size:clamp(24px,3vw,34px); font-weight:700; letter-spacing:-.03em; line-height:1.18;
@@ -495,8 +496,9 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   border-bottom:1px solid var(--line);
   position:sticky; top:0; z-index:50;
 }
-.topbar h1{ font-family:var(--font-display); font-size:19px; font-weight:700; letter-spacing:-.025em; color:var(--ink); }
-.topbar p{ font-size:12.5px; color:var(--muted); margin-top:1px; }
+.topbar-left{ display:flex; align-items:center; gap:14px; min-width:0; }
+.topbar h1{ font-family:var(--font-display); font-size:19px; font-weight:700; letter-spacing:-.025em; color:var(--ink); line-height:1.3; }
+.topbar p{ font-size:12.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
 .sidebar-toggle{ display:none; background:none; border:none; color:var(--ink); font-size:19px; cursor:pointer; }
 .topbar-right{ display:flex; align-items:center; gap:10px; }
 .topbar-avatar{
@@ -515,6 +517,8 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
 .topbar-avatar .avatar-initials{ font-size:14px; }
 
 .content{ padding:clamp(18px,3vw,26px) clamp(16px,3vw,28px); flex:1; }
+/* One shared measure so every app page aligns to the same column */
+.content > *{ max-width:1160px; margin-left:auto; margin-right:auto; }
 .content-title{
   display:flex; align-items:center; gap:8px;
   font-family:var(--font-display);

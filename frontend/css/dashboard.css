@@ -46,7 +46,7 @@
 .stat-card{
   position:relative;
   display:flex;
-  align-items:flex-start;
+  align-items:center;
   gap:14px;
   background:var(--surface);
   border:1px solid var(--line);
@@ -95,6 +95,7 @@
   display:grid;
   grid-template-columns:1.4fr 1fr;
   gap:16px;
+  align-items:start;        /* panels size to content, no stretched empty space */
 }
 .tips-list{ display:flex; flex-direction:column; }
 .tip{
