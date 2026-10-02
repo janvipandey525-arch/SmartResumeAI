@@ -106,3 +106,32 @@
 .template-note h4{ font-family:var(--font-display); color:var(--ink); margin-bottom:3px; font-size:14px; font-weight:650; letter-spacing:-.01em; }
 .template-note p{ color:var(--muted); font-size:13px; line-height:1.55; }
 .template-note strong{ color:var(--ink); }
+
+/* Phone: two-up is too cramped below 600px, but one giant card per
+   screen means endless scrolling through 8 templates. Keep 2 columns
+   down to 430px with a shorter preview, then go single. */
+@media (max-width:600px){
+  .template-grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+  .templates-head h2{ font-size:19px; }
+  .templates-head p{ font-size:13.5px; }
+  .template-preview{ height:150px; padding:10px 8px 0; }
+  /* Narrow cards leave no clear margin, so the badge lands on the sheet —
+     shrink it and let the thumbnail start below it. */
+  .template-badge{ top:6px; left:6px; font-size:9.5px; padding:2px 6px; }
+  .template-body{ padding:11px; gap:6px; }
+  .template-body h3{ font-size:14px; }
+  .template-body p{ font-size:12px; line-height:1.5; }
+  /* Tags are nice-to-have; the card is too narrow to carry them here. */
+  .template-tags{ display:none; }
+  .template-body .btn{ min-height:40px; font-size:13px; padding:9px 10px; }
+  .template-note{ padding:12px 13px; gap:11px; }
+  .template-note i{ width:30px; height:30px; font-size:14px; }
+}
+/* Only the narrowest phones (≤360px) go single-column — at 390px two
+   cards still read fine and halve the scroll through 8 templates. */
+@media (max-width:360px){
+  .template-grid{ grid-template-columns:1fr; gap:12px; }
+  .template-preview{ height:230px; }
+  .template-body{ padding:13px; }
+  .template-body .btn{ min-height:44px; font-size:13.5px; }
+}

@@ -140,3 +140,17 @@
   .form-actions .buttons{ flex-direction:column; }
   .form-actions .buttons .btn{ width:100%; }
 }
+
+@media(max-width:760px){
+  /* 44px typing targets; 16px text also stops iOS zooming on focus. */
+  .field input{ min-height:44px; padding:11px 13px; }
+  .field textarea{ min-height:112px; padding:11px 13px; }
+  .builder-intro{ padding:11px 12px; gap:10px; }
+  .builder-intro i{ width:28px; height:28px; font-size:13px; }
+  .builder-intro h2{ font-size:13.5px; }
+  .builder-intro p{ font-size:12px; }
+  .form-section{ padding:16px 14px 18px; border-radius:var(--radius); }
+  .section-title{ padding-bottom:11px; margin-bottom:13px; gap:9px; }
+  .builder-wrap,#resumeForm{ gap:14px; }
+  .form-actions{ padding:12px 14px; }
+}

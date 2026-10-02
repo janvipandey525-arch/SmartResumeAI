@@ -287,3 +287,11 @@
   .score-ring{ width:120px; height:120px; }
   .score-value{ font-size:28px; }
 }
+
+@media (max-width:760px){
+  .ats-panel{ padding:14px; margin-bottom:14px; border-radius:var(--radius); }
+  .ats-panel .content-title{ margin:-14px -14px 14px; padding:12px 14px 11px; }
+  .ats-grid{ gap:14px; }
+  .upload-box{ padding:20px 14px; }
+  .score-ring{ width:128px; height:128px; }
+}

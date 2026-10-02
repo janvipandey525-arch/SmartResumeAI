@@ -170,3 +170,10 @@
   .detail-grid{ grid-template-columns:1fr; }
   .edit-grid{ grid-template-columns:1fr; }
 }
+
+@media(max-width:760px){
+  .profile-head{ padding:0 16px 16px; gap:14px; }
+  .profile-avatar{ width:72px; height:72px; margin-top:-28px; }
+  .profile-identity{ padding-top:10px; }
+  .profile-panel{ padding:16px 14px; }
+}

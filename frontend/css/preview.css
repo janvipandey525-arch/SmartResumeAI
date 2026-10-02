@@ -337,3 +337,19 @@
   .tpl-corporate .rz-main, .tpl-corporate .rz-side,
   .tpl-creative .rz-main, .tpl-creative .rz-side{ padding:18px 24px; border:none; }
 }
+
+/* Phone: the sheet is the whole point of this page — give it the full
+   width and trim the generous print padding so the text isn't a column
+   of two words. The @media print block above is untouched. */
+@media (max-width:480px){
+  .paper-wrap{ padding-bottom:24px; }
+  .resume-paper{ font-size:13.5px; border-radius:var(--radius-sm); }
+  .rz-header{ padding:22px 16px 14px; }
+  .rz-name{ font-size:1.55rem; }
+  .rz-main, .rz-side{ padding:0 16px; }
+  .tpl-corporate .rz-header, .tpl-creative .rz-header{ padding:20px 16px; }
+  .tpl-corporate .rz-main, .tpl-corporate .rz-side,
+  .tpl-creative .rz-main, .tpl-creative .rz-side{ padding:14px 16px; }
+  .preview-bar{ gap:8px; margin-bottom:14px; }
+  .preview-bar .btn{ flex:1; min-width:140px; }
+}

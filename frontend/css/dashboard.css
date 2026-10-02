@@ -159,3 +159,8 @@
   .stat-card{ padding:14px; }
   .action-item{ padding:10px 12px; }
 }
+
+@media(max-width:760px){
+  .welcome-card{ padding:18px 16px; }
+  .dash-grid,.stats-grid{ gap:12px; }
+}

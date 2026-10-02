@@ -556,3 +556,128 @@ h1,h2,h3,h4,.serif{ font-family:var(--font-display); }
   .main{ margin-left:0; }
   .sidebar-toggle{ display:block; }
 }
+
+/* =========================================================
+   MOBILE LAYER
+   Phones are the narrow case the desktop layout was never
+   sized for: the topbar packs a title + subtitle + action
+   buttons onto one row, which wraps into a 3-line header and
+   eats half the viewport. Below 760px the topbar stacks, the
+   actions become a full-width row, and every control is
+   grown to a 44px touch target (Apple/WCAG 2.5.8 minimum).
+   ========================================================= */
+
+/* ---- Tablet / small laptop ---- */
+@media(max-width:900px){
+  .hero-shot-view{ height:clamp(240px,42vw,340px); padding:16px 14px 0; }
+  .hero-stats{ margin-top:36px; }
+}
+
+/* ---- Phone ---- */
+@media(max-width:760px){
+  /* Comfortable reading size; stops iOS zooming on focus (<16px triggers it). */
+  input,select,textarea{ font-size:16px; }
+
+  /* --- Topbar: stack instead of cramming one row --- */
+  .topbar{
+    flex-direction:column; align-items:stretch; gap:10px;
+    padding:10px 16px 12px;
+  }
+  .topbar-left{ gap:10px; }
+  .topbar-left > div{ min-width:0; flex:1; }
+  .topbar h1{ font-size:17px; line-height:1.25; }
+  .topbar p{
+    font-size:12px;
+    /* Subtitles are supporting copy — one line, never a 3-line wrap. */
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  /* Avatar belongs beside the title, not in the stacked action row. */
+  .topbar-left{ position:relative; padding-right:46px; }
+  .topbar-right{
+    gap:8px; width:100%;
+    display:flex; align-items:center;
+  }
+  .topbar-right .topbar-avatar{
+    position:absolute; top:0; right:0;
+    width:38px; height:38px;
+  }
+  /* Buttons share the row evenly and hit 44px. */
+  .topbar-right .btn{
+    flex:1; min-width:0; justify-content:center;
+    min-height:44px; padding:10px 12px; font-size:13.5px;
+    white-space:nowrap;
+  }
+  /* A topbar whose only action is the avatar needs no second row. */
+  .topbar-right:not(:has(.btn)){ display:contents; }
+
+  /* --- Touch targets --- */
+  .sidebar-toggle{
+    width:44px; height:44px; flex:none;
+    display:inline-flex; align-items:center; justify-content:center;
+    margin-left:-10px; border-radius:var(--radius-sm);
+  }
+  /* Hide by its own width — a fixed -252px offset would leave the extra
+     width of a wider drawer sitting on top of the page content. */
+  .sidebar{ width:min(84vw,290px); padding:16px 12px; left:calc(-1 * min(84vw,290px) - 2px); }
+  .sidebar.open{ left:0; }
+  .sidebar-menu{ gap:4px; }
+  .sidebar-menu a,.sidebar-foot a{ padding:12px 12px; font-size:15px; }
+  .sidebar-menu a i{ font-size:16px; }
+  /* Stays visible — the @media(max-width:760px) block above reveals it;
+     this only grows it to a 44px target. */
+  .nav-toggle{
+    width:44px; height:44px;
+    display:inline-flex; align-items:center; justify-content:center;
+    margin-right:-10px; border-radius:var(--radius-sm);
+  }
+  .nav-links a{ padding:14px 0; font-size:15px; }
+  .nav-links a.btn{ min-height:44px; }
+  .btn{ min-height:44px; }
+  .btn-sm{ min-height:38px; }
+
+  /* --- Landing --- */
+  .navbar{ padding:0 16px; }
+  .hero{ padding:92px 18px 52px; }
+  .hero h1{ font-size:clamp(29px,8vw,38px); letter-spacing:-.03em; }
+  .hero .lead{ font-size:15.5px; }
+  .hero .tag{ margin-bottom:18px; }
+  .hero-actions{ flex-direction:column; align-items:stretch; gap:9px; }
+  .hero-actions .btn{ width:100%; }
+  .hero-note{ gap:10px 16px; margin-bottom:34px; font-size:12px; }
+  .hero-shot{ padding:6px; border-radius:var(--radius-lg); }
+  .hero-shot-view{ height:auto; aspect-ratio:3/4; gap:10px; padding:14px 10px 0; }
+  .hero-shot img{ max-width:48%; }
+  .hero-stats{ margin-top:32px; }
+  .hero-stats div{ padding:16px 14px; }
+  .hero-stats strong{ font-size:24px; }
+  .section{ padding:clamp(44px,9vw,60px) 0; }
+  .section-head{ margin-bottom:30px; }
+  .section-head h2{ font-size:clamp(24px,6.4vw,30px); }
+  .section-head p{ font-size:15px; }
+  .hero-art{ height:auto; aspect-ratio:4/5; padding:16px; }
+  .cta-banner{ padding:36px 20px; border-radius:var(--radius-lg); }
+  .footer-grid{ grid-template-columns:1fr; gap:26px; }
+
+  /* --- App content --- */
+  .content{ padding:14px 16px 28px; }
+  .panel{ padding:16px; border-radius:var(--radius); }
+}
+
+/* ---- Small phones ---- */
+@media(max-width:400px){
+  .content{ padding:12px 12px 24px; }
+  .topbar{ padding:10px 12px 12px; }
+  .hero{ padding:88px 14px 46px; }
+  .container{ padding:0 14px; }
+  .topbar-right .btn{ font-size:12.5px; padding:10px 8px; }
+  /* Long labels ("Back to Dashboard") can't fit — keep the icon, drop the word. */
+  .topbar-right .btn span.btn-label{ display:none; }
+}
+
+/* Footer/link touch targets — text links sit at their 16px line box, which
+   is a hard target on a phone. Pad them out without changing the look. */
+@media(max-width:760px){
+  .footer-links a{ display:inline-block; padding:7px 0; }
+  .footer-social a{ width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; }
+  .up-alt a{ display:inline-block; padding:6px 0; }
+}
