@@ -3,15 +3,15 @@
    Template gallery. App shell lives in style.css.
    ========================================================= */
 
-.templates-head{ margin-bottom:28px; }
-.templates-head h2{ font-family:var(--font-display); font-size:25px; color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
-.templates-head p{ color:var(--muted); font-size:15px; }
+.templates-head{ margin-bottom:18px; }
+.templates-head h2{ font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--ink); margin-bottom:5px; letter-spacing:-.02em; }
+.templates-head p{ color:var(--muted); font-size:14px; letter-spacing:-.01em; }
 
 .template-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:22px;
-  margin-bottom:32px;
+  gap:14px;
+  margin-bottom:22px;
 }
 @media (max-width:980px){ .template-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:600px){ .template-grid{ grid-template-columns:1fr; } }
@@ -22,35 +22,34 @@
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
   overflow:hidden;
-  box-shadow:var(--shadow-sm);
+  box-shadow:var(--shadow-sm), var(--inner-hl);
   transition:border-color .15s ease, box-shadow .15s ease;
   display:flex;
   flex-direction:column;
 }
 .template-card:hover{
   border-color:var(--line-strong);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-md);
 }
 
 .template-preview{
   position:relative;
-  margin:16px;
-  background:var(--bg-raise);
-  border:1px solid var(--line);
-  border-radius:calc(var(--radius) - 4px);
+  background:var(--surface-3);
+  border-bottom:1px solid var(--line);
   padding:14px;
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:220px;
-  box-shadow:inset 0 0 0 1px #fff;
+  min-height:188px;
 }
 .template-preview img{
   width:100%;
-  max-height:220px;
+  max-height:170px;
   object-fit:contain;
-  border-radius:6px;
   background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm);
 }
 .template-badge{
   position:absolute;
@@ -59,42 +58,48 @@
   color:#fff;
   font-size:11px;
   font-weight:700;
-  padding:4px 12px;
+  padding:3px 8px;
   border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-xs);
+  letter-spacing:-.005em;
 }
-.template-body{ padding:6px 20px 22px; display:flex; flex-direction:column; flex:1; }
-.template-body h3{ font-family:var(--font-display); color:var(--ink); font-size:18px; margin-bottom:8px; letter-spacing:-.01em; }
-.template-body p{ color:var(--muted); font-size:13.5px; line-height:1.6; margin-bottom:14px; flex:1; }
-.template-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+
+.template-body{ padding:14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.template-body h3{ font-family:var(--font-display); color:var(--ink); font-size:15px; font-weight:650; letter-spacing:-.015em; }
+.template-body p{ color:var(--muted); font-size:13px; line-height:1.55; flex:1; letter-spacing:-.005em; }
+.template-tags{ display:flex; flex-wrap:wrap; gap:6px; }
 .template-tags span{
   font-size:11.5px;
-  padding:4px 10px;
+  padding:3px 8px;
   border-radius:var(--radius-pill);
   background:var(--surface-2);
   border:1px solid var(--line);
   color:var(--muted);
+  font-weight:500;
 }
+.template-body .btn{ margin-top:4px; }
 
 .template-note{
   display:flex;
-  gap:16px;
+  gap:14px;
   align-items:flex-start;
   background:var(--accent-50);
   border:1px solid var(--accent-100);
   border-radius:var(--radius-lg);
-  padding:22px 24px;
+  padding:14px 16px;
 }
 .template-note i{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:40px; height:40px;
+  width:34px; height:34px;
   flex:none;
-  border-radius:12px;
-  background:var(--accent-100);
-  color:var(--accent-700);
-  font-size:18px;
+  border-radius:var(--radius-sm);
+  background:var(--accent);
+  color:#fff;
+  font-size:15px;
+  box-shadow:var(--shadow-xs);
 }
-.template-note h4{ font-family:var(--font-display); color:var(--ink); margin-bottom:4px; font-size:15px; }
-.template-note p{ color:var(--muted); font-size:13.5px; line-height:1.6; }
+.template-note h4{ font-family:var(--font-display); color:var(--ink); margin-bottom:3px; font-size:14px; font-weight:650; letter-spacing:-.01em; }
+.template-note p{ color:var(--muted); font-size:13px; line-height:1.55; }
 .template-note strong{ color:var(--ink); }
