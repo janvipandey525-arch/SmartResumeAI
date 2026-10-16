@@ -1,0 +1,94 @@
+
+# Keeps the Supabase project from being paused for inactivity.
+#
+# Supabase pauses free-tier projects after ~7 days with no database activity,
+# and an paused project takes a manual click in the dashboard to restore. A
+# plain uptime ping on the site is NOT enough: the frontend is static and
+# /api/health answers without ever opening a connection, so neither counts as
+# database activity. This job hits /api/health/db, which runs a real query.
+#
+# Runs every 3 days, which is comfortably inside the ~7 day window even if one
+# or two runs are skipped or GitHub delays the schedule.
+#
+# Setup: no secrets needed for the default public URL. To point it at a
+# different deployment, set a repository variable named HEALTHCHECK_URL
+# (Settings > Secrets and variables > Actions > Variables).
+name: Supabase keepalive
+
+on:
+  schedule:
+    # 07:17 UTC every 3rd day. Deliberately not on the hour: GitHub delays jobs
+    # scheduled at popular times like midnight under load.
+    - cron: "17 7 */3 * *"
+  # Lets you prove it works without waiting days for the schedule.
+  workflow_dispatch:
+
+# If a run is somehow still going when the next fires, don't stack them.
+concurrency:
+  group: supabase-keepalive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    name: Ping database health endpoint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Query /api/health/db
+        env:
+          # Repository variable wins; otherwise fall back to the live site.
+          HEALTHCHECK_URL: ${{ vars.HEALTHCHECK_URL || 'https://smart-resume-ai.vercel.app/api/health/db' }}
+        run: |
+          set -euo pipefail
+
+          echo "Pinging $HEALTHCHECK_URL"
+
+          # Retry a few times: a cold serverless function or a database waking
+          # up can exceed the first request's budget, and a single transient
+          # 503 should not be reported as the project being down.
+          for attempt in 1 2 3 4 5; do
+            # Clear any body from a previous attempt, otherwise a failed curl
+            # leaves the last success on disk and we'd print a stale "up".
+            rm -f response.json
+
+            http_code=$(curl \
+              --silent \
+              --show-error \
+              --location \
+              --max-time 30 \
+              --output response.json \
+              --write-out '%{http_code}' \
+              "$HEALTHCHECK_URL") && curl_ok=1 || curl_ok=0
+
+            if [ "$curl_ok" = "1" ] && [ "$http_code" = "200" ]; then
+              echo "OK (HTTP $http_code) on attempt $attempt"
+              cat response.json
+              echo
+              # Fail loudly if the endpoint returns 200 but reports the
+              # database as down - that would silently defeat the keepalive.
+              if ! grep -q '"database"[[:space:]]*:[[:space:]]*"up"' response.json; then
+                echo "::error::Endpoint returned 200 but database is not reported as up."
+                exit 1
+              fi
+              echo "Supabase responded - project stays active."
+              exit 0
+            fi
+
+            [ -s response.json ] && { cat response.json; echo; }
+
+            # Last attempt: don't sleep, just fall through to the error below.
+            if [ "$attempt" = "5" ]; then
+              echo "Attempt $attempt failed (HTTP ${http_code:-none})."
+              break
+            fi
+
+            # 10s, 20s, 30s, 40s - enough to ride out a cold start without
+            # leaving the runner idling for minutes on a genuine outage.
+            delay=$((attempt * 10))
+            echo "Attempt $attempt failed (HTTP ${http_code:-none}). Retrying in ${delay}s..."
+            sleep "$delay"
+          done
+
+          echo "::error::Keepalive failed after 5 attempts - Supabase may be paused or the deployment is down."
+          exit 1
