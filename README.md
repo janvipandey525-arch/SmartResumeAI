@@ -146,6 +146,27 @@ Variables panel.
    - **Transaction pooler** connection string (port 6543) → the green **Connect** button.
 4. Put them in `backend/.env` (or Coolify). Prefix the pooler URL with `postgresql+psycopg://`.
 
+### Keeping the project awake
+
+Supabase pauses free-tier projects after roughly **7 days without database
+activity**, and un-pausing needs a manual click in the dashboard.
+
+Two pieces handle this:
+
+| Piece | What it does |
+| --- | --- |
+| `GET /api/health/db` | Runs a real `SELECT 1` against Postgres and returns `{"database":"up","latency_ms":…}`, or **503** if the database is unreachable. |
+| [`.github/workflows/keepalive.yml`](.github/workflows/keepalive.yml) | GitHub Actions cron that calls that endpoint **every 3 days** (with retries), so the project never reaches the inactivity window. |
+
+Note that `/api/health` is *not* enough on its own — it answers without ever
+opening a connection, so pinging it would keep the site warm while Supabase
+still paused the database.
+
+**Setup:** nothing to configure for the default deployment. To point the job at
+a different URL, add a repository variable `HEALTHCHECK_URL`
+(*Settings → Secrets and variables → Actions → Variables*). Run it on demand
+from the **Actions** tab via **Run workflow** to confirm it is wired up.
+
 ---
 
 ## 🚀 Getting started (local)
